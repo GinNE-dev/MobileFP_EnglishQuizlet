@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_topic_null"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#375287"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Term"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:fontFamily="@font/baloo">
+            </TextView>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Definition"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/baloo">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="State:"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:alpha="0.7">
+                </TextView>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Master"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo"
+                    android:textSize="20dp"
+                    android:gravity="center">
+                </TextView>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                </View>
+
+                <ImageButton
+                    android:layout_marginRight="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:src="@drawable/sound_svgrepo_com">
+
+                </ImageButton>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:paddingLeft="15dp"
+                    android:paddingRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:theme="@style/MyCheckBox"
+                    android:button="@drawable/star_custome_checkbox"
+                    >
+                </androidx.appcompat.widget.AppCompatCheckBox>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

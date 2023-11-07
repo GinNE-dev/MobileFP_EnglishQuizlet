@@ -15,12 +15,115 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".Login_NAV_Layout"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Sign_Up_Layout"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".Login_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Main_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Library_Null"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Create_Topic"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Setting_Create_Topic_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Profile_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Setting_Profile_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Achievement_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Detail_Topic_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Term_Flip_Item"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Term_Item"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".Flashcard_Mode_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".MultipleChoice_Mode_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Typo_Mode_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Results_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Statistic_Result_Layout"
+            android:exported="true">
+
+
+        </activity>
+
+        <activity android:name=".Discover_Layout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Ranking_Layout"
+            android:exported="true">
+
+        </activity>
+
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

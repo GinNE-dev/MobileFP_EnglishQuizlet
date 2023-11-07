@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bottom_sheet_dialog_bg">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Options"
+        android:textSize="30dp"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#375287">
+    </TextView>
+
+    <com.google.android.material.button.MaterialButton
+        app:strokeWidth="2dp"
+        app:strokeColor="#375287"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHUFFLE"
+        android:textColor="#375287"
+        android:fontFamily="@font/baloo"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/shuffle_svgrepo_com">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QUESTION"
+        android:fontFamily="@font/baloo"
+        android:textSize="22dp"
+        android:textColor="#375287"
+        >
+    </TextView>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:checkedButton="@id/btn_term">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="TERM"
+            android:textSize="16dp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/visible_text_selector"
+            android:drawableTint="@color/visible_text_selector"
+            android:gravity="center"
+            android:id="@+id/btn_term"
+            android:button="@android:color/transparent"
+            android:background="@drawable/visible_bg_selector">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="DEFINITION"
+            android:textSize="16dp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/visible_text_selector"
+            android:drawableTint="@color/visible_text_selector"
+            android:gravity="center"
+            android:id="@+id/btn_defition"
+            android:button="@android:color/transparent"
+            android:background="@drawable/visible_bg_selector">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STUDY USING"
+        android:fontFamily="@font/baloo"
+        android:textSize="22dp"
+        android:textColor="#375287"
+        >
+    </TextView>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:checkedButton="@id/btn_all_word">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="ALL"
+            android:textSize="16dp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/visible_text_selector"
+            android:drawableTint="@color/visible_text_selector"
+            android:gravity="center"
+            android:id="@+id/btn_all_word"
+            android:button="@android:color/transparent"
+            android:background="@drawable/visible_bg_selector">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="STARRED"
+            android:textSize="16dp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/visible_text_selector"
+            android:drawableTint="@color/visible_text_selector"
+            android:gravity="center"
+            android:id="@+id/btn_starred_word"
+            android:button="@android:color/transparent"
+            android:background="@drawable/visible_bg_selector">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+    </RadioGroup>
+
+</LinearLayout>

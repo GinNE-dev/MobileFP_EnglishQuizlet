@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:title="Home"
+        android:icon="@drawable/home"
+        >
+    </item>
+
+    <item
+        android:id="@+id/menu_library"
+        android:title="Library"
+        android:icon="@drawable/library_svgrepo_com"
+        >
+    </item>
+
+    <item
+        android:id="@+id/menu_import"
+        android:title="Discover"
+        android:icon="@drawable/discover_svgrepo_com"
+        >
+    </item>
+
+    <item
+        android:id="@+id/menu_profile"
+        android:title="Profile"
+        android:icon="@drawable/profile"
+        >
+    </item>
+
+</menu>

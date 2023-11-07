@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentFolder"
+    android:background="@drawable/gradient_mytopic"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_folder"
+            android:layout_gravity="center"
+            >
+        </ImageView>
+
+
+        <TextView
+            android:layout_marginTop="-490dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="You don't have any Folder"
+            android:textSize="26dp"
+            android:gravity="center"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/white"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Create new folder"
+            android:textSize="20dp"
+            android:layout_marginTop="-320dp"
+            android:layout_gravity="center"
+            android:textColor="#330867"
+            android:fontFamily="@font/baloo"
+            app:strokeWidth="2dp"
+            app:strokeColor="#330867"
+            android:backgroundTint="@color/white">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+
+</FrameLayout>
