@@ -26,6 +26,7 @@
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <TextView
+                android:id="@+id/current_question"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
@@ -50,6 +51,7 @@
 
             </TextView>
             <TextView
+                android:id="@+id/total_question"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
@@ -81,14 +83,23 @@
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_category"
+        <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="20dp">
+            android:id="@+id/viewpager_flashcard">
 
-        </androidx.recyclerview.widget.RecyclerView>
+        </androidx.viewpager.widget.ViewPager>
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview_category"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:padding="20dp"-->
+<!--            >-->
+
+<!--        </androidx.recyclerview.widget.RecyclerView>-->
 
         <View
             android:layout_width="match_parent"
@@ -96,34 +107,36 @@
 
         </View>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginLeft="35dp"-->
-<!--            android:layout_marginRight="35dp"-->
-<!--            android:layout_marginBottom="40dp">-->
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/undo_left_svgrepo_com"-->
-<!--                android:background="@android:color/transparent">-->
-<!--            </androidx.appcompat.widget.AppCompatImageButton>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="40dp">
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/undo_left_svgrepo_com"
+                android:background="@android:color/transparent">
+            </androidx.appcompat.widget.AppCompatImageButton>
 
-<!--            <View-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1">-->
-<!--            </View>-->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            </View>
 
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/next_right_arrow_svgrepo_com"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:layout_gravity="right">-->
-<!--            </androidx.appcompat.widget.AppCompatImageButton>-->
-<!--        </LinearLayout>-->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next_right_arrow_svgrepo_com"
+                android:background="@android:color/transparent"
+                android:layout_gravity="right">
+            </androidx.appcompat.widget.AppCompatImageButton>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

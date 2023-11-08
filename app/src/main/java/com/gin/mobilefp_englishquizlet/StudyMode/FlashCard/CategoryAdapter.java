@@ -61,4 +61,5 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             recyclerViewWordItem = itemView.findViewById(R.id.recyclerview_word_item);
         }
     }
+
 }

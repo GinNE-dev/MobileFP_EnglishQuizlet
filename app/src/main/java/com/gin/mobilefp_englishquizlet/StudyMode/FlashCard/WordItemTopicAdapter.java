@@ -14,7 +14,6 @@ import com.gin.mobilefp_englishquizlet.R;
 import java.util.List;
 
 public class WordItemTopicAdapter extends RecyclerView.Adapter<WordItemTopicAdapter.WordViewHolder>{
-
     private List<WordItemTopic> mWordItemTopic;
 
     public void setData(List<WordItemTopic> list){
@@ -32,11 +31,9 @@ public class WordItemTopicAdapter extends RecyclerView.Adapter<WordItemTopicAdap
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
         WordItemTopic wordItemTopic = mWordItemTopic.get(position);
 
-        holder.btnSound.setImageResource(wordItemTopic.getResourceId());
-        holder.term.setText(wordItemTopic.getTerm());
-        holder.definition.setText(wordItemTopic.getDefinition());
         holder.wordTerm.setText(wordItemTopic.getWordTerm());
         holder.wordDefinition.setText(wordItemTopic.getWordDefinition());
+
     }
 
     @Override
@@ -62,4 +59,5 @@ public class WordItemTopicAdapter extends RecyclerView.Adapter<WordItemTopicAdap
             wordDefinition = itemView.findViewById(R.id.definition_word);
         }
     }
+
 }
