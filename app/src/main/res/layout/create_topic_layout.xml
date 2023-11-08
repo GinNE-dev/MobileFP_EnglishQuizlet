@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_topic_null"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +63,7 @@
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
             </androidx.appcompat.widget.AppCompatImageButton>
+
         </LinearLayout>
 
         <EditText
@@ -121,140 +121,153 @@
 
         </TextView>
 
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="8dp"
-            app:cardElevation="10dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-                </EditText>
-                <TextView
-                    android:layout_marginTop="-15dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TERM"
-                    android:fontFamily="@font/baloo">
-                </TextView>
-                <EditText
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                </EditText>
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_marginTop="-5dp"
-                        android:layout_marginLeft="13dp"
-                        android:layout_width="wrap_content"
+                    android:layout_margin="15dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="DEFINITION"
-                        android:fontFamily="@font/baloo"
-                        android:layout_marginBottom="10dp">
-                    </TextView>
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:orientation="vertical">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+                        </EditText>
+                        <TextView
+                            android:layout_marginTop="-15dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TERM"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
+                        <EditText
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                        </EditText>
 
-                    </View>
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEFINITION"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
+
+                        <EditText
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                        </EditText>
+
+                        <TextView
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEFINITION"
+                            android:fontFamily="@font/baloo"
+                            android:layout_marginBottom="10dp">
+                        </TextView>
+
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/camera_svgrepo_com"
-                        android:background="?attr/selectableItemBackground"
-                        android:layout_marginRight="10dp"
-                        >
+                        android:orientation="vertical">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+                        </EditText>
+                        <TextView
+                            android:layout_marginTop="-15dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TERM"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
+                        <EditText
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                        </EditText>
 
-                    </androidx.appcompat.widget.AppCompatImageButton>
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEFINITION"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
+
+                        <EditText
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                        </EditText>
+
+                        <TextView
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEFINITION"
+                            android:fontFamily="@font/baloo"
+                            android:layout_marginBottom="10dp">
+                        </TextView>
 
 
 
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="10dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="8dp"
-            app:cardElevation="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-                </EditText>
-                <TextView
-                    android:layout_marginTop="-15dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TERM"
-                    android:fontFamily="@font/baloo">
-                </TextView>
-                <EditText
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                </EditText>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_marginTop="-5dp"
-                        android:layout_marginLeft="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DEFINITION"
-                        android:fontFamily="@font/baloo"
-                        android:layout_marginBottom="10dp">
-                    </TextView>
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                    </View>
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/camera_svgrepo_com"
-                        android:background="?attr/selectableItemBackground"
-                        android:layout_marginRight="10dp"
-                        >
-
-                    </androidx.appcompat.widget.AppCompatImageButton>
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
+        </ScrollView>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -263,7 +276,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#22fc05"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
         app:fabSize="normal"
         android:src="@drawable/add2"

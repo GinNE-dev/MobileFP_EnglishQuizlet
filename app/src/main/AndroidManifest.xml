@@ -43,7 +43,11 @@
 
         <activity android:name=".Topic.CreateTopicLayout"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".Topic.SettingCreateTopicLayout"
@@ -80,13 +84,10 @@
             android:exported="true">
 
         </activity>
+
         <activity android:name=".StudyMode.FlashCard.FlashcardModeLayout"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".StudyMode.MultipleChoiceModeLayout"
