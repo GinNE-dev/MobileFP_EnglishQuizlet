@@ -4,105 +4,137 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_topic_null"
     >
-    <com.wajahatkarim3.easyflipview.EasyFlipView
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:flipOnTouch="true"
-        app:flipEnabled="true"
-        app:flipDuration="400"
-        app:flipType="horizontal"
-        app:flipFrom="front"
-        app:autoFlipBack="true"
-        app:autoFlipBackTime="2000"
-        >
-        <androidx.cardview.widget.CardView
-            android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="#a1f9ff"
-            app:cardCornerRadius="20dp">
-            <LinearLayout
+            android:orientation="vertical"
+            android:background="#375287">
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_marginBottom="20dp"
+                android:id="@+id/btn_sound"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sound_svgrepo_com"
+                android:background="?attr/selectableItemBackground">
+
+            </androidx.appcompat.widget.AppCompatImageButton>
+
+            <com.wajahatkarim3.easyflipview.EasyFlipView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:padding="10dp"
+                app:flipOnTouch="true"
+                app:flipEnabled="true"
+                app:flipDuration="400"
+                app:flipType="horizontal"
+                app:flipFrom="front"
+                app:autoFlipBack="true"
+                app:autoFlipBackTime="2000"
+                >
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="DEFINITION"
-                    android:textColor="#375287"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#a1f9ff"
+                    app:cardCornerRadius="20dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/definition"
+                            android:padding="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="DEFINITION"
+                            android:textColor="#375287"
+                            android:textSize="20dp"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
 
-                <TextView
-                    android:padding="10dp"
+                        <TextView
+                            android:id="@+id/definition_word"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tiếng Anh"
+                            android:textColor="#375287"
+                            android:textSize="30dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
+
+                        <View
+                            android:padding="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right">
+
+                        </View>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tiếng Anh"
-                    android:textColor="#375287"
-                    android:textSize="30dp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#375287"
+                    app:cardCornerRadius="20dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/term"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TERM"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
 
-                <View
-                    android:padding="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right">
+                        <TextView
+                            android:id="@+id/term_word"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="English"
+                            android:textColor="@color/white"
+                            android:textSize="30dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/baloo">
+                        </TextView>
 
-                </View>
+                        <View
+                            android:padding="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right">
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                        </View>
+                    </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#375287"
-            app:cardCornerRadius="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TERM"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+                </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="English"
-                    android:textColor="@color/white"
-                    android:textSize="30dp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+            </com.wajahatkarim3.easyflipview.EasyFlipView>
+        </LinearLayout>
 
-                <View
-                    android:padding="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right">
 
-                </View>
-            </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
-    </com.wajahatkarim3.easyflipview.EasyFlipView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

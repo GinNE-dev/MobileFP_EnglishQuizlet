@@ -17,7 +17,70 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".Login_NAV_Layout"
+            android:name=".Login.LoginNavLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Login.SignUpLayout"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".Login.LoginLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".MainLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".LibraryNullLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Topic.CreateTopicLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Topic.SettingCreateTopicLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Proflie.ProfileLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Proflie.SettingProfileLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Proflie.AchievementLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Topic.DetailTopicLayout"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".StudyMode.FlashCard.TermFlipItem"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Topic.TermItem"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".StudyMode.FlashCard.FlashcardModeLayout"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,96 +89,33 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Sign_Up_Layout"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".Login_Layout"
+        <activity android:name=".StudyMode.MultipleChoiceModeLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Main_Layout"
+        <activity android:name=".StudyMode.TypoModeLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Library_Null"
+        <activity android:name=".StudyMode.ResultsLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Create_Topic"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Setting_Create_Topic_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Profile_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Setting_Profile_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Achievement_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Detail_Topic_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Term_Flip_Item"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Term_Item"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".Flashcard_Mode_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".MultipleChoice_Mode_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Typo_Mode_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Results_Layout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Statistic_Result_Layout"
+        <activity android:name=".StudyMode.StatisticResultLayout"
             android:exported="true">
 
 
         </activity>
 
-        <activity android:name=".Discover_Layout"
+        <activity android:name=".DiscoverLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Ranking_Layout"
+        <activity android:name=".Topic.RankingLayout"
             android:exported="true">
 
         </activity>

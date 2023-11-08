@@ -81,136 +81,49 @@
 
         </LinearLayout>
 
-        <com.wajahatkarim3.easyflipview.EasyFlipView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:flipOnTouch="true"
-            app:flipEnabled="true"
-            app:flipDuration="400"
-            app:flipType="horizontal"
-            app:flipFrom="front"
-            app:autoFlipBack="true"
-            app:autoFlipBackTime="2000"
             android:layout_weight="1"
-            >
-            <androidx.cardview.widget.CardView
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#a1f9ff"
-                app:cardCornerRadius="20dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="DEFINITION"
-                        android:textColor="#375287"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
+            android:padding="20dp">
 
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tiếng Anh"
-                        android:textColor="#375287"
-                        android:textSize="30dp"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
+        </androidx.recyclerview.widget.RecyclerView>
 
-                    <View
-                        android:padding="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right">
-
-                    </View>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#375287"
-                app:cardCornerRadius="20dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TERM"
-                        android:textColor="@color/white"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
-
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="English"
-                        android:textColor="@color/white"
-                        android:textSize="30dp"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
-
-                    <View
-                        android:padding="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right">
-
-                    </View>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </com.wajahatkarim3.easyflipview.EasyFlipView>
-
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="40dp">
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/undo_left_svgrepo_com"
-                android:background="@android:color/transparent">
-            </androidx.appcompat.widget.AppCompatImageButton>
+            android:layout_height="40dp">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/sound_svgrepo_com"
-                android:background="@android:color/transparent">
+        </View>
 
-            </androidx.appcompat.widget.AppCompatImageButton>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginLeft="35dp"-->
+<!--            android:layout_marginRight="35dp"-->
+<!--            android:layout_marginBottom="40dp">-->
+<!--            <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/undo_left_svgrepo_com"-->
+<!--                android:background="@android:color/transparent">-->
+<!--            </androidx.appcompat.widget.AppCompatImageButton>-->
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/next_right_arrow_svgrepo_com"
-                android:background="@android:color/transparent"
-                android:layout_gravity="right">
-            </androidx.appcompat.widget.AppCompatImageButton>
-        </LinearLayout>
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1">-->
+<!--            </View>-->
+
+<!--            <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/next_right_arrow_svgrepo_com"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:layout_gravity="right">-->
+<!--            </androidx.appcompat.widget.AppCompatImageButton>-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
