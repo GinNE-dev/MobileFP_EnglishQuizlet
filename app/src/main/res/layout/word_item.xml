@@ -36,35 +36,32 @@
                 >
             </EditText>
 
-            <LinearLayout
+            <TextView
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DEFINITION"
+                android:fontFamily="@font/baloo">
+            </TextView>
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_marginTop="-5dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DEFINITION"
-                    android:fontFamily="@font/baloo"
-                    android:layout_marginBottom="10dp">
-                </TextView>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
+                >
+            </EditText>
 
-                </View>
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/camera_svgrepo_com"
-                    android:background="?attr/selectableItemBackground"
-                    android:layout_marginRight="10dp"
-                    >
-
-                </androidx.appcompat.widget.AppCompatImageButton>
-            </LinearLayout>
+            <TextView
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DESCRIPTION"
+                android:fontFamily="@font/baloo"
+                android:layout_marginBottom="10dp">
+            </TextView>
 
 
 

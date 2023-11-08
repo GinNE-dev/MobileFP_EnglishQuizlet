@@ -17,26 +17,81 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Term"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:fontFamily="@font/baloo">
-            </TextView>
 
-            <TextView
-                android:padding="10dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Definition"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/baloo">
-            </TextView>
+                android:orientation="horizontal">
+                <TextView
+                    android:alpha="0.8"
+                    android:padding="10dp"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Term:"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:alpha="0.8"
+                    android:padding="10dp"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Definition:"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tiếng Anh"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:alpha="0.8"
+                    android:padding="10dp"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Description:"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ngôn ngữ của tư bản"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
