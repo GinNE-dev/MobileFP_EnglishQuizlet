@@ -39,11 +39,12 @@
                 </View>
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/bell_alt_svgrepo_com"
+                    android:layout_gravity="center_vertical"
                     android:background="?attr/selectableItemBackground"
-                    android:layout_gravity="center_vertical">
+                    android:src="@drawable/bell_alt_svgrepo_com">
 
                 </androidx.appcompat.widget.AppCompatImageButton>
             </LinearLayout>

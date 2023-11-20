@@ -22,19 +22,20 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnBack"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/baseline_keyboard_backspace_24"
-                    android:background="?attr/selectableItemBackground">
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/baseline_keyboard_backspace_24">
 
                 </androidx.appcompat.widget.AppCompatImageButton>
 
                 <ImageView
-                    android:layout_marginLeft="-50dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@drawable/logo"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="-50dp"
+                    android:src="@drawable/logo">
 
                 </ImageView>
 
@@ -77,11 +78,10 @@
                         app:boxCornerRadiusTopStart="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
-                            >
-                        </com.google.android.material.textfield.TextInputEditText>
+                            android:fontFamily="@font/baloo"></com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -96,10 +96,11 @@
                         app:boxCornerRadiusTopStart="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            >
+                            android:inputType="textPassword">
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,9 +110,9 @@
                         android:orientation="horizontal">
 
                         <CheckBox
+                            android:id="@+id/checkboxRemember"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </CheckBox>
+                            android:layout_height="wrap_content"></CheckBox>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -123,13 +124,17 @@
 
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        >
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:progressBackgroundTint="#000000"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+                        android:visibility="invisible"/>
 
-                    </View>
                     <LinearLayout
+                        android:id="@+id/linearForgotPass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -161,18 +166,33 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.button.MaterialButton
-                android:layout_marginTop="20dp"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="LOG IN"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="#375287"
-                app:strokeColor="#375287"
-                app:strokeWidth="2dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/baloo"
-                >
+                android:text="LOG IN"
+                android:textColor="#375287"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:strokeColor="#375287"
+                app:strokeWidth="2dp">
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#375287"
+                android:fontFamily="@font/baloo"
+                android:text="CREATE NEW ACCOUNT"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:strokeColor="#375287"
+                app:strokeWidth="2dp">
             </com.google.android.material.button.MaterialButton>
 
             <View

@@ -22,6 +22,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnBack"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/baseline_keyboard_backspace_24"
@@ -58,18 +59,19 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Welcome to VBD English"
-                        android:textAlignment="center"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
+                        android:layout_marginBottom="20dp"
                         android:fontFamily="@font/baloo"
-                        android:layout_marginBottom="20dp">
+                        android:text="Create a VBD English account"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold">
 
                     </TextView>
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter email address"
+                        android:hint="Choose an username"
                         app:endIconMode="clear_text"
                         android:layout_marginTop="10dp"
                         app:boxCornerRadiusBottomStart="20dp"
@@ -78,11 +80,28 @@
                         app:boxCornerRadiusTopStart="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtUsername"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
-                            >
-                        </com.google.android.material.textfield.TextInputEditText>
+                            android:fontFamily="@font/baloo"></com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter your email address"
+                        app:endIconMode="clear_text"
+                        android:layout_marginTop="10dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusTopStart="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo"></com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -97,11 +116,11 @@
                         app:boxCornerRadiusTopStart="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            >
-                        </com.google.android.material.textfield.TextInputEditText>
+                            android:inputType="textPassword">></com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -116,12 +135,21 @@
                         app:boxCornerRadiusTopStart="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtPassword2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            >
-                        </com.google.android.material.textfield.TextInputEditText>
+                            android:inputType="textPassword">></com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:progressBackgroundTint="#000000"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
+                        android:visibility="invisible"
+                        android:layout_marginTop="10dp"/>
 
                 </LinearLayout>
 
@@ -129,19 +157,18 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.button.MaterialButton
-                android:layout_marginTop="20dp"
+                android:id="@+id/btnSignup"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="SIGN UP"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#375287"
-                app:strokeColor="#375287"
-                app:strokeWidth="2dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/baloo"
-                >
-            </com.google.android.material.button.MaterialButton>
+                android:text="SIGN UP"
+                android:textColor="#375287"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:strokeColor="#375287"
+                app:strokeWidth="2dp"></com.google.android.material.button.MaterialButton>
 
             <View
                 android:layout_width="0dp"
