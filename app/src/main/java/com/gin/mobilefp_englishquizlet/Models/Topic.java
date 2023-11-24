@@ -8,14 +8,16 @@ public class Topic {
     String description;
     String avaURL;
     HashMap<String, String> belongsToFolders;
+    String ownerID;
 
     public Topic() {
     }
 
-    public Topic(String id, String name, String description) {
+    public Topic(String id, String name, String description, String ownerID) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.ownerID = ownerID;
         this.avaURL = null;
 
         HashMap<String, String> belongsToFolders = new HashMap<>();
@@ -61,5 +63,13 @@ public class Topic {
 
     public void setBelongsToFolders(HashMap<String, String> belongsToFolders) {
         this.belongsToFolders = belongsToFolders;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
     }
 }
