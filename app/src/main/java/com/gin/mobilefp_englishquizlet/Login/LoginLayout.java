@@ -43,8 +43,8 @@ public class LoginLayout extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         btnLogin.setOnClickListener(v -> {
-            String loginEmail = edtxtEmail.getText().toString();
-            String loginPassword = edtxtPassword.getText().toString();
+            String loginEmail = edtxtEmail.getText().toString().trim();
+            String loginPassword = edtxtPassword.getText().toString().trim();
 
             if(loginEmail.equals("") || loginPassword.equals("")) {
                 Toast.makeText(this, "Please enter email or password!", Toast.LENGTH_SHORT).show();
