@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.gin.mobilefp_englishquizlet.MainLayout;
+import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -26,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpLayout extends AppCompatActivity {
     AppCompatImageButton btnBack;
     MaterialButton btnSignup;
-    TextInputEditText edtxtUsername;
     TextInputEditText edtxtEmail;
     TextInputEditText edtxtPassword;
     TextInputEditText edtxtPassword2;
@@ -42,7 +42,6 @@ public class SignUpLayout extends AppCompatActivity {
             goToMain();
         }
 
-        edtxtUsername = findViewById(R.id.edtxtUsername);
         edtxtEmail = findViewById(R.id.edtxtEmail);
         edtxtPassword = findViewById(R.id.edtxtPassword);
         edtxtPassword2 = findViewById(R.id.edtxtPassword2);
@@ -55,13 +54,13 @@ public class SignUpLayout extends AppCompatActivity {
         });
 
         btnSignup.setOnClickListener(v -> {
-            String name = edtxtUsername.getText().toString().trim();
             String email = edtxtEmail.getText().toString().trim();
+            String name = email.split("@")[0];
             String password = edtxtPassword.getText().toString();
             String password2 = edtxtPassword2.getText().toString();
 
             boolean isFormValid = true;
-            if(name.equals("") || email.equals("") || password.equals("") || password2.equals("")) {
+            if(email.equals("") || password.equals("") || password2.equals("")) {
                 isFormValid = false;
                 Toast.makeText(SignUpLayout.this, "Please fill out the form!", Toast.LENGTH_SHORT).show();
             }
@@ -85,13 +84,13 @@ public class SignUpLayout extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userID = user.getUid();
-                userRef.child(userID).child("email").setValue(user.getEmail());
-                userRef.child(userID).child("name").setValue(name);
+                userRef.child(userID).setValue(new User(user.getEmail(), name));
 
                 Toast.makeText(SignUpLayout.this, "Your account has been created successfully!", Toast.LENGTH_SHORT).show();
 
                 goToMain();
-            } else {
+            }
+            else {
                 progressBar.setVisibility(View.INVISIBLE);
 
                 Exception exception = task.getException();
