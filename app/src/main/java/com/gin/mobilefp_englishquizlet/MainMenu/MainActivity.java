@@ -27,23 +27,6 @@ public class MainActivity extends AppCompatActivity {
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        // Set up the ViewPager with the BottomNavigationView
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                // Sync BottomNavigationView with ViewPager
-                bottomNav.getMenu().getItem(position).setChecked(true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             // Handle BottomNavigationView item clicks
             int itemId = item.getItemId();
@@ -69,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static class MyViewPagerAdapter extends FragmentStatePagerAdapter {
-
         MyViewPagerAdapter(FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
