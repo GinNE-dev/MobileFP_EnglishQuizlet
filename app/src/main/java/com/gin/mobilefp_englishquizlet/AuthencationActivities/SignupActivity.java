@@ -1,8 +1,7 @@
-package com.gin.mobilefp_englishquizlet.Login;
+package com.gin.mobilefp_englishquizlet.AuthencationActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -11,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
-import com.gin.mobilefp_englishquizlet.MainLayout;
+import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
 import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.android.material.button.MaterialButton;
@@ -24,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpLayout extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
     AppCompatImageButton btnBack;
     MaterialButton btnSignup;
     TextInputEditText edtxtEmail;
@@ -62,11 +61,11 @@ public class SignUpLayout extends AppCompatActivity {
             boolean isFormValid = true;
             if(email.equals("") || password.equals("") || password2.equals("")) {
                 isFormValid = false;
-                Toast.makeText(SignUpLayout.this, "Please fill out the form!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Please fill out the form!", Toast.LENGTH_SHORT).show();
             }
             if(!password.equals(password2)) {
                 isFormValid = false;
-                Toast.makeText(SignUpLayout.this, "Your re-enter password is not match!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Your re-enter password is not match!", Toast.LENGTH_SHORT).show();
             }
 
             if(isFormValid) {
@@ -86,7 +85,7 @@ public class SignUpLayout extends AppCompatActivity {
                 String userID = user.getUid();
                 userRef.child(userID).setValue(new User(user.getEmail(), name));
 
-                Toast.makeText(SignUpLayout.this, "Your account has been created successfully!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Your account has been created successfully!", Toast.LENGTH_SHORT).show();
 
                 goToMain();
             }
@@ -95,23 +94,23 @@ public class SignUpLayout extends AppCompatActivity {
 
                 Exception exception = task.getException();
                 if(exception instanceof FirebaseAuthWeakPasswordException) {
-                    Toast.makeText(SignUpLayout.this, "Password is too weak!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Password is too weak!", Toast.LENGTH_SHORT).show();
                 }
                 else if(exception instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(SignUpLayout.this, "Email address is invalid!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Email address is invalid!", Toast.LENGTH_SHORT).show();
                 }
                 else if(exception instanceof FirebaseAuthUserCollisionException) {
-                    Toast.makeText(SignUpLayout.this, "This email is unavailable!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "This email is unavailable!", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(SignUpLayout.this, "Signup failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Signup failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void goToMain() {
-        Intent intent = new Intent(this, MainLayout.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

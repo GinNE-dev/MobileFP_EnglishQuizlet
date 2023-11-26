@@ -15,7 +15,7 @@
     </item>
 
     <item
-        android:id="@+id/menu_import"
+        android:id="@+id/menu_discover"
         android:title="Discover"
         android:icon="@drawable/discover_svgrepo_com"
         >

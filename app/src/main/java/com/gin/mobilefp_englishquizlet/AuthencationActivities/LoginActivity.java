@@ -1,25 +1,23 @@
-package com.gin.mobilefp_englishquizlet.Login;
+package com.gin.mobilefp_englishquizlet.AuthencationActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gin.mobilefp_englishquizlet.MainLayout;
+import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginLayout extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     TextInputEditText edtxtEmail;
     TextInputEditText edtxtPassword;
     MaterialButton btnLogin;
@@ -55,7 +53,7 @@ public class LoginLayout extends AppCompatActivity {
         });
 
         btnSignup.setOnClickListener(v -> {
-            Intent goToSignUp = new Intent(LoginLayout.this, SignUpLayout.class);
+            Intent goToSignUp = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(goToSignUp);
         });
     }
@@ -67,7 +65,7 @@ public class LoginLayout extends AppCompatActivity {
             if(task.isSuccessful()) {
                 progressBar.setVisibility(View.INVISIBLE);
 
-                Toast.makeText(LoginLayout.this, "Login success!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login success!", Toast.LENGTH_SHORT).show();
                 FirebaseUser user = mAuth.getCurrentUser();
 
                 goToMain();
@@ -77,17 +75,17 @@ public class LoginLayout extends AppCompatActivity {
 
                 Exception exception = task.getException();
                 if(exception instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(LoginLayout.this, "Email or password is wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Email or password is wrong!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(LoginLayout.this, "Login failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Login failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void goToMain() {
-        Intent intent = new Intent(this, MainLayout.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

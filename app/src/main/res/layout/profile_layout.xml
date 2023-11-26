@@ -18,16 +18,18 @@
             app:civ_border_color="@color/white">
 
         </de.hdodenhof.circleimageview.CircleImageView>
+
         <TextView
+            android:id="@+id/txtviewUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ngtiendat242002"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:fontFamily="@font/baloo"
-            android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="ngtiendat242002"
+            android:textColor="@color/white"
+            android:textSize="20dp">
 
         </TextView>
 
@@ -42,49 +44,49 @@
             android:elevation="8dp">
 
             <LinearLayout
+                android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="@drawable/background_gradient">
+                android:background="@drawable/background_gradient"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:padding="5dp"
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/setting_one_svgrepo_com">
-                </ImageView>
+                    android:padding="5dp"
+                    android:src="@drawable/setting_one_svgrepo_com"></ImageView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <TextView
-                        android:fontFamily="@font/baloo"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/baloo"
+                        android:gravity="center_vertical"
                         android:text="My Setting"
+                        android:textColor="#375287"
                         android:textSize="22dp"
-                        android:textStyle="bold"
-                        android:textColor="#375287">
-                    </TextView>
+                        android:textStyle="bold"></TextView>
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1">
 
                 </View>
+
                 <ImageView
-                    android:layout_marginRight="5dp"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/next_svgrepo_com"
-                    >
-                </ImageView>
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/next_svgrepo_com"></ImageView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

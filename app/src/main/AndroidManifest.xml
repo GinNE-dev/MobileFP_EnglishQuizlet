@@ -13,20 +13,20 @@
         android:theme="@style/Theme.MobileFP_EnglishQuizlet"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".MainMenu.MainActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".Login.LoginNavLayout"
+            android:name=".AuthencationActivities.LoginNavLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Login.SignUpLayout"
+        <activity android:name=".AuthencationActivities.SignupActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".Login.LoginLayout"
+        <activity android:name=".AuthencationActivities.LoginActivity"
             android:exported="true">
 
             <intent-filter>
@@ -36,12 +36,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainLayout"
+        <activity android:name=".MainMenu.MainLayout"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".LibraryNullLayout"
+        <activity android:name=".MainMenu.LibraryFragment"
             android:exported="true">
 
         </activity>
@@ -112,7 +112,7 @@
 
         </activity>
 
-        <activity android:name=".DiscoverLayout"
+        <activity android:name=".MainMenu.DiscoverFragment"
             android:exported="true">
 
         </activity>
