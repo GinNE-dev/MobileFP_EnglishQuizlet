@@ -1,24 +1,25 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Topic {
     String id;
-    String name;
+    String title;
     String description;
-    String avaURL;
     HashMap<String, String> belongsToFolders;
-    String ownerID;
+    String owner;
+    ArrayList<Word> words;
 
     public Topic() {
     }
 
-    public Topic(String id, String name, String description, String ownerID) {
+    public Topic(String id, String title, String description, String owner, ArrayList<Word> words) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
-        this.ownerID = ownerID;
-        this.avaURL = null;
+        this.owner = owner;
+        this.words = words;
 
         HashMap<String, String> belongsToFolders = new HashMap<>();
         belongsToFolders.put("default_folder_id", "false");
@@ -33,12 +34,12 @@ public class Topic {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -49,14 +50,6 @@ public class Topic {
         this.description = description;
     }
 
-    public String getAvaURL() {
-        return avaURL;
-    }
-
-    public void setAvaURL(String avaURL) {
-        this.avaURL = avaURL;
-    }
-
     public HashMap<String, String> getBelongsToFolders() {
         return belongsToFolders;
     }
@@ -65,11 +58,19 @@ public class Topic {
         this.belongsToFolders = belongsToFolders;
     }
 
-    public String getOwnerID() {
-        return ownerID;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setOwnerID(String ownerID) {
-        this.ownerID = ownerID;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public ArrayList<Word> getWords() {
+        return words;
+    }
+
+    public void setWords(ArrayList<Word> words) {
+        this.words = words;
     }
 }

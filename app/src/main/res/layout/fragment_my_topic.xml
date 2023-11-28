@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.FragmentMyTopic"
+    tools:context=".Library.FragmentMyTopic"
     android:background="@drawable/gradient_mytopic">
 
     <LinearLayout
+        android:id="@+id/linearLayoutEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,8 +16,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:src="@drawable/empty"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
         </ImageView>
 
 
@@ -31,20 +31,47 @@
             android:textColor="@color/white"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddFirstTopic"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="Create new topic"
-            android:textSize="20dp"
-            android:layout_marginTop="-320dp"
             android:layout_gravity="center"
-            android:textColor="#330867"
+            android:layout_marginTop="-320dp"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/baloo"
-            app:strokeWidth="2dp"
+            android:text="Create your first topic"
+            android:textColor="#330867"
+            android:textSize="20dp"
             app:strokeColor="#330867"
-            android:backgroundTint="@color/white">
+            app:strokeWidth="2dp">
 
         </com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"></androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#22fc05"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:fabSize="normal"
+        android:src="@drawable/add2"
+        tools:ignore="DuplicateIds">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>

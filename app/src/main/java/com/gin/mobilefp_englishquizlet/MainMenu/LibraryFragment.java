@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.gin.mobilefp_englishquizlet.Library.FragmentFolder;
+import com.gin.mobilefp_englishquizlet.Library.FragmentMyTopic;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.ViewPager.ViewPagerAdapterLibrary;
 import com.google.android.material.tabs.TabLayout;
 
 public class LibraryFragment extends Fragment {
@@ -37,5 +41,42 @@ public class LibraryFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
         return rootView;
+    }
+
+    public static class ViewPagerAdapterLibrary extends FragmentStatePagerAdapter {
+
+        public ViewPagerAdapterLibrary(@NonNull FragmentManager fm, int behavior) {
+            super(fm, behavior);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 1) {
+                return new FragmentFolder();
+            }
+            return new FragmentMyTopic();
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            String title = "";
+
+            switch (position){
+                case 0:
+                    title = "My Topic";
+                    break;
+                case 1:
+                    title = "My Folder";
+                    break;
+            }
+            return title;
+        }
     }
 }

@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.gin.mobilefp_englishquizlet.Fragment.FragmentFolder;
-import com.gin.mobilefp_englishquizlet.Fragment.FragmentMyTopic;
+import com.gin.mobilefp_englishquizlet.Library.FragmentFolder;
+import com.gin.mobilefp_englishquizlet.Library.FragmentMyTopic;
 
 public class ViewPagerAdapterLibrary extends FragmentStatePagerAdapter {
 

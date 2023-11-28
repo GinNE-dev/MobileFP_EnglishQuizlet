@@ -1,4 +1,4 @@
-package com.gin.mobilefp_englishquizlet.Topic;
+package com.gin.mobilefp_englishquizlet.Library;
 
 import android.os.Bundle;
 
@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gin.mobilefp_englishquizlet.R;
 
-public class CreateTopicLayout extends AppCompatActivity {
+public class SettingCreateTopicLayout extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_topic_layout);
+        setContentView(R.layout.setting_create_topic);
     }
 }

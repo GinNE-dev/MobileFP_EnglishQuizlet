@@ -2,29 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_mytopic"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        >
+        app:cardElevation="10dp"
+        android:layout_marginBottom="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="15dp">
+
             <TextView
+                android:id="@+id/txtviewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
                 android:text="Name Topic"
-                android:textSize="20dp"
-                android:fontFamily="@font/baloo">
+                android:textSize="20dp">
 
             </TextView>
             <androidx.cardview.widget.CardView
@@ -37,19 +37,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="5dp"
+                        android:id="@+id/txtviewTermCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="2"
-                        android:textColor="@color/white"
                         android:background="#330867"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
+                        android:fontFamily="@font/baloo"
+                        android:gravity="center"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="2dp"
+                        android:text="2"
+                        android:textColor="@color/white"></TextView>
 
                     <TextView
                         android:paddingTop="2dp"
@@ -82,12 +83,13 @@
                 </de.hdodenhof.circleimageview.CircleImageView>
 
                 <TextView
-                    android:layout_marginLeft="10dp"
+                    android:id="@+id/txtviewOwner"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="ngtiendat242002"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/baloo"
                     android:gravity="center"
-                    android:fontFamily="@font/baloo">
+                    android:text="ngtiendat242002">
 
                 </TextView>
             </LinearLayout>

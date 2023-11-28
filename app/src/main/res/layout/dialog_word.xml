@@ -3,26 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Title TextView -->
+            <TextView
+                android:id="@+id/txtviewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Add a word"
+                android:textSize="18sp"
+                android:fontFamily="@font/baloo"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- EditTexts for Term, Definition, and Description -->
+
+            <!-- Term -->
             <EditText
                 android:id="@+id/edtxtTerm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"/>
+                android:layout_margin="10dp"/>
             <TextView
                 android:layout_marginTop="-15dp"
                 android:layout_marginLeft="13dp"
@@ -32,16 +45,13 @@
                 android:fontFamily="@font/baloo">
             </TextView>
 
+            <!-- Definition -->
             <EditText
                 android:id="@+id/edtxtDefinition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"></EditText>
-
+                android:layout_marginRight="10dp"></EditText>
             <TextView
                 android:layout_marginTop="-5dp"
                 android:layout_marginLeft="13dp"
@@ -51,16 +61,13 @@
                 android:fontFamily="@font/baloo">
             </TextView>
 
+            <!-- Description -->
             <EditText
                 android:id="@+id/edtxtDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"></EditText>
-
+                android:layout_marginRight="10dp"></EditText>
             <TextView
                 android:layout_marginTop="-5dp"
                 android:layout_marginLeft="13dp"
@@ -71,9 +78,16 @@
                 android:layout_marginBottom="10dp">
             </TextView>
 
-
-
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Confirm"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="?android:attr/textColorPrimary"/>
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </LinearLayout>

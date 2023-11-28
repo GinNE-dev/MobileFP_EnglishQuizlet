@@ -17,10 +17,11 @@
             android:layout_margin="10dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/baseline_keyboard_backspace_24"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_keyboard_backspace_24">
 
             </androidx.appcompat.widget.AppCompatImageButton>
 
@@ -54,10 +55,11 @@
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_marginLeft="20dp"
+                android:id="@+id/btnTopicComplete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
                 android:background="?attr/selectableItemBackground"
                 android:src="@drawable/check_svgrepo_com"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
@@ -67,21 +69,21 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/edtxtTopicTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
+            android:background="@drawable/underline_edittext"
             android:backgroundTint="@color/white"
             android:ems="10"
+            android:fontFamily="@font/baloo"
+            android:hint="Subject, chapter, unit"
             android:maxLines="1"
             android:paddingBottom="45dp"
-            android:hint="Subject, chapter, unit"
             android:textColor="@color/white"
-            android:textColorHint="#afdbed"
-            android:background="@drawable/underline_edittext"
-            android:fontFamily="@font/baloo"
-            />
+            android:textColorHint="#afdbed" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,18 +98,18 @@
         </TextView>
 
         <EditText
+            android:id="@+id/edtxtTopicDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="12dp"
             android:backgroundTint="@color/white"
             android:ems="10"
+            android:fontFamily="@font/baloo"
             android:hint="What's is you topic about?"
             android:textColor="@color/white"
-            android:textColorHint="#afdbed"
-            android:fontFamily="@font/baloo"
-            />
+            android:textColorHint="#afdbed" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,156 +123,27 @@
 
         </TextView>
 
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
 
-                <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp">
-                        </EditText>
-                        <TextView
-                            android:layout_marginTop="-15dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="TERM"
-                            android:fontFamily="@font/baloo">
-                        </TextView>
-                        <EditText
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                        </EditText>
-
-                        <TextView
-                            android:layout_marginTop="-5dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="DEFINITION"
-                            android:fontFamily="@font/baloo">
-                        </TextView>
-
-                        <EditText
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                        </EditText>
-
-                        <TextView
-                            android:layout_marginTop="-5dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="DEFINITION"
-                            android:fontFamily="@font/baloo"
-                            android:layout_marginBottom="10dp">
-                        </TextView>
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
 
 
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp">
-                        </EditText>
-                        <TextView
-                            android:layout_marginTop="-15dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="TERM"
-                            android:fontFamily="@font/baloo">
-                        </TextView>
-                        <EditText
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                        </EditText>
-
-                        <TextView
-                            android:layout_marginTop="-5dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="DEFINITION"
-                            android:fontFamily="@font/baloo">
-                        </TextView>
-
-                        <EditText
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                        </EditText>
-
-                        <TextView
-                            android:layout_marginTop="-5dp"
-                            android:layout_marginLeft="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="DEFINITION"
-                            android:fontFamily="@font/baloo"
-                            android:layout_marginBottom="10dp">
-                        </TextView>
-
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:layout_marginTop="10dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
-            </LinearLayout>
-
-        </ScrollView>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

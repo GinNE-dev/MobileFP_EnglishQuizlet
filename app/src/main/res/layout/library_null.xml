@@ -41,7 +41,7 @@
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
             </androidx.appcompat.widget.AppCompatImageButton>
-            </LinearLayout>
+        </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_library"
@@ -60,23 +60,7 @@
             android:layout_height="match_parent">
 
         </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
 
-
-        </LinearLayout>
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_gravity="bottom"
-        android:layout_margin="15dp"
-        android:elevation="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:menu="@menu/nav_bottom_menu"
-        app:labelVisibilityMode="auto"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/round_corner"
-        >
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

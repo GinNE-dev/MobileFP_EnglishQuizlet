@@ -46,12 +46,12 @@
 
         </activity>
 
-        <activity android:name=".Topic.CreateTopicLayout"
+        <activity android:name=".Library.CreateTopicActivity"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".Topic.SettingCreateTopicLayout"
+        <activity android:name=".Library.SettingCreateTopicLayout"
             android:exported="true">
 
         </activity>
@@ -71,7 +71,7 @@
 
         </activity>
 
-        <activity android:name=".Topic.DetailTopicLayout"
+        <activity android:name=".Library.DetailTopicLayout"
             android:exported="true">
 
         </activity>
@@ -81,7 +81,7 @@
 
         </activity>
 
-        <activity android:name=".Topic.TermItem"
+        <activity android:name=".Library.TermItem"
             android:exported="true">
 
         </activity>
@@ -117,7 +117,7 @@
 
         </activity>
 
-        <activity android:name=".Topic.RankingLayout"
+        <activity android:name=".Library.RankingLayout"
             android:exported="true">
 
         </activity>

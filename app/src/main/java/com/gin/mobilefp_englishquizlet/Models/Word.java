@@ -5,20 +5,21 @@ public class Word {
     String term;
     String definition;
     String description;
-    String belongsToTopic;
-    String avtURL;
 
     public Word() {
     }
 
-    public Word(String id, String term, String definition, String belongsToTopic) {
+    public Word(String id, String term, String definition, String description) {
         this.id = id;
         this.term = term;
         this.definition = definition;
-        this.belongsToTopic = belongsToTopic;
+        this.description = description;
+    }
 
-        this.description = "An English word with definition";
-        this.avtURL = null;
+    public Word(String term, String definition, String description) {
+        this.term = term;
+        this.definition = definition;
+        this.description = description;
     }
 
     public String getId() {
@@ -51,21 +52,5 @@ public class Word {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getBelongsToTopic() {
-        return belongsToTopic;
-    }
-
-    public void setBelongsToTopic(String belongsToTopic) {
-        this.belongsToTopic = belongsToTopic;
-    }
-
-    public String getAvtURL() {
-        return avtURL;
-    }
-
-    public void setAvtURL(String avtURL) {
-        this.avtURL = avtURL;
     }
 }
