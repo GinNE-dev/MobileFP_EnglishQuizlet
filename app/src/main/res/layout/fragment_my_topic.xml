@@ -21,14 +21,14 @@
 
 
         <TextView
-            android:layout_marginTop="-490dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="You don't have any Topic"
-            android:textSize="26dp"
-            android:gravity="center"
+            android:layout_marginTop="-490dp"
             android:fontFamily="@font/baloo"
-            android:textColor="@color/white"/>
+            android:gravity="center"
+            android:text="You haven't create any Topic"
+            android:textColor="@color/white"
+            android:textSize="26dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddFirstTopic"

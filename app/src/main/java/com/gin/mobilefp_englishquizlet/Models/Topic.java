@@ -7,7 +7,7 @@ public class Topic {
     String id;
     String title;
     String description;
-    HashMap<String, String> belongsToFolders;
+    HashMap<String, Boolean> belongsToFolders;
     String owner;
     ArrayList<Word> words;
 
@@ -21,8 +21,8 @@ public class Topic {
         this.owner = owner;
         this.words = words;
 
-        HashMap<String, String> belongsToFolders = new HashMap<>();
-        belongsToFolders.put("default_folder_id", "false");
+        HashMap<String, Boolean> belongsToFolders = new HashMap<>();
+        belongsToFolders.put("default_folder_id", false);
         this.belongsToFolders = belongsToFolders;
     }
 
@@ -50,11 +50,11 @@ public class Topic {
         this.description = description;
     }
 
-    public HashMap<String, String> getBelongsToFolders() {
+    public HashMap<String, Boolean> getBelongsToFolders() {
         return belongsToFolders;
     }
 
-    public void setBelongsToFolders(HashMap<String, String> belongsToFolders) {
+    public void setBelongsToFolders(HashMap<String, Boolean> belongsToFolders) {
         this.belongsToFolders = belongsToFolders;
     }
 

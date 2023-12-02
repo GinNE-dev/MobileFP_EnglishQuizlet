@@ -67,7 +67,7 @@ public class FolderDetailActivity extends AppCompatActivity {
 
     private void setUpTopicList(String folderID) {
         DatabaseReference topicsRef = FirebaseDatabase.getInstance().getReference("topics");
-        topicsRef.orderByChild("belongsToFolders/" + folderID).equalTo("true").addValueEventListener(new ValueEventListener() {
+        topicsRef.orderByChild("belongsToFolders/" + folderID).equalTo(true).addValueEventListener(new ValueEventListener() {
             @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
