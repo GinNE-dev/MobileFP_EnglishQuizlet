@@ -67,13 +67,13 @@ public class MyTopicFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        setupTopicList();
+        setUpTopicList();
     }
 
-    private void setupTopicList() {
-        DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
+    private void setUpTopicList() {
+        DatabaseReference topicsRef = FirebaseDatabase.getInstance().getReference("topics");
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        topicRef.addValueEventListener(new ValueEventListener() {
+        topicsRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

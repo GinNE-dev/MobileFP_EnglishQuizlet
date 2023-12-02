@@ -83,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userID = user.getUid();
-                userRef.child(userID).setValue(new User(user.getEmail(), name));
+                userRef.child(userID).setValue(new User(userID, user.getEmail(), name));
 
                 Toast.makeText(SignupActivity.this, "Your account has been created successfully!", Toast.LENGTH_SHORT).show();
 

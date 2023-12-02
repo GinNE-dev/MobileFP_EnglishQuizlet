@@ -33,9 +33,9 @@ public class TopicDetailActivity extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<>();
     AdapterForWords adapterWords;
     RecyclerView recyclerViewWords;
-    TextView txtviewOwner;
     TextView txtviewTermCount;
     TextView txtviewTitle;
+    TextView txtviewDescription;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnOption;
 
@@ -45,20 +45,21 @@ public class TopicDetailActivity extends AppCompatActivity {
         setContentView(R.layout.topic_detail_layout);
 
         recyclerViewWords = findViewById(R.id.recyclerViewWords);
-        txtviewOwner = findViewById(R.id.txtviewOwner);
         txtviewTermCount = findViewById(R.id.txtviewTermCount);
         txtviewTitle = findViewById(R.id.txtviewTitle);
+        txtviewDescription = findViewById(R.id.txtviewDescription);
         btnBack = findViewById(R.id.btnBack);
         btnOption = findViewById(R.id.btnOption);
 
-        Intent getID = getIntent();
-        String topicID = getID.getStringExtra("id");
+        Intent getInfo = getIntent();
+        String topicID = getInfo.getStringExtra("id");
+        String topicOwner = getInfo.getStringExtra("owner");
 
         adapterWords = new AdapterForWords(this, words, 0);
         recyclerViewWords.setAdapter(adapterWords);
         recyclerViewWords.setLayoutManager(new LinearLayoutManager(this));
 
-        setUpWordsList(topicID);
+        setUpWordList(topicID);
         setUpTopicInfo(topicID);
 
         btnBack.setOnClickListener(v -> {
@@ -66,11 +67,11 @@ public class TopicDetailActivity extends AppCompatActivity {
         });
 
         btnOption.setOnClickListener(v -> {
-            showOptionDialog();
+            showOptionDialog(topicOwner);
         });
     }
 
-    private void setUpWordsList(String topicID) {
+    private void setUpWordList(String topicID) {
         DatabaseReference wordsOfTopicRef = FirebaseDatabase.getInstance().getReference("topics").child(topicID).child("words");
         wordsOfTopicRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -102,12 +103,12 @@ public class TopicDetailActivity extends AppCompatActivity {
                 Topic topic = snapshot.getValue(Topic.class);
 
                 txtviewTitle = findViewById(R.id.txtviewTitle);
-                txtviewOwner = findViewById(R.id.txtviewOwner);
                 txtviewTermCount = findViewById(R.id.txtviewTermCount);
+                txtviewDescription = findViewById(R.id.txtviewDescription);
                 assert topic != null;
                 txtviewTitle.setText(topic.getTitle());
-                txtviewOwner.setText(topic.getOwner());
-                txtviewTermCount.setText(Integer.toString(words.size()));
+                txtviewDescription.setText("Description: " + topic.getDescription());
+                txtviewTermCount.setText(words.size() + " words");
             }
 
             @Override
@@ -117,7 +118,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void showOptionDialog() {
+    private void showOptionDialog(String topicOwner) {
         View bottomSheetView = getLayoutInflater().inflate(R.layout.option_topic_detail_layout, null);
 
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -135,13 +136,21 @@ public class TopicDetailActivity extends AppCompatActivity {
             }
         });
 
-        btnEditTopic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        if(topicOwner.equals(userEmail)) {
+            btnEditTopic.setText("Edit this topic");
+            btnEditTopic.setOnClickListener(v -> {
                 // Handle button click for editing topic
                 bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
-            }
-        });
+            });
+        }
+        else {
+            btnEditTopic.setText("View topic info");
+            btnEditTopic.setOnClickListener(v -> {
+                // Handle button click for editing topic
+                bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
+            });
+        }
 
         bottomSheetDialog.show();
     }

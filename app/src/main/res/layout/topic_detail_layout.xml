@@ -11,124 +11,63 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_margin="10dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackground"
-                android:src="@drawable/baseline_keyboard_backspace_24">
-
-            </androidx.appcompat.widget.AppCompatImageButton>
+                android:src="@drawable/baseline_keyboard_backspace_24"/>
 
             <TextView
                 android:id="@+id/txtviewTitle"
-                android:layout_width="250dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/baloo"
-                android:gravity="left|center"
+                android:gravity="left|center_vertical"
                 android:text="Name topic"
                 android:textColor="@color/white"
                 android:textSize="24dp"
                 android:textStyle="bold"
                 android:maxLines="1"
-                android:ellipsize="end">
-            </TextView>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </View>
+                android:ellipsize="end"/>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
                 android:background="?attr/selectableItemBackground"
                 android:src="@drawable/menu_vertical_full_fill"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
-
-            </androidx.appcompat.widget.AppCompatImageButton>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="10dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                app:civ_border_color="#00F8FF"
-                app:civ_border_width="1dp"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/logo">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <TextView
-                android:id="@+id/txtviewOwner"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/baloo"
-                android:gravity="center"
-                android:text="ngtiendat242002"
-                android:textColor="@color/white"
-                android:textSize="18dp">
-
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
-                android:layout_marginLeft="15dp"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Studying"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="26dp"
-                    android:gravity="center">
-
-                </TextView>
-            </androidx.cardview.widget.CardView>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            </View>
+                tools:ignore="RtlHardcoded,SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_marginRight="15dp"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnRank"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/trophy_svgrepo_com__2_"
-                android:gravity="center_vertical"
-                android:background="?attr/selectableItemBackground">
-
-            </androidx.appcompat.widget.AppCompatImageButton>
+                android:gravity="right|center_vertical"
+                android:background="?attr/selectableItemBackground"
+                tools:ignore="RtlHardcoded"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtviewDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="left"
+            android:text="Description: This is the best topic to learn English"
+            android:textColor="@color/white"
+            android:textSize="20dp">
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -136,10 +75,9 @@
             android:text="Learning Mode"
             android:fontFamily="@font/baloo"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/white"
-            android:textSize="20dp">
-
+            android:textSize="24dp">
         </TextView>
 
         <androidx.cardview.widget.CardView
@@ -284,12 +222,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cards"
+                android:text="Word list"
                 android:fontFamily="@font/baloo"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/white"
-                android:textSize="20dp">
+                android:textSize="24dp">
 
             </TextView>
             <View
@@ -299,30 +237,17 @@
             </View>
 
             <TextView
+                android:id="@+id/txtviewTermCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/baloo"
-                android:gravity="center_vertical"
-                android:text="Words:"
-                android:textColor="@color/white"
-                android:textSize="20dp">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/txtviewTermCount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:fontFamily="@font/baloo"
                 android:gravity="center_vertical"
-                android:text="1"
+                android:text="words"
                 android:textColor="@color/white"
                 android:textSize="20dp">
-
             </TextView>
         </LinearLayout>
 

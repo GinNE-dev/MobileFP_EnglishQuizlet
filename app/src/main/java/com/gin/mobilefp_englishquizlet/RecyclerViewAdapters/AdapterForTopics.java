@@ -49,6 +49,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         holder.cardView.setOnClickListener(v -> {
             Intent goToDetail = new Intent(context, TopicDetailActivity.class);
             goToDetail.putExtra("id", topics.get(position).getId());
+            goToDetail.putExtra("owner", topics.get(position).getOwner());
             context.startActivity(goToDetail);
 
             Log.i("TOPIC ID", topics.get(position).getId());

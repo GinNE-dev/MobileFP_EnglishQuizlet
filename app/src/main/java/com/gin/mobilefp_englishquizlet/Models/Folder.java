@@ -2,16 +2,16 @@ package com.gin.mobilefp_englishquizlet.Models;
 
 public class Folder {
     String id;
-    String name;
-    String ownerID;
+    String title;
+    boolean editable;
 
     public Folder() {
     }
 
-    public Folder(String id, String name, String ownerID) {
+    public Folder(String id, String title, boolean editable) {
         this.id = id;
-        this.name = name;
-        this.ownerID = ownerID;
+        this.title = title;
+        this.editable = editable;
     }
 
     public String getId() {
@@ -22,19 +22,19 @@ public class Folder {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getOwnerID() {
-        return ownerID;
+    public boolean isEditable() {
+        return editable;
     }
 
-    public void setOwnerID(String ownerID) {
-        this.ownerID = ownerID;
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }

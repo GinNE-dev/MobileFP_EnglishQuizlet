@@ -17,23 +17,25 @@
             android:layout_margin="10dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/baseline_keyboard_backspace_24"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_keyboard_backspace_24">
 
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <TextView
+                android:id="@+id/txtviewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Name folder"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/baloo"
-                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Name folder"
                 android:textColor="@color/white"
                 android:textSize="25dp"
-                android:gravity="center"
-                android:layout_marginLeft="10dp">
+                android:textStyle="bold">
 
             </TextView>
 
@@ -58,14 +60,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="List of topics"
+                android:text="Folder's topics:"
                 android:fontFamily="@font/baloo"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
                 android:textColor="@color/white"
                 android:textSize="20dp">
 
@@ -76,7 +79,6 @@
                 android:layout_weight="1">
             </View>
             <TextView
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quantity:"
@@ -86,15 +88,16 @@
                 android:textSize="18dp">
 
             </TextView>
+
             <TextView
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
+                android:id="@+id/txtviewQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/baloo"
                 android:gravity="center_vertical"
                 android:text="1"
-                android:fontFamily="@font/baloo"
                 android:textColor="@color/white"
                 android:textSize="20dp">
 
@@ -102,6 +105,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
