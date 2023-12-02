@@ -1,4 +1,4 @@
-package com.gin.mobilefp_englishquizlet.ViewPager;
+package com.gin.mobilefp_englishquizlet.Library;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.gin.mobilefp_englishquizlet.Library.FragmentMyFolder;
-import com.gin.mobilefp_englishquizlet.Library.FragmentMyTopic;
+import com.gin.mobilefp_englishquizlet.Library.MyFolderFragment;
+import com.gin.mobilefp_englishquizlet.Library.MyTopicFragment;
 
 public class ViewPagerAdapterLibrary extends FragmentStatePagerAdapter {
 
@@ -19,9 +19,9 @@ public class ViewPagerAdapterLibrary extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 1) {
-            return new FragmentMyFolder();
+            return new MyFolderFragment();
         }
-        return new FragmentMyTopic();
+        return new MyTopicFragment();
     }
 
     @Override

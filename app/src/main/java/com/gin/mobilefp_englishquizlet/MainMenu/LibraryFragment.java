@@ -12,8 +12,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.gin.mobilefp_englishquizlet.Library.FragmentMyFolder;
-import com.gin.mobilefp_englishquizlet.Library.FragmentMyTopic;
+import com.gin.mobilefp_englishquizlet.Library.MyFolderFragment;
+import com.gin.mobilefp_englishquizlet.Library.MyTopicFragment;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -53,9 +53,9 @@ public class LibraryFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             if (position == 1) {
-                return new FragmentMyFolder();
+                return new MyFolderFragment();
             }
-            return new FragmentMyTopic();
+            return new MyTopicFragment();
         }
 
         @Override

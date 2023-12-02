@@ -3,7 +3,6 @@ package com.gin.mobilefp_englishquizlet.Library;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FragmentMyTopic extends Fragment {
+public class MyTopicFragment extends Fragment {
     MaterialButton btnAddFirstTopic;
     FloatingActionButton btnAddTopic;
     LinearLayout linearLayoutEmpty;

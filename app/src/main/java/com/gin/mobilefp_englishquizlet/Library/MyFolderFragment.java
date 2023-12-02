@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.gin.mobilefp_englishquizlet.R;
 
-public class FragmentMyFolder extends Fragment {
+public class MyFolderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
