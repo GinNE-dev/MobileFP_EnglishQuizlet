@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForAddWords;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForTopics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DiscoverFragment extends Fragment {
@@ -59,10 +57,13 @@ public class DiscoverFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                topics.clear();
+
                 for(DataSnapshot topicSnap: snapshot.getChildren()) {
                     Topic currentTopic = topicSnap.getValue(Topic.class);
                     topics.add(currentTopic);
                 }
+
                 adapter.notifyDataSetChanged();
             }
 

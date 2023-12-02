@@ -71,7 +71,7 @@
 
         </activity>
 
-        <activity android:name=".Library.DetailTopicLayout"
+        <activity android:name=".DetailPages.TopicDetailActivity"
             android:exported="true">
 
         </activity>

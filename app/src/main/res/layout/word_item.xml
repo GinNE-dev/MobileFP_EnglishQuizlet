@@ -15,64 +15,60 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edtxtTerm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"/>
             <TextView
-                android:layout_marginTop="-15dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TERM"
                 android:fontFamily="@font/baloo">
             </TextView>
 
-            <EditText
-                android:id="@+id/edtxtDefinition"
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/txtviewTerm"
+                android:text="basic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"></EditText>
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/baloo" />
 
             <TextView
-                android:layout_marginTop="-5dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DEFINITION"
                 android:fontFamily="@font/baloo">
             </TextView>
 
-            <EditText
-                android:id="@+id/edtxtDescription"
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/txtviewDefinition"
+                android:text="cơ bản"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"></EditText>
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/baloo"/>
 
             <TextView
-                android:layout_marginTop="-5dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DESCRIPTION"
-                android:fontFamily="@font/baloo"
-                android:layout_marginBottom="10dp">
+                android:fontFamily="@font/baloo">
             </TextView>
 
-
-
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/txtviewDescription"
+                android:text="means something are simple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/baloo"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

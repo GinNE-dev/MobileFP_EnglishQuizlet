@@ -2,6 +2,8 @@ package com.gin.mobilefp_englishquizlet.RecyclerViewAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.DetailPages.TopicDetailActivity;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
@@ -42,6 +45,14 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         int termCount = topics.get(position).getWords().size();
         holder.txtviewTermCount.setText(Integer.toString(termCount));
         holder.txtviewOwner.setText(topics.get(position).getOwner());
+
+        holder.cardView.setOnClickListener(v -> {
+            Intent goToDetail = new Intent(context, TopicDetailActivity.class);
+            goToDetail.putExtra("id", topics.get(position).getId());
+            context.startActivity(goToDetail);
+
+            Log.i("TOPIC ID", topics.get(position).getId());
+        });
     }
 
     @Override

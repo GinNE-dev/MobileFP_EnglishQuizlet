@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.Library;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,8 @@ public class FragmentMyTopic extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                topics.clear();
+
                 for(DataSnapshot topicSnap: snapshot.getChildren()) {
                     Topic currentTopic = topicSnap.getValue(Topic.class);
                     if(currentTopic.getOwner().equals(userEmail)) {
@@ -94,7 +97,7 @@ public class FragmentMyTopic extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle error if needed
             }
         });
     }

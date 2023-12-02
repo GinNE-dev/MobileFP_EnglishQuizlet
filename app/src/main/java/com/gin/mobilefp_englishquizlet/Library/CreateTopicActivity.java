@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForAddWords;
+import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForWords;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +35,7 @@ public class CreateTopicActivity extends AppCompatActivity {
     FloatingActionButton btnAddWord;
     ArrayList<Word> words = new ArrayList<>();
     int wordsCount = 0;
-    AdapterForAddWords adapter;
+    AdapterForWords adapter;
     AlertDialog wordDialog;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -50,7 +50,7 @@ public class CreateTopicActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         recyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new AdapterForAddWords(this, words);
+        adapter = new AdapterForWords(this, words, 1);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
