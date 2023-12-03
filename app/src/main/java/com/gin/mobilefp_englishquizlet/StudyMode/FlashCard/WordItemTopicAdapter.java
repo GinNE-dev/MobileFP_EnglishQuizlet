@@ -1,5 +1,7 @@
 package com.gin.mobilefp_englishquizlet.StudyMode.FlashCard;
 
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 
 import java.util.List;
 
 public class WordItemTopicAdapter extends RecyclerView.Adapter<WordItemTopicAdapter.WordViewHolder>{
-    private List<WordItemTopic> mWordItemTopic;
+    private List<Word> mWord;
 
-    public void setData(List<WordItemTopic> list){
-        this.mWordItemTopic = list;
+    public void setData(List<Word> list){
+        this.mWord = list;
         notifyDataSetChanged();
     }
     @NonNull
@@ -29,16 +32,17 @@ public class WordItemTopicAdapter extends RecyclerView.Adapter<WordItemTopicAdap
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-        WordItemTopic wordItemTopic = mWordItemTopic.get(position);
+        Word wordItemTopic = mWord.get(position);
 
-        holder.wordTerm.setText(wordItemTopic.getWordTerm());
-        holder.wordDefinition.setText(wordItemTopic.getWordDefinition());
+        //holder.wordTerm.setText(wordItemTopic.getTerm());
+        //holder.wordDefinition.setText(wordItemTopic.getDefinition());
 
+        AppCompatImageButton btn = holder.itemView.findViewById(R.id.btn_sound);
     }
 
     @Override
     public int getItemCount() {
-        return mWordItemTopic.size();
+        return mWord.size();
     }
 
     public class WordViewHolder extends RecyclerView.ViewHolder {

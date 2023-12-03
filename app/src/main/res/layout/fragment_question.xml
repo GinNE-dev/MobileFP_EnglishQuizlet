@@ -30,6 +30,7 @@
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <com.wajahatkarim3.easyflipview.EasyFlipView
+                android:id="@+id/view_flip_component"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:flipOnTouch="true"
@@ -38,8 +39,7 @@
                 app:flipType="horizontal"
                 app:flipFrom="front"
                 app:autoFlipBack="true"
-                app:autoFlipBackTime="2000"
-                >
+                app:autoFlipBackTime="2000">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -79,7 +79,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="50dp"
                             android:layout_gravity="right">
-
                         </View>
 
                     </LinearLayout>

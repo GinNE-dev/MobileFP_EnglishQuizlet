@@ -91,6 +91,7 @@
             android:elevation="8dp">
 
             <LinearLayout
+                android:id="@+id/panel_flashcard_learning_mode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -136,6 +137,7 @@
             android:elevation="8dp">
 
             <LinearLayout
+                android:id="@+id/panel_multiple_choice_learning_mode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -181,6 +183,7 @@
             android:elevation="8dp">
 
             <LinearLayout
+                android:id="@+id/panel_type_word_learning_mode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"

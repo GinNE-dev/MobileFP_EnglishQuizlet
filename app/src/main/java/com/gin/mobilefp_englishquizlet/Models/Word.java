@@ -1,12 +1,17 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
-public class Word {
+import java.io.Serializable;
+import java.util.HashMap;
+
+public class Word implements Serializable {
     String id;
     String term;
     String definition;
     String description;
+    HashMap<String, Integer> learnCounts;
 
     public Word() {
+        this.learnCounts = new HashMap<>();
     }
 
     public Word(String id, String term, String definition, String description) {
@@ -14,12 +19,14 @@ public class Word {
         this.term = term;
         this.definition = definition;
         this.description = description;
+        this.learnCounts = new HashMap<>();
     }
 
     public Word(String term, String definition, String description) {
         this.term = term;
         this.definition = definition;
         this.description = description;
+        this.learnCounts = new HashMap<>();
     }
 
     public String getId() {
@@ -53,4 +60,6 @@ public class Word {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public HashMap<String, Integer> getLearnCounts() {return learnCounts;}
 }

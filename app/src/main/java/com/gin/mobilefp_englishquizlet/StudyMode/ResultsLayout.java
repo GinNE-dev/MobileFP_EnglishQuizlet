@@ -1,6 +1,7 @@
 package com.gin.mobilefp_englishquizlet.StudyMode;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

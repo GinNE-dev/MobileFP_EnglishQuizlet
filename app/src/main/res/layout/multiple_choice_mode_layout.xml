@@ -26,6 +26,7 @@
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <TextView
+                android:id="@+id/text_view_current"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
@@ -50,6 +51,7 @@
 
             </TextView>
             <TextView
+                android:id="@+id/text_view_total"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
@@ -107,6 +109,7 @@
 
                     </TextView>
                     <TextView
+                        android:id="@+id/text_view_question"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="English"
@@ -151,11 +154,13 @@
                 </LinearLayout>
 
                 <RadioGroup
+                    android:id="@+id/radio_group_answers"
                     android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_button_answer_a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tiếng Anh"
@@ -170,6 +175,7 @@
                     </com.google.android.material.radiobutton.MaterialRadioButton>
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_button_answer_b"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,6 +191,7 @@
                     </com.google.android.material.radiobutton.MaterialRadioButton>
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_button_answer_c"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -200,6 +207,7 @@
                     </com.google.android.material.radiobutton.MaterialRadioButton>
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_button_answer_d"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

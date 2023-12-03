@@ -6,16 +6,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
+import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForFolders;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForTopics;
@@ -35,6 +40,7 @@ public class MyFolderFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterForFolders adapter;
     ArrayList<Folder> folders = new ArrayList<>();
+    AlertDialog folderDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,13 +52,12 @@ public class MyFolderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnAddFolder = view.findViewById(R.id.btnAddTopic);
+        btnAddFolder = view.findViewById(R.id.btnAddFolder);
         recyclerView = view.findViewById(R.id.recyclerView);
 
-//        btnAddFolder.setOnClickListener(v -> {
-//            Intent i = new Intent(getActivity(), CreateTopicActivity.class);
-//            startActivity(i);
-//        });
+        btnAddFolder.setOnClickListener(v -> {
+            showFolderDialog();
+        });
 
         adapter = new AdapterForFolders(getActivity(), folders);
         recyclerView.setAdapter(adapter);
@@ -84,5 +89,44 @@ public class MyFolderFragment extends Fragment {
                 // Handle error if needed
             }
         });
+    }
+
+    private void showFolderDialog() {
+        // Create a new AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_folder, null);
+        builder.setView(dialogView);
+
+        // Find the EditText fields in the dialog layout
+        EditText edtxtTitle = dialogView.findViewById(R.id.edtxtTitle);
+
+        // Find the Confirm button in the dialog layout
+        Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
+
+        // Set OnClickListener for the Confirm button
+        btnConfirm.setOnClickListener(view -> {
+            String userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference foldersRef = FirebaseDatabase.getInstance().getReference("users").child(userUID).child("folders");
+
+            String id = foldersRef.push().getKey();
+            String title = edtxtTitle.getText().toString();
+
+            boolean valid = true;
+            if(title.equals("")) {
+                valid = false;
+                Toast.makeText(getActivity(), "Folder name can't be empty", Toast.LENGTH_SHORT).show();
+            }
+
+            if(valid) {
+                foldersRef.child(id).setValue(new Folder(id, title, true));
+                Toast.makeText(getActivity(), "Create folder successfully", Toast.LENGTH_SHORT).show();
+                folderDialog.dismiss();
+            }
+        });
+
+        // Create and show the AlertDialog
+        folderDialog = builder.create();
+        folderDialog.show();
     }
 }
