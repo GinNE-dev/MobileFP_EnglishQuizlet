@@ -7,14 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
@@ -27,10 +30,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 
 public class TopicDetailActivity extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<>();
+    ArrayList<Folder> folders = new ArrayList<>();
     AdapterForWords adapterWords;
     RecyclerView recyclerViewWords;
     TextView txtviewTermCount;
@@ -61,13 +67,14 @@ public class TopicDetailActivity extends AppCompatActivity {
 
         setUpWordList(topicID);
         setUpTopicInfo(topicID);
+        setUpFolderList();
 
         btnBack.setOnClickListener(v -> {
             finish();
         });
 
         btnOption.setOnClickListener(v -> {
-            showOptionDialog(topicOwner);
+            showOptionDialog(topicID, topicOwner);
         });
     }
 
@@ -87,6 +94,27 @@ public class TopicDetailActivity extends AppCompatActivity {
                 adapterWords.notifyDataSetChanged(); // Notify the adapter that the data has changed
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error if needed
+            }
+        });
+    }
+
+    private void setUpFolderList() {
+        String userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference foldersRef = FirebaseDatabase.getInstance().getReference("users").child(userUID).child("folders");
+        foldersRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                folders.clear();
+
+                for(DataSnapshot folderSnap: snapshot.getChildren()) {
+                    Folder currentFolder = folderSnap.getValue(Folder.class);
+                    folders.add(currentFolder);
+                }
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle error if needed
@@ -118,7 +146,8 @@ public class TopicDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void showOptionDialog(String topicOwner) {
+    @SuppressLint("SetTextI18n")
+    private void showOptionDialog(String topicID, String topicOwner) {
         View bottomSheetView = getLayoutInflater().inflate(R.layout.option_topic_detail_layout, null);
 
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -128,19 +157,15 @@ public class TopicDetailActivity extends AppCompatActivity {
         Button btnAddToFolder = bottomSheetView.findViewById(R.id.btnAddToFolder);
         Button btnEditTopic = bottomSheetView.findViewById(R.id.btnEditTopic);
 
-        btnAddToFolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle button click for adding to folder
-                bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
-            }
+        btnAddToFolder.setOnClickListener(v -> {
+            showFolderSelectionDialog(topicID);
+            bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
         });
 
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         if(topicOwner.equals(userEmail)) {
             btnEditTopic.setText("Edit this topic");
             btnEditTopic.setOnClickListener(v -> {
-                // Handle button click for editing topic
                 bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
             });
         }
@@ -153,5 +178,29 @@ public class TopicDetailActivity extends AppCompatActivity {
         }
 
         bottomSheetDialog.show();
+    }
+
+    private void showFolderSelectionDialog(String topicID) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select a Folder");
+
+        ArrayList<String> foldersNames = new ArrayList<>();
+        for (Folder folder : folders) {
+            foldersNames.add(folder.getTitle());
+        }
+
+        String[] folderArray = foldersNames.toArray(new String[0]);
+
+        builder.setItems(folderArray, (dialog, which) -> {
+            // Handle the folder selection here
+            Folder selectedFolder = folders.get(which);
+
+            DatabaseReference topicBelongsToFoldersRef = FirebaseDatabase.getInstance().getReference("topics").child(topicID).child("belongsToFolders");
+            topicBelongsToFoldersRef.child(selectedFolder.getId()).setValue(true);
+
+            Toast.makeText(this, "This topic has been added to your folder", Toast.LENGTH_SHORT).show();
+        });
+
+        builder.show();
     }
 }
