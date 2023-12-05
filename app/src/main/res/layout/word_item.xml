@@ -61,14 +61,14 @@
             </TextView>
 
             <TextView
-                android:textSize="20dp"
                 android:id="@+id/txtviewDescription"
-                android:text="means something are simple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/baloo"/>
+                android:fontFamily="@font/baloo"
+                android:text="means something simple"
+                android:textSize="20dp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

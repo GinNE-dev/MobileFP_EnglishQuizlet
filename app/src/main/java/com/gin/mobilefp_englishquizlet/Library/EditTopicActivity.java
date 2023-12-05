@@ -1,7 +1,6 @@
 package com.gin.mobilefp_englishquizlet.Library;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,15 +18,11 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gin.mobilefp_englishquizlet.MainMenu.LibraryFragment;
-import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
-import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForWords;
+import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForEditableWords;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,7 +41,7 @@ public class EditTopicActivity extends AppCompatActivity {
     AppCompatImageButton btnTopicComplete;
     FloatingActionButton btnAddWord;
     ArrayList<Word> words = new ArrayList<>();
-    AdapterForWords adapter;
+    AdapterForEditableWords adapter;
     AlertDialog wordDialog;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -68,7 +63,7 @@ public class EditTopicActivity extends AppCompatActivity {
         Intent getInfo = getIntent();
         String topicID = getInfo.getStringExtra("topicID");
 
-        adapter = new AdapterForWords(this, words, 2);
+        adapter = new AdapterForEditableWords(this, words, 2);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

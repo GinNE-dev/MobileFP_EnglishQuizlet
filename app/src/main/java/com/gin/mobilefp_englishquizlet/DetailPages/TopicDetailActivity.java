@@ -3,7 +3,6 @@ package com.gin.mobilefp_englishquizlet.DetailPages;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +21,7 @@ import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForWords;
+import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForViewWords;
 import com.gin.mobilefp_englishquizlet.StudyMode.FlashCard.FlashcardModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.MultipleChoiceModeLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -33,14 +32,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.util.ArrayList;
 
 public class TopicDetailActivity extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<>();
     ArrayList<Folder> folders = new ArrayList<>();
-    AdapterForWords adapterWords;
+    AdapterForViewWords adapterWords;
     RecyclerView recyclerViewWords;
     TextView txtviewTermCount;
     TextView txtviewTitle;
@@ -73,7 +70,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         String topicOwner = getInfo.getStringExtra("owner");
         mTopicID = topicID;
 
-        adapterWords = new AdapterForWords(this, words, 0);
+        adapterWords = new AdapterForViewWords(this, words);
         recyclerViewWords.setAdapter(adapterWords);
         recyclerViewWords.setLayoutManager(new LinearLayoutManager(this));
 

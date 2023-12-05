@@ -2,7 +2,6 @@ package com.gin.mobilefp_englishquizlet.RecyclerViewAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +15,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gin.mobilefp_englishquizlet.Library.CreateTopicActivity;
-import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyViewHolder>{
+public class AdapterForEditableWords extends RecyclerView.Adapter<AdapterForEditableWords.MyViewHolder>{
     Context context;
     ArrayList<Word> words;
     int mode;
-    public AdapterForWords(Context context, ArrayList<Word> words, int mode) {
+    public AdapterForEditableWords(Context context, ArrayList<Word> words, int mode) {
         //constructor
         this.context = context;
         this.words = words;
@@ -58,24 +54,8 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
             holder.txtviewDescription.setText("None");
         }
 
-        //mode 0 is for view topic, speak the text when clicked
         //mode 1 is for create new topic activity
         //mode 2 is for edit topic
-        if(mode == 0) {
-            holder.cardView.setOnClickListener(v -> {
-                TextToSpeechHelper.initialize(context, new TextToSpeechHelper.OnInitializationListener() {
-                    @Override
-                    public void onInitialized() {
-                        // TextToSpeech initialized successfully
-                        TextToSpeechHelper.speak(currentWord.getTerm());
-                    }
-                    @Override
-                    public void onInitializationFailed() {
-                        // Initialization failed, handle the error
-                    }
-                });
-            });
-        }
         if(mode == 1) {
             holder.cardView.setOnClickListener(v -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
