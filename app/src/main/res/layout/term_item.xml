@@ -124,12 +124,11 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1">
-
                 </View>
 
                 <ImageButton
                     android:layout_marginRight="15dp"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:padding="10dp"
@@ -138,13 +137,12 @@
                 </ImageButton>
 
                 <androidx.appcompat.widget.AppCompatCheckBox
-                    android:paddingLeft="15dp"
-                    android:paddingRight="5dp"
+                    android:theme="@style/MyCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:theme="@style/MyCheckBox"
                     android:button="@drawable/star_custome_checkbox"
-                    >
+                    android:paddingLeft="15dp"
+                    android:paddingRight="5dp">
                 </androidx.appcompat.widget.AppCompatCheckBox>
             </LinearLayout>
 
