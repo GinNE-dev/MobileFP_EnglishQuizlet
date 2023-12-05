@@ -18,10 +18,11 @@
             android:layout_margin="10dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/baseline_keyboard_backspace_24"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_keyboard_backspace_24">
 
             </androidx.appcompat.widget.AppCompatImageButton>
 
@@ -72,12 +73,12 @@
                 </TextView>
 
                 <TextView
-                    android:layout_marginLeft="10dp"
+                    android:id="@+id/txtviewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ngtiendat24002@gmail.com"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/baloo"
+                    android:text="ngtiendat24002@gmail.com"></TextView>
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -92,12 +93,12 @@
                 </TextView>
 
                 <TextView
-                    android:layout_marginLeft="10dp"
+                    android:id="@+id/txtviewUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ngtiendat24002"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/baloo"
+                    android:text="ngtiendat24002"></TextView>
 
                 <TextView
                     android:layout_marginTop="15dp"
@@ -128,12 +129,13 @@
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOG OUT"
             android:layout_margin="15dp"
             android:backgroundTint="#ed0e30"
             android:fontFamily="@font/baloo"
+            android:text="LOG OUT"
             android:textSize="18dp">
 
         </com.google.android.material.button.MaterialButton>

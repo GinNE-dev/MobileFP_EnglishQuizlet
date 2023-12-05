@@ -1,4 +1,4 @@
-package com.gin.mobilefp_englishquizlet.Proflie;
+package com.gin.mobilefp_englishquizlet.Profile;
 
 import android.os.Bundle;
 
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gin.mobilefp_englishquizlet.R;
 
-public class SettingProfileLayout extends AppCompatActivity {
+public class AchievementLayout extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_profile_layout);
+        setContentView(R.layout.achievement_layout);
     }
 }

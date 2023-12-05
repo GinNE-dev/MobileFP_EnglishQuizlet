@@ -14,12 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gin.mobilefp_englishquizlet.AuthencationActivities.LoginActivity;
+import com.gin.mobilefp_englishquizlet.Profile.SettingProfileActivity;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
     TextView txtviewUsername;
-    LinearLayout btnLogout; //test logout
+    LinearLayout btnSetting;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -36,26 +37,16 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         txtviewUsername = view.findViewById(R.id.txtviewUsername);
-        btnLogout = view.findViewById(R.id.btnLogout);
+        btnSetting = view.findViewById(R.id.btnSetting);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String userEmail = mAuth.getCurrentUser().getEmail();
 
         txtviewUsername.setText(userEmail);
 
-        //test logout
-        btnLogout.setOnClickListener(v -> {
-            mAuth.signOut();
-            Toast.makeText(getActivity(), "Logged out!", Toast.LENGTH_SHORT).show();
-            goToLogIn();
+        btnSetting.setOnClickListener(v -> {
+            Intent goToSetting = new Intent(getActivity(), SettingProfileActivity.class);
+            startActivity(goToSetting);
         });
-    }
-
-    private void goToLogIn() {
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
-        if (getActivity() != null) {
-            getActivity().finish();
-        }
     }
 }

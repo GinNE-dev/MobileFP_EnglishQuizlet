@@ -49,13 +49,13 @@
             android:name=".Library.SettingCreateTopicLayout"
             android:exported="true"></activity>
         <activity
-            android:name=".Proflie.ProfileLayout"
+            android:name=".Profile.ProfileLayout"
             android:exported="true"></activity>
         <activity
-            android:name=".Proflie.SettingProfileLayout"
+            android:name=".Profile.SettingProfileActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".Proflie.AchievementLayout"
+            android:name=".Profile.AchievementLayout"
             android:exported="true"></activity>
         <activity
             android:name=".DetailPages.TopicDetailActivity"
