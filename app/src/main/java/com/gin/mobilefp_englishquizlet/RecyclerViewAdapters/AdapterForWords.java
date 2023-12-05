@@ -2,6 +2,7 @@ package com.gin.mobilefp_englishquizlet.RecyclerViewAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +22,12 @@ import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyViewHolder>{
     Context context;
     ArrayList<Word> words;
     int mode;
-    //0: just view
-    //1: create new topic activity
-    //2: edit topic
     public AdapterForWords(Context context, ArrayList<Word> words, int mode) {
         //constructor
         this.context = context;
@@ -44,7 +43,7 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
         return new MyViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Word currentWord = words.get(position);
@@ -58,6 +57,7 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
             holder.txtviewDescription.setText("None");
         }
 
+        //mode 0 is for view topic
         //mode 1 is for create new topic activity
         if(mode == 1) {
             holder.cardView.setOnClickListener(v -> {
@@ -76,7 +76,33 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
         }
         if(mode == 2) {
             holder.cardView.setOnClickListener(v -> {
-                Toast.makeText(context, "You want to edit this word!", Toast.LENGTH_SHORT).show();
+                View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_word, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setView(dialogView);
+                // Find the EditText fields in the dialog layout
+                EditText edtxtTerm = dialogView.findViewById(R.id.edtxtTerm);
+                EditText edtxtDefinition = dialogView.findViewById(R.id.edtxtDefinition);
+                EditText edtxtDescription = dialogView.findViewById(R.id.edtxtDescription);
+                Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
+
+                edtxtTerm.setText(currentWord.getTerm());
+                edtxtTerm.setEnabled(false);
+                edtxtTerm.setFocusable(false);
+                edtxtTerm.setFocusableInTouchMode(false);
+                edtxtDefinition.setText(currentWord.getDefinition());
+                edtxtDescription.setText(currentWord.getDescription());
+
+                AlertDialog alertDialog = builder.create();
+
+                btnConfirm.setOnClickListener(view -> {
+                    currentWord.setDefinition(edtxtDefinition.getText().toString());
+                    currentWord.setDescription(edtxtDescription.getText().toString());
+                    Toast.makeText(context, "Saved change!", Toast.LENGTH_SHORT).show();
+                    notifyDataSetChanged();
+                    alertDialog.dismiss();
+                });
+
+                alertDialog.show();
             });
         }
     }

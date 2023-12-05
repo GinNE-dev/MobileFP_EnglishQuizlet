@@ -110,8 +110,6 @@ public class CreateTopicActivity extends AppCompatActivity {
         EditText edtxtTerm = dialogView.findViewById(R.id.edtxtTerm);
         EditText edtxtDefinition = dialogView.findViewById(R.id.edtxtDefinition);
         EditText edtxtDescription = dialogView.findViewById(R.id.edtxtDescription);
-
-        // Find the Confirm button in the dialog layout
         Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
 
         // Set OnClickListener for the Confirm button
