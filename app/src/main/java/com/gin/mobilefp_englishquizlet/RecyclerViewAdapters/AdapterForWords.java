@@ -69,7 +69,6 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
                         // TextToSpeech initialized successfully
                         TextToSpeechHelper.speak(currentWord.getTerm());
                     }
-
                     @Override
                     public void onInitializationFailed() {
                         // Initialization failed, handle the error

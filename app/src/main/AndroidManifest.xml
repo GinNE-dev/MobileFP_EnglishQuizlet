@@ -13,125 +13,83 @@
         android:theme="@style/Theme.MobileFP_EnglishQuizlet"
         tools:targetApi="31">
         <activity
+            android:name=".AuthencationActivities.ResetPassActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainMenu.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".AuthencationActivities.LoginNavLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".AuthencationActivities.SignupActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".AuthencationActivities.LoginActivity"
             android:exported="true">
-
-        </activity>
-
-        <activity android:name=".AuthencationActivities.SignupActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".AuthencationActivities.LoginActivity"
-            android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainMenu.MainLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".MainMenu.LibraryFragment"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Library.CreateTopicActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Library.EditTopicActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Library.SettingCreateTopicLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Proflie.ProfileLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Proflie.SettingProfileLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Proflie.AchievementLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".DetailPages.TopicDetailActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".DetailPages.FolderDetailActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.FlashCard.TermFlipItem"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Library.TermItem"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.FlashCard.FlashcardModeLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.MultipleChoiceModeLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.TypoModeLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.ResultsLayout"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".StudyMode.StatisticResultLayout"
-            android:exported="true">
-
-
-        </activity>
-
-        <activity android:name=".MainMenu.DiscoverFragment"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Library.RankingLayout"
-            android:exported="true">
-
-        </activity>
-
+        <activity
+            android:name=".MainMenu.MainLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainMenu.LibraryFragment"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Library.CreateTopicActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Library.EditTopicActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Library.SettingCreateTopicLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Proflie.ProfileLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Proflie.SettingProfileLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Proflie.AchievementLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".DetailPages.TopicDetailActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".DetailPages.FolderDetailActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.FlashCard.TermFlipItem"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Library.TermItem"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.FlashCard.FlashcardModeLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.MultipleChoiceModeLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.TypoModeLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.ResultsLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".StudyMode.StatisticResultLayout"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainMenu.DiscoverFragment"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Library.RankingLayout"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

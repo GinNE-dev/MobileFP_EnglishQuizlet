@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.AuthencationActivities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText edtxtEmail;
     TextInputEditText edtxtPassword;
+    LinearLayout linearForgotPass;
     MaterialButton btnLogin;
     MaterialButton btnSignup;
     ProgressBar progressBar;
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnSignup = findViewById(R.id.btnSignup);
         progressBar = findViewById(R.id.progressBar);
+        linearForgotPass = findViewById(R.id.linearForgotPass);
 
         btnLogin.setOnClickListener(v -> {
             String loginEmail = edtxtEmail.getText().toString().trim();
@@ -55,6 +58,11 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(v -> {
             Intent goToSignUp = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(goToSignUp);
+        });
+
+        linearForgotPass.setOnClickListener(v -> {
+            Intent goToResetPass = new Intent(LoginActivity.this, ResetPassActivity.class);
+            startActivity(goToResetPass);
         });
     }
 

@@ -21,11 +21,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_keyboard_backspace_24"
+                    android:background="?attr/selectableItemBackground">
+
+                </androidx.appcompat.widget.AppCompatImageButton>
+
                 <ImageView
+                    android:layout_marginLeft="-50dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/logo">
+                    android:src="@drawable/logo"
+                    android:layout_gravity="center">
 
                 </ImageView>
 
@@ -48,7 +58,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Welcome to VBD English"
+                        android:text="Reset password"
                         android:textAlignment="center"
                         android:textStyle="bold"
                         android:textSize="20dp"
@@ -59,7 +69,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email address"
+                        android:hint="Enter your account's email address"
                         app:endIconMode="clear_text"
                         android:layout_marginTop="10dp"
                         app:boxCornerRadiusBottomStart="20dp"
@@ -74,26 +84,6 @@
                             android:fontFamily="@font/baloo"></com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Password"
-                        android:layout_marginTop="10dp"
-                        app:endIconMode="password_toggle"
-                        app:boxCornerRadiusBottomStart="20dp"
-                        app:boxCornerRadiusBottomEnd="20dp"
-                        app:boxCornerRadiusTopEnd="20dp"
-                        app:boxCornerRadiusTopStart="20dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edtxtPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
-                            android:inputType="textPassword">
-                        </com.google.android.material.textfield.TextInputEditText>
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <ProgressBar
                         android:id="@+id/progressBar"
                         android:layout_width="match_parent"
@@ -103,62 +93,20 @@
                         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small"
                         android:visibility="invisible"/>
 
-                    <LinearLayout
-                        android:id="@+id/linearForgotPass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Forgot"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:textColor="@color/black"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Password?"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            >
-                        </TextView>
-
-                    </LinearLayout>
-
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnSend"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/baloo"
-                android:text="LOG IN"
+                android:text="SEND RESET PASSWORD EMAIL"
                 android:textColor="#375287"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:strokeColor="#375287"
-                app:strokeWidth="2dp">
-            </com.google.android.material.button.MaterialButton>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSignup"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#375287"
-                android:fontFamily="@font/baloo"
-                android:text="CREATE NEW ACCOUNT"
-                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:strokeColor="#375287"

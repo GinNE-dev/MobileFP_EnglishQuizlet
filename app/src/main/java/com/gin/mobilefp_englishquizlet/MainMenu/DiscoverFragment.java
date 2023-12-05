@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class DiscoverFragment extends Fragment {
     RecyclerView recyclerView;
@@ -64,6 +66,7 @@ public class DiscoverFragment extends Fragment {
                     topics.add(currentTopic);
                 }
 
+                Collections.reverse(topics);
                 adapter.notifyDataSetChanged();
             }
 
