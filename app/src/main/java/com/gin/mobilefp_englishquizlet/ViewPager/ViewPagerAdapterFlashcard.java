@@ -58,7 +58,26 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
         assert learnCounts != null;
         int count = learnCounts.getOrDefault(user.getUid(), 0);
         learnCounts.put(user.getUid(), ++count);
-        FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words").child(word.getId()).child("learnCounts").setValue(word.getLearnCounts());
+        word.setLearnCounts(learnCounts);
+        //FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words").child(word.getId()).child("learnCounts").setValue(word.getLearnCounts());
+        DatabaseReference wordsRef = FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words");
+        wordsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot wordSnap : snapshot.getChildren()) {
+                    Word currentWord = wordSnap.getValue(Word.class);
+                    if(currentWord.getTerm().equals(word.getTerm())) {
+                        wordsRef.child(wordSnap.getKey()).child("learnCounts").setValue(word.getLearnCounts());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     @Override

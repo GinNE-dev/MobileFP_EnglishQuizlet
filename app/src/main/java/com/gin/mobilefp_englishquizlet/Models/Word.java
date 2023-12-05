@@ -61,5 +61,9 @@ public class Word implements Serializable {
         this.description = description;
     }
 
+    public void setLearnCounts(HashMap<String, Integer> learnCounts) {
+        this.learnCounts = learnCounts;
+    }
+
     public HashMap<String, Integer> getLearnCounts() {return learnCounts;}
 }
