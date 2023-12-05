@@ -77,7 +77,6 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
 
             }
         });
-
     }
 
     @Override
