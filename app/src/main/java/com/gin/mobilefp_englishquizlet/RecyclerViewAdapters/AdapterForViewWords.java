@@ -58,7 +58,6 @@ public class AdapterForViewWords extends RecyclerView.Adapter<AdapterForViewWord
                 }
                 @Override
                 public void onInitializationFailed() {
-                    // Initialization failed, handle the error
                 }
             });
         });

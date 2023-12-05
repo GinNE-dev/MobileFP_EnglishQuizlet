@@ -120,7 +120,6 @@ public class TopicDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error if needed
             }
         });
     }
