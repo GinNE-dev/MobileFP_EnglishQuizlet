@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.gin.mobilefp_englishquizlet.Models.Word;
@@ -26,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FlashcardModeLayout extends AppCompatActivity {
 
@@ -35,8 +32,6 @@ public class FlashcardModeLayout extends AppCompatActivity {
     TextView currentQuestion;
     TextView totalQuestion;
     ViewPager viewPagerFlashcard;
-    RecyclerView recyclerViewCategory;
-    CategoryAdapter categoryAdapter;
     AppCompatImageButton btnOptions;
     String mLeanerID;
     String mTopicID;

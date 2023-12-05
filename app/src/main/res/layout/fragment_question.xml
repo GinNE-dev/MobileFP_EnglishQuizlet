@@ -24,7 +24,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/sound_svgrepo_com"
+                android:src="@drawable/sound_white"
                 android:background="?attr/selectableItemBackground">
 
             </androidx.appcompat.widget.AppCompatImageButton>

@@ -1,6 +1,5 @@
 package com.gin.mobilefp_englishquizlet.ViewPager;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,16 +9,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.gin.mobilefp_englishquizlet.Fragment.FragmentQuestion;
 import com.gin.mobilefp_englishquizlet.Models.Word;
-import com.gin.mobilefp_englishquizlet.StudyMode.FlashCard.WordItemTopic;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
