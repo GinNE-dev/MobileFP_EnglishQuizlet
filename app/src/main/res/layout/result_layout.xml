@@ -21,18 +21,19 @@
             android:gravity="center">
         </TextView>
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:layout_width="wrap_content"
-            android:layout_gravity="right"
-            android:layout_height="wrap_content"
-            android:src="@drawable/statistics_graph_stats_analytics_business_data_svgrepo_com">
+<!--        <androidx.appcompat.widget.AppCompatImageButton-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:background="?attr/selectableItemBackground"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/statistics_graph_stats_analytics_business_data_svgrepo_com">-->
 
-        </androidx.appcompat.widget.AppCompatImageButton>
+<!--        </androidx.appcompat.widget.AppCompatImageButton>-->
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
@@ -48,12 +49,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_margin="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:text="Score:"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp"
+                        android:textSize="18dp"
                         android:textColor="#375287">
 
                     </TextView>
@@ -63,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="100"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
                 </LinearLayout>
@@ -71,45 +74,44 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
                     <TextView
-                        android:layout_margin="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:text="Correct:"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp"
+                        android:textSize="18dp"
                         android:textColor="#375287">
 
                     </TextView>
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
 
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
                     <TextView
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
                 </LinearLayout>
@@ -117,45 +119,44 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
                     <TextView
-                        android:layout_margin="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:text="Incorrect:"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp"
+                        android:textSize="18dp"
                         android:textColor="#375287">
 
                     </TextView>
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
 
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
                     <TextView
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp">
+                        android:textSize="20dp">
 
                     </TextView>
                 </LinearLayout>
@@ -163,20 +164,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
                     <TextView
-                        android:layout_margin="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:text="Feedback:"
                         android:fontFamily="@font/baloo"
-                        android:textSize="22dp"
+                        android:textSize="18dp"
                         android:textColor="#375287">
 
                     </TextView>
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thông minh dữ ta"
@@ -189,34 +192,102 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginTop="30dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Restart Test"
-            android:fontFamily="@font/baloo"
-            android:textSize="18dp"
-            android:textColor="#375287"
-            android:backgroundTint="@color/white"
-            app:strokeColor="#375287"
-            app:strokeWidth="2dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-        </com.google.android.material.button.MaterialButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold">
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginTop="20dp"
+            </TextView>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </View>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incorrect"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="New Test"
-            android:fontFamily="@font/baloo"
-            android:textSize="18dp"
-            android:textColor="#375287"
-            android:backgroundTint="@color/white"
-            app:strokeColor="#375287"
-            app:strokeWidth="2dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-        </com.google.android.material.button.MaterialButton>
+            </androidx.recyclerview.widget.RecyclerView>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="0dp">
+
+            </View>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="Restart Test"
+                android:fontFamily="@font/baloo"
+                android:textSize="18dp"
+                android:textColor="#375287"
+                android:backgroundTint="@color/white"
+                app:strokeColor="#375287"
+                app:strokeWidth="2dp">
+
+            </com.google.android.material.button.MaterialButton>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="0dp">
+
+            </View>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="60dp"
+                android:text="New Test"
+                android:fontFamily="@font/baloo"
+                android:textSize="18dp"
+                android:textColor="#375287"
+                android:backgroundTint="@color/white"
+                app:strokeColor="#375287"
+                app:strokeWidth="2dp">
+
+            </com.google.android.material.button.MaterialButton>
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
