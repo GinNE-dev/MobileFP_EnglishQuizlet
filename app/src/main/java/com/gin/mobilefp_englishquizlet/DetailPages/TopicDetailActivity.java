@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
@@ -193,6 +194,10 @@ public class TopicDetailActivity extends AppCompatActivity {
             btnEditTopic.setText("Edit this topic");
             btnEditTopic.setOnClickListener(v -> {
                 bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
+                Intent goToEdit = new Intent(this, EditTopicActivity.class);
+                goToEdit.putExtra("topicID", topicID);
+                startActivity(goToEdit);
+                finish();
             });
         }
         else {

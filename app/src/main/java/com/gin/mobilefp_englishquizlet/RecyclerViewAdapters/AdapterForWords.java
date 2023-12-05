@@ -5,13 +5,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.Library.CreateTopicActivity;
+import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 
@@ -23,6 +28,7 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
     int mode;
     //0: just view
     //1: create new topic activity
+    //2: edit topic
     public AdapterForWords(Context context, ArrayList<Word> words, int mode) {
         //constructor
         this.context = context;
@@ -41,10 +47,12 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.txtviewTerm.setText(words.get(position).getTerm());
-        holder.txtviewDefinition.setText(words.get(position).getDefinition());
-        if(!words.get(position).getDescription().equals("")) {
-            holder.txtviewDescription.setText(words.get(position).getDescription());
+        Word currentWord = words.get(position);
+
+        holder.txtviewTerm.setText(currentWord.getTerm());
+        holder.txtviewDefinition.setText(currentWord.getDefinition());
+        if(!currentWord.getDescription().equals("")) {
+            holder.txtviewDescription.setText(currentWord.getDescription());
         }
         else {
             holder.txtviewDescription.setText("None");
@@ -66,8 +74,12 @@ public class AdapterForWords extends RecyclerView.Adapter<AdapterForWords.MyView
                         .show();
             });
         }
+        if(mode == 2) {
+            holder.cardView.setOnClickListener(v -> {
+                Toast.makeText(context, "You want to edit this word!", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
-
     @Override
     public int getItemCount() {
         //count

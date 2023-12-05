@@ -51,6 +51,11 @@
 
         </activity>
 
+        <activity android:name=".Library.EditTopicActivity"
+            android:exported="true">
+
+        </activity>
+
         <activity android:name=".Library.SettingCreateTopicLayout"
             android:exported="true">
 

@@ -34,7 +34,6 @@ public class CreateTopicActivity extends AppCompatActivity {
     AppCompatImageButton btnTopicComplete;
     FloatingActionButton btnAddWord;
     ArrayList<Word> words = new ArrayList<>();
-    int wordsCount = 0;
     AdapterForWords adapter;
     AlertDialog wordDialog;
     @SuppressLint("MissingInflatedId")
@@ -64,12 +63,12 @@ public class CreateTopicActivity extends AppCompatActivity {
 
         btnTopicComplete.setOnClickListener(v -> {
             FirebaseDatabase db = FirebaseDatabase.getInstance();
-            DatabaseReference topicRef = db.getReference("topics");
+            DatabaseReference topicsRef = db.getReference("topics");
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             String userEmail = mAuth.getCurrentUser().getEmail();
 
-            String topicID = topicRef.push().getKey();
+            String topicID = topicsRef.push().getKey();
             String topicTitle = edtxtTopicTitle.getText().toString().trim();
             String topicDescription = edtxtTopicDescription.getText().toString();
 
@@ -88,7 +87,11 @@ public class CreateTopicActivity extends AppCompatActivity {
             }
 
             if(valid) {
-                topicRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, userEmail, words));
+                for(int i = 0; i < words.size(); i++) {
+                    words.get(i).setId(Integer.toString(i));
+                }
+
+                topicsRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, userEmail, words));
 
                 Toast.makeText(this, "Create topic success!", Toast.LENGTH_SHORT).show();
                 finish();
@@ -112,31 +115,26 @@ public class CreateTopicActivity extends AppCompatActivity {
         Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
 
         // Set OnClickListener for the Confirm button
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onClick(View view) {
-                String id = Integer.toString(wordsCount);
-                String term = edtxtTerm.getText().toString();
-                String definition = edtxtDefinition.getText().toString();
-                String description = edtxtDescription.getText().toString();
+        btnConfirm.setOnClickListener(view -> {
+            String id = "undefined";
+            String term = edtxtTerm.getText().toString();
+            String definition = edtxtDefinition.getText().toString();
+            String description = edtxtDescription.getText().toString();
 
-                boolean valid = true;
-                if(term.equals("") || definition.equals("")) {
-                    valid = false;
-                    Toast.makeText(CreateTopicActivity.this, "Term and definition can't be empty", Toast.LENGTH_SHORT).show();
-                }
+            boolean valid = true;
+            if(term.equals("") || definition.equals("")) {
+                valid = false;
+                Toast.makeText(CreateTopicActivity.this, "Term and definition can't be empty", Toast.LENGTH_SHORT).show();
+            }
 
-                if(valid) {
-                    Word newWord = new Word(id, term, definition, description);
-                    words.add(newWord);
-                    wordsCount++;
+            if(valid) {
+                Word newWord = new Word(id, term, definition, description);
+                words.add(newWord);
 
-                    adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
 
-                    // Dismiss the dialog
-                    wordDialog.dismiss();
-                }
+                // Dismiss the dialog
+                wordDialog.dismiss();
             }
         });
 
