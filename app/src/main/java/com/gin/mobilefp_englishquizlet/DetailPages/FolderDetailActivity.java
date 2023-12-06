@@ -48,7 +48,7 @@ public class FolderDetailActivity extends AppCompatActivity {
 
         txtviewTitle.setText(folderTitle);
 
-        adapter = new AdapterForTopics(this, topics);
+        adapter = new AdapterForTopics(this, topics, folderID);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

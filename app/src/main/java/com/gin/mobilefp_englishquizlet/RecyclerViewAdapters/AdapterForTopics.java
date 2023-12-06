@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,10 +36,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyViewHolder>{
     Context context;
     ArrayList<Topic> topics;
+    String folderID = "";
     public AdapterForTopics(Context context, ArrayList<Topic> topics) {
         //constructor
         this.context = context;
         this.topics = topics;
+    }
+    public AdapterForTopics(Context context, ArrayList<Topic> topics, String folderID) {
+        //constructor
+        this.context = context;
+        this.topics = topics;
+        this.folderID = folderID;
     }
 
     @NonNull
@@ -64,6 +73,23 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
 
             Log.i("TOPIC ID", topics.get(position).getId());
         });
+
+        if(!folderID.equals("")) {
+            holder.cardView.setOnLongClickListener(v -> {
+                AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(context);
+                confirmBuilder.setMessage("Remove this topic from the current folder?")
+                        .setPositiveButton("Remove", (dialog1, id) -> {
+                            DatabaseReference topicBelongsToFoldersRef = FirebaseDatabase.getInstance().getReference("topics").child(topics.get(position).getId()).child("belongsToFolders");
+                            topicBelongsToFoldersRef.child(folderID).setValue(false);
+
+                            Toast.makeText(context, "This topic has been removed from your folder", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton("Cancel", (dialog1, id) -> {
+                        });
+                confirmBuilder.show();
+                return false;
+            });
+        }
     }
 
     @Override
