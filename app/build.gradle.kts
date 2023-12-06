@@ -43,9 +43,17 @@ dependencies {
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.wajahatkarim:EasyFlipView:3.0.3")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-auth")
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+
+    // Add the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-storage")
 }

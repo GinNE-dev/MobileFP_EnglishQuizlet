@@ -16,7 +16,7 @@ public class User {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.avaURL = "defaultava.png";
+        this.avaURL = "https://firebasestorage.googleapis.com/v0/b/finalproject-395e5.appspot.com/o/defaultava.png?alt=media&token=abfccaa7-6875-47f0-a999-e8d495b7eea1";
 
         Folder fav = new Folder(id, "My Favorite", false);
         this.folders = new ArrayList<>();
