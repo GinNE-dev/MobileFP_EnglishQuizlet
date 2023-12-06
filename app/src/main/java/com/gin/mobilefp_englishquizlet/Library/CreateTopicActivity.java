@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class CreateTopicActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EditText edtxtTopicTitle;
     EditText edtxtTopicDescription;
+    RadioGroup radioPrivacy;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnTopicComplete;
     FloatingActionButton btnAddWord;
@@ -47,6 +49,7 @@ public class CreateTopicActivity extends AppCompatActivity {
         btnTopicComplete = findViewById(R.id.btnTopicComplete);
         btnAddWord = findViewById(R.id.btnAddWord);
         btnBack = findViewById(R.id.btnBack);
+        radioPrivacy = findViewById(R.id.radioPrivacy);
         recyclerView = findViewById(R.id.recyclerView);
 
         adapter = new AdapterForEditableWords(this, words);
@@ -91,7 +94,16 @@ public class CreateTopicActivity extends AppCompatActivity {
                     words.get(i).setId(Integer.toString(i));
                 }
 
-                topicsRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, userEmail, words));
+                boolean isPrivate;
+                int checkedRadioButtonID = radioPrivacy.getCheckedRadioButtonId();
+                if (checkedRadioButtonID == R.id.btn_justMe) {
+                    isPrivate = true;
+                }
+                else {
+                    isPrivate = false;
+                }
+
+                topicsRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, userEmail, words, isPrivate));
 
                 Toast.makeText(this, "Create topic success!", Toast.LENGTH_SHORT).show();
                 finish();

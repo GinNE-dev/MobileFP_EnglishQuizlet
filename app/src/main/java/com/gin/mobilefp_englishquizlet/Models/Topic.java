@@ -9,6 +9,7 @@ public class Topic {
     String description;
     HashMap<String, Boolean> belongsToFolders;
     String owner;
+    Boolean isPrivate;
     ArrayList<Word> words;
 
     private HashMap<String, Integer> scoreRecords;
@@ -17,12 +18,13 @@ public class Topic {
         this.scoreRecords = new HashMap<>();
     }
 
-    public Topic(String id, String title, String description, String owner, ArrayList<Word> words) {
+    public Topic(String id, String title, String description, String owner, ArrayList<Word> words, boolean isPrivate) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.owner = owner;
         this.words = words;
+        this.isPrivate = isPrivate;
 
         HashMap<String, Boolean> belongsToFolders = new HashMap<>();
         belongsToFolders.put("default_folder_id", false);
@@ -79,4 +81,12 @@ public class Topic {
     }
 
     public HashMap<String, Integer> getScoreRecords() {return scoreRecords;}
+
+    public Boolean getPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
 }

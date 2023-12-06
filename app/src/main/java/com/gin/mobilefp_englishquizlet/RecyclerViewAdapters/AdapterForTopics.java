@@ -14,12 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.gin.mobilefp_englishquizlet.DetailPages.TopicDetailActivity;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
+import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyViewHolder>{
     Context context;
@@ -40,7 +50,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull AdapterForTopics.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterForTopics.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.txtviewTitle.setText(topics.get(position).getTitle());
         int termCount = topics.get(position).getWords().size();
         holder.txtviewTermCount.setText(Integer.toString(termCount));
@@ -65,6 +75,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView txtviewTitle, txtviewTermCount, txtviewOwner;
         CardView cardView;
+        CircleImageView imgAvatar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +83,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
             txtviewTitle = itemView.findViewById(R.id.txtviewTitle);
             txtviewTermCount = itemView.findViewById(R.id.txtviewTermCount);
             txtviewOwner = itemView.findViewById(R.id.txtviewOwner);
+            imgAvatar = itemView.findViewById(R.id.imgAvatar);
             cardView = itemView.findViewById(R.id.cardView);
         }
     }

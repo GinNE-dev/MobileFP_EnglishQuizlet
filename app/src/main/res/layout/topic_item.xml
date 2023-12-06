@@ -74,11 +74,12 @@
                 android:layout_marginTop="20dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    app:civ_border_color="#00F8FF"
-                    app:civ_border_width="1dp"
+                    android:id="@+id/imgAvatar"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/logo">
+                    android:src="@drawable/logo"
+                    app:civ_border_color="#00F8FF"
+                    app:civ_border_width="1dp">
 
                 </de.hdodenhof.circleimageview.CircleImageView>
 

@@ -53,7 +53,6 @@
                 android:background="?attr/selectableItemBackground"
                 android:src="@drawable/setting_2_svgrepo_com"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
-
             </androidx.appcompat.widget.AppCompatImageButton>
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -81,7 +80,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:fontFamily="@font/baloo"
-            android:hint="Subject, chapter, unit"
+            android:hint="Name of your topic"
             android:maxLines="1"
             android:paddingBottom="45dp"
             android:textColor="@color/white"
@@ -124,6 +123,55 @@
             android:textColor="@color/white">
 
         </TextView>
+
+        <RadioGroup
+            android:id="@+id/radioPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:checkedButton="@id/btn_everyone">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Everyone"
+                android:textSize="16dp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/visible_text_selector"
+                android:drawableTint="@color/visible_text_selector"
+                android:gravity="center"
+                android:id="@+id/btn_everyone"
+                android:button="@android:color/transparent"
+                android:background="@drawable/visible_bg_selector">
+
+            </com.google.android.material.radiobutton.MaterialRadioButton>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </View>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Just me"
+                android:textSize="16dp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/visible_text_selector"
+                android:drawableTint="@color/visible_text_selector"
+                android:gravity="center"
+                android:id="@+id/btn_justMe"
+                android:button="@android:color/transparent"
+                android:background="@drawable/visible_bg_selector">
+
+            </com.google.android.material.radiobutton.MaterialRadioButton>
+
+        </RadioGroup>
 
 
         <LinearLayout

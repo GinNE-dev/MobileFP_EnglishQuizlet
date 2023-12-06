@@ -63,7 +63,9 @@ public class DiscoverFragment extends Fragment {
 
                 for(DataSnapshot topicSnap: snapshot.getChildren()) {
                     Topic currentTopic = topicSnap.getValue(Topic.class);
-                    topics.add(currentTopic);
+                    if(!currentTopic.getPrivate()) {
+                        topics.add(currentTopic);
+                    }
                 }
 
                 Collections.reverse(topics);

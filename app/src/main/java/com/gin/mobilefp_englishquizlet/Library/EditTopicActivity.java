@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class EditTopicActivity extends AppCompatActivity {
     TextView txtviewActivityTitle;
     EditText edtxtTopicTitle;
     EditText edtxtTopicDescription;
+    RadioGroup radioPrivacy;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnOption;
     AppCompatImageButton btnTopicComplete;
@@ -56,6 +58,7 @@ public class EditTopicActivity extends AppCompatActivity {
         btnAddWord = findViewById(R.id.btnAddWord);
         btnOption = findViewById(R.id.btnOption);
         btnBack = findViewById(R.id.btnBack);
+        radioPrivacy = findViewById(R.id.radioPrivacy);
         recyclerView = findViewById(R.id.recyclerView);
 
         txtviewActivityTitle.setText("Edit topic");
@@ -82,9 +85,19 @@ public class EditTopicActivity extends AppCompatActivity {
         btnTopicComplete.setOnClickListener(v -> {
             DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics").child(topicID);
 
+            boolean isPrivate;
+            int checkedRadioButtonID = radioPrivacy.getCheckedRadioButtonId();
+            if (checkedRadioButtonID == R.id.btn_justMe) {
+                isPrivate = true;
+            }
+            else {
+                isPrivate = false;
+            }
+
             topicRef.child("title").setValue(edtxtTopicTitle.getText().toString());
             topicRef.child("description").setValue(edtxtTopicDescription.getText().toString());
             topicRef.child("words").setValue(words);
+            topicRef.child("private").setValue(isPrivate);
             Toast.makeText(this, "Edit topic success!", Toast.LENGTH_SHORT).show();
             finish();
         });
@@ -126,9 +139,17 @@ public class EditTopicActivity extends AppCompatActivity {
 
                 edtxtTopicTitle = findViewById(R.id.edtxtTopicTitle);
                 edtxtTopicDescription = findViewById(R.id.edtxtTopicDescription);
+                radioPrivacy = findViewById(R.id.radioPrivacy);
+
                 assert topic != null;
                 edtxtTopicTitle.setText(topic.getTitle());
                 edtxtTopicDescription.setText(topic.getDescription());
+                if(!topic.getPrivate()) {
+                    radioPrivacy.check(R.id.btn_everyone);
+                }
+                if(topic.getPrivate()) {
+                    radioPrivacy.check(R.id.btn_justMe);
+                }
             }
 
             @Override
