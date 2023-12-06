@@ -49,7 +49,7 @@ public class CreateTopicActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         recyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new AdapterForEditableWords(this, words, 1);
+        adapter = new AdapterForEditableWords(this, words);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -123,6 +123,13 @@ public class CreateTopicActivity extends AppCompatActivity {
             if(term.equals("") || definition.equals("")) {
                 valid = false;
                 Toast.makeText(CreateTopicActivity.this, "Term and definition can't be empty", Toast.LENGTH_SHORT).show();
+            }
+            for (Word curWord: words) {
+                if(curWord.getTerm().equals(term)) {
+                    valid = false;
+                    Toast.makeText(CreateTopicActivity.this, "This term is already existed!", Toast.LENGTH_SHORT).show();
+                    break;
+                }
             }
 
             if(valid) {
