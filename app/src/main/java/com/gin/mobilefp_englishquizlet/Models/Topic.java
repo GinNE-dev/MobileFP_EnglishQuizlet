@@ -11,7 +11,10 @@ public class Topic {
     String owner;
     ArrayList<Word> words;
 
+    private HashMap<String, Integer> scoreRecords;
+
     public Topic() {
+        this.scoreRecords = new HashMap<>();
     }
 
     public Topic(String id, String title, String description, String owner, ArrayList<Word> words) {
@@ -24,6 +27,7 @@ public class Topic {
         HashMap<String, Boolean> belongsToFolders = new HashMap<>();
         belongsToFolders.put("default_folder_id", false);
         this.belongsToFolders = belongsToFolders;
+        this.scoreRecords = new HashMap<>();
     }
 
     public String getId() {
@@ -73,4 +77,6 @@ public class Topic {
     public void setWords(ArrayList<Word> words) {
         this.words = words;
     }
+
+    public HashMap<String, Integer> getScoreRecords() {return scoreRecords;}
 }

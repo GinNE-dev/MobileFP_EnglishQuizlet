@@ -141,6 +141,7 @@
 
                     </TextView>
                     <TextView
+                        android:id="@+id/text_view_feedback"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="20dp"
                         android:layout_width="wrap_content"

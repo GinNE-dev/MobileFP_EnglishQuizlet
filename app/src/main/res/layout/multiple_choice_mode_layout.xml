@@ -29,7 +29,7 @@
                 android:id="@+id/text_view_current"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="1"
+                android:text="0"
                 android:fontFamily="@font/baloo"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -54,7 +54,7 @@
                 android:id="@+id/text_view_total"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="1"
+                android:text="0"
                 android:fontFamily="@font/baloo"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -84,6 +84,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -142,6 +143,7 @@
 
                     </View>
                     <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/img_button_text_to_speech"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/sound_blue"

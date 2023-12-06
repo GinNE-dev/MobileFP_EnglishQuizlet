@@ -21,6 +21,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_shuffle"
         app:strokeWidth="2dp"
         app:strokeColor="#375287"
         android:backgroundTint="@color/white"
@@ -155,6 +156,7 @@
     </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_restart_learn"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -14,9 +14,11 @@ public class Word implements Serializable, Parcelable {
     String definition;
     String description;
     HashMap<String, Integer> learnCounts;
+    HashMap<String, Boolean> starredList;
 
     public Word() {
         this.learnCounts = new HashMap<>();
+        this.starredList = new HashMap<>();
     }
 
     public Word(String id, String term, String definition, String description) {
@@ -25,6 +27,7 @@ public class Word implements Serializable, Parcelable {
         this.definition = definition;
         this.description = description;
         this.learnCounts = new HashMap<>();
+        this.starredList = new HashMap<>();
     }
 
     public Word(String term, String definition, String description) {
@@ -32,6 +35,7 @@ public class Word implements Serializable, Parcelable {
         this.definition = definition;
         this.description = description;
         this.learnCounts = new HashMap<>();
+        this.starredList = new HashMap<>();
     }
 
     protected Word(Parcel in) {
@@ -40,6 +44,7 @@ public class Word implements Serializable, Parcelable {
         definition = in.readString();
         description = in.readString();
         learnCounts = (HashMap<String, Integer>) in.readSerializable();
+        starredList = (HashMap<String, Boolean>) in.readSerializable();
     }
 
     public static final Creator<Word> CREATOR = new Creator<Word>() {
@@ -92,6 +97,10 @@ public class Word implements Serializable, Parcelable {
 
     public HashMap<String, Integer> getLearnCounts() {return learnCounts;}
 
+    public HashMap<String, Boolean> getStarredList() {
+        return starredList;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -104,5 +113,6 @@ public class Word implements Serializable, Parcelable {
         dest.writeString(this.getDefinition());
         dest.writeString(this.getDescription());
         dest.writeSerializable(this.getLearnCounts());
+        dest.writeSerializable(this.getStarredList());
     }
 }

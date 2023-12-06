@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
+import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
 
 import org.w3c.dom.Text;
 
@@ -63,7 +64,17 @@ public class WordInResultAdapter extends RecyclerView.Adapter<WordInResultAdapte
         holder.getTextViewTerm().setText(word.getTerm());
         holder.getTextViewDefinition().setText(word.getDefinition());
         holder.getImgButtonSound().setOnClickListener(btn->{
-            //TODO: sound
+            TextToSpeechHelper.initialize(holder.getTextViewTerm().getContext(), new TextToSpeechHelper.OnInitializationListener() {
+                @Override
+                public void onInitialized() {
+                    TextToSpeechHelper.speak(word.getTerm());
+                }
+
+                @Override
+                public void onInitializationFailed() {
+
+                }
+            });
         });
     }
 

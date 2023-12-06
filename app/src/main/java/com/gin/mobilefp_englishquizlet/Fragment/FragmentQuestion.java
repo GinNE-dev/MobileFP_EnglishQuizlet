@@ -4,12 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
+import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
+import com.gin.mobilefp_englishquizlet.ViewPager.ViewPagerAdapterFlashcard;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 public class FragmentQuestion extends Fragment {
@@ -19,6 +24,7 @@ public class FragmentQuestion extends Fragment {
 
     TextView termWord;
     TextView termDefinition;
+    ImageButton buttonSound;
     View view;
 
     private LearnListener learnListener;
@@ -34,20 +40,37 @@ public class FragmentQuestion extends Fragment {
 
         termWord = view.findViewById(R.id.term_word);
         termDefinition = view.findViewById(R.id.definition_word);
+        buttonSound = view.findViewById(R.id.btn_sound);
 
         Bundle bundle = getArguments();
         if(bundle != null){
             Word wordItemTopic = (Word) bundle.get("question_object");
+            boolean isRevert = bundle.getBoolean("is_revert");
             if(wordItemTopic != null){
-                termWord.setText(wordItemTopic.getTerm());
-                termDefinition.setText(wordItemTopic.getDefinition());
+                String term = wordItemTopic.getTerm();
+                String definition = wordItemTopic.getDefinition();
+                termWord.setText(isRevert ? definition : term);
+                termDefinition.setText(isRevert ? term : definition);
             }
+
+            buttonSound.setOnClickListener(btn->{
+                TextToSpeechHelper.initialize(getContext(), new TextToSpeechHelper.OnInitializationListener() {
+                    @Override
+                    public void onInitialized() {
+                        TextToSpeechHelper.speak(wordItemTopic.getTerm());
+                    }
+
+                    @Override
+                    public void onInitializationFailed() {
+
+                    }
+                });
+            });
 
             ((EasyFlipView) view.findViewById(R.id.view_flip_component)).setOnFlipListener((v, state)->{
                 if(state.equals(EasyFlipView.FlipState.BACK_SIDE)){
                     if(learnListener != null) learnListener.handleLearn(wordItemTopic);
                 }
-
             });
         }
 

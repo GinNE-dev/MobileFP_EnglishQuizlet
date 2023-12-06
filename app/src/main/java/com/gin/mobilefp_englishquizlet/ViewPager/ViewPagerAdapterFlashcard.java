@@ -23,10 +23,12 @@ import java.util.List;
 public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
     private List<Word> mListQuestion;
     private String mTopicID;
-    public ViewPagerAdapterFlashcard(@NonNull FragmentManager fm, int behavior, List<Word> list, String topicID) {
+    public boolean mIsRevert;
+    public ViewPagerAdapterFlashcard(@NonNull FragmentManager fm, int behavior, List<Word> list, String topicID, boolean isRevert) {
         super(fm, behavior);
         this.mListQuestion = list;
         this.mTopicID = topicID;
+        this.mIsRevert = isRevert;
     }
 
     @NonNull
@@ -38,12 +40,12 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
         FragmentQuestion fragmentQuestion = new FragmentQuestion();
         Bundle bundle = new Bundle();
         bundle.putSerializable("question_object", wordItemTopic);
+        bundle.putBoolean("is_revert", mIsRevert);
 
         fragmentQuestion.setArguments(bundle);
         fragmentQuestion.registerLearn(word->{
             updateLearnProgress(word);
         });
-
         return fragmentQuestion;
     }
 
@@ -55,7 +57,7 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
         assert learnCounts != null;
         int count = learnCounts.getOrDefault(user.getUid(), 0);
         learnCounts.put(user.getUid(), ++count);
-        word.setLearnCounts(learnCounts);
+        //word.setLearnCounts(learnCounts); //Khong can
         //FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words").child(word.getId()).child("learnCounts").setValue(word.getLearnCounts());
         DatabaseReference wordsRef = FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words");
         wordsRef.addValueEventListener(new ValueEventListener() {
