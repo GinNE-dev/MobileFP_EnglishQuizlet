@@ -61,13 +61,13 @@
 
                     </TextView>
                     <TextView
+                        android:id="@+id/text_view_score"
                         android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
                         android:fontFamily="@font/baloo"
                         android:textSize="20dp">
-
                     </TextView>
                 </LinearLayout>
 
@@ -88,31 +88,12 @@
 
                     </TextView>
                     <TextView
-                        android:layout_marginRight="5dp"
+                        android:id="@+id/text_view_correct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:fontFamily="@font/baloo"
                         android:textSize="20dp">
-
-                    </TextView>
-
-                    <TextView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="/"
-                        android:fontFamily="@font/baloo"
-                        android:textSize="20dp">
-
-                    </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:fontFamily="@font/baloo"
-                        android:textSize="20dp">
-
                     </TextView>
                 </LinearLayout>
 
@@ -133,25 +114,7 @@
 
                     </TextView>
                     <TextView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:fontFamily="@font/baloo"
-                        android:textSize="20dp">
-
-                    </TextView>
-
-                    <TextView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="/"
-                        android:fontFamily="@font/baloo"
-                        android:textSize="20dp">
-
-                    </TextView>
-                    <TextView
+                        android:id="@+id/text_view_incorrect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
@@ -197,64 +160,72 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Correct"
-                android:fontFamily="@font/baloo"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold">
-
-            </TextView>
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1">
             </View>
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:columnCount="3">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Incorrect"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/baloo"
+                android:text="Correct"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1">
-            <androidx.recyclerview.widget.RecyclerView
+                android:textStyle="bold"></TextView>
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-            </androidx.recyclerview.widget.RecyclerView>
-            <View
-                android:layout_width="20dp"
-                android:layout_height="0dp">
-
-            </View>
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/baloo"
+                android:text="Incorrect"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_correct_words"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center_horizontal">
 
             </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_incorrect_words"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+
+                android:layout_gravity="center_horizontal"
+                tools:ignore="ExtraText">>
+            </androidx.recyclerview.widget.RecyclerView>
+        </GridLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_restart_test"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
@@ -273,6 +244,7 @@
 
             </View>
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_new_test"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="60dp"

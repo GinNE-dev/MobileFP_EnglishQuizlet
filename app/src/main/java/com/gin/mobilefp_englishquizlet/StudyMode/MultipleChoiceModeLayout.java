@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -14,12 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
-import com.gin.mobilefp_englishquizlet.ViewPager.ViewPagerAdapterFlashcard;
+import com.gin.mobilefp_englishquizlet.RequestHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,16 +26,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
 
 public class MultipleChoiceModeLayout extends AppCompatActivity {
     AppCompatImageButton btnOptions;
@@ -47,6 +42,8 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
     private TextView textViewTotal;
     private TextView textViewQuestion;
     private RadioGroup radioGroupAnswers;
+    private Boolean mIsRevert = false;
+    private BottomSheetDialog mDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +69,9 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         textViewTotal = findViewById(R.id.text_view_total);
         radioGroupAnswers = findViewById(R.id.radio_group_answers);
         textViewQuestion = findViewById(R.id.text_view_question);
+        mDialog =  new BottomSheetDialog(this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.setContentView(R.layout.bottom_sheet_multiplechoices_typo_layout);
     }
 
     private void registerEvents(){
@@ -90,10 +90,10 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
     private void processLearn(String answer, String actualAnswer){
         mAnswers.add(answer);
         if(actualAnswer.equals(answer)){
-
+            //TODO: Learn
         }
 
-        setupQuestion(mAnswers.size(), false);
+        setupQuestion(mAnswers.size(), mIsRevert);
     }
 
     private void initComponents(){
@@ -109,7 +109,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
                     mWords.add(currentWord);
                 }
                 textViewTotal.setText(String.valueOf(mWords.size()));
-                setupQuestion(0, false);
+                setupQuestion(0, mIsRevert);
             }
 
             @Override
@@ -123,17 +123,19 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         if(pos >= mWords.size()){
 
             int correct = 0;
-            int score = 0;
             for (int i=0; i<mWords.size(); i++) {
                 String actualAnswer = isRevert ? mWords.get(i).getTerm() : mWords.get(i).getDefinition();
                 if(mAnswers.get(i).equals(actualAnswer)) correct++;
             }
-
+            int score = Math.round(correct*100.0f/mAnswers.size());
             Intent intentResult = new Intent(MultipleChoiceModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);
             intentResult.putExtra("incorrect", mAnswers.size()-correct);
-            intentResult.putExtra("score", correct);
-            startActivity(intentResult);
+            intentResult.putExtra("score", score);
+            intentResult.putParcelableArrayListExtra("words", mWords);
+            intentResult.putStringArrayListExtra("answers", mAnswers);
+            intentResult.putExtra("is_revert", mIsRevert);
+            startActivityForResult(intentResult, RequestHelper.MULTIPLE_CHOICE_RESULT);
             return;
         }
 
@@ -166,12 +168,66 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         }
     }
 
+    private void restartGame(){
+        mAnswers.clear();
+        setupQuestion(0, mIsRevert);
+    }
+
     private void showDialog() {
-        final BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottom_sheet_multiplechoices_typo_layout);
+        final BottomSheetDialog dialog = mDialog;
+
+        final RadioButton radioButtonTerm = dialog.findViewById(R.id.btn_term);
+        final RadioButton radioButtonDefinition = dialog.findViewById(R.id.btn_defition);
+        final Button buttonShuffle = dialog.findViewById(R.id.button_shuffle);
+
+        radioButtonTerm.setOnClickListener(v->{
+            if(mIsRevert){
+                mIsRevert = false;
+                restartGame();
+            }
+
+            radioButtonTerm.setChecked(true);
+            radioButtonDefinition.setChecked(false);
+        });
+
+        radioButtonDefinition.setOnClickListener(v->{
+            if(!mIsRevert){
+                mIsRevert = true;
+                restartGame();
+            }
+
+            radioButtonTerm.setChecked(false);
+            radioButtonDefinition.setChecked(true);
+        });
+
+        buttonShuffle.setOnClickListener(btn->{
+            Random rand = new Random(Math.abs((int) new Date().getTime()));
+            Collections.shuffle(mWords, rand);
+            restartGame();
+        });
 
         dialog.show();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_CANCELED){
+            restartGame();
+            return;
+        }
+
+        if(resultCode == RESULT_OK){
+            if (data == null) return;
+            int type = data.getIntExtra("command", RequestHelper.CommandFromResult.COMMAND_UNKNOWN);
+            switch (type){
+                case RequestHelper.CommandFromResult.COMMAND_RESTART_TEST:
+                    restartGame();
+                break;
+                case RequestHelper.CommandFromResult.COMMAND_NEW_TEST:
+                    finish();
+                default:
+            }
+        }
     }
 }

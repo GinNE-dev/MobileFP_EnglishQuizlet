@@ -24,6 +24,7 @@ import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForViewWords;
 import com.gin.mobilefp_englishquizlet.StudyMode.FlashCard.FlashcardModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.MultipleChoiceModeLayout;
+import com.gin.mobilefp_englishquizlet.StudyMode.TypoModeLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -99,6 +100,12 @@ public class TopicDetailActivity extends AppCompatActivity {
             Intent multipleChoiceLearnIntent = new Intent(TopicDetailActivity.this, MultipleChoiceModeLayout.class);
             multipleChoiceLearnIntent.putExtra("topic_id", mTopicID);
             startActivity(multipleChoiceLearnIntent);
+        });
+
+        typeWordLearn.setOnClickListener(v->{
+            Intent typeWordLearnIntent = new Intent(TopicDetailActivity.this, TypoModeLayout.class);
+            typeWordLearnIntent.putExtra("topic_id", mTopicID);
+            startActivity(typeWordLearnIntent);
         });
     }
 

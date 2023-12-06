@@ -20,6 +20,7 @@
     </TextView>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_shuffle"
         app:strokeWidth="2dp"
         app:strokeColor="#375287"
         android:backgroundTint="@color/white"
@@ -46,6 +47,7 @@
     </TextView>
 
     <RadioGroup
+        android:id="@+id/rag_grp_question_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

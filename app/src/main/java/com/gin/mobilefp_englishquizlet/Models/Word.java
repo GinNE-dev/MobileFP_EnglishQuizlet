@@ -1,9 +1,14 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Word implements Serializable {
+public class Word implements Serializable, Parcelable {
     String id;
     String term;
     String definition;
@@ -28,6 +33,26 @@ public class Word implements Serializable {
         this.description = description;
         this.learnCounts = new HashMap<>();
     }
+
+    protected Word(Parcel in) {
+        id = in.readString();
+        term = in.readString();
+        definition = in.readString();
+        description = in.readString();
+        learnCounts = (HashMap<String, Integer>) in.readSerializable();
+    }
+
+    public static final Creator<Word> CREATOR = new Creator<Word>() {
+        @Override
+        public Word createFromParcel(Parcel in) {
+            return new Word(in);
+        }
+
+        @Override
+        public Word[] newArray(int size) {
+            return new Word[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -66,4 +91,18 @@ public class Word implements Serializable {
     }
 
     public HashMap<String, Integer> getLearnCounts() {return learnCounts;}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(this.getId());
+        dest.writeString(this.getTerm());
+        dest.writeString(this.getDefinition());
+        dest.writeString(this.getDescription());
+        dest.writeSerializable(this.getLearnCounts());
+    }
 }
