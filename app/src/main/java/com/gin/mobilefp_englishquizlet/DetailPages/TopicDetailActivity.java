@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.DetailPages;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,9 +17,12 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
+import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForViewWords;
@@ -31,9 +35,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TopicDetailActivity extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<>();
@@ -43,6 +50,8 @@ public class TopicDetailActivity extends AppCompatActivity {
     TextView txtviewTermCount;
     TextView txtviewTitle;
     TextView txtviewDescription;
+    TextView txtviewOwner;
+    CircleImageView imgAvatar;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnOption;
     private View flashCardLearn;
@@ -60,6 +69,8 @@ public class TopicDetailActivity extends AppCompatActivity {
         txtviewTermCount = findViewById(R.id.txtviewTermCount);
         txtviewTitle = findViewById(R.id.txtviewTitle);
         txtviewDescription = findViewById(R.id.txtviewDescription);
+        txtviewOwner = findViewById(R.id.txtviewOwner);
+        imgAvatar = findViewById(R.id.imgAvatar);
         btnBack = findViewById(R.id.btnBack);
         btnOption = findViewById(R.id.btnOption);
         flashCardLearn = findViewById(R.id.panel_flashcard_learning_mode);
@@ -77,6 +88,7 @@ public class TopicDetailActivity extends AppCompatActivity {
 
         setUpWordList(topicID);
         setUpTopicInfo(topicID);
+        //setUpUserInfo(ownerEmail);
         setUpFolderList();
 
         btnBack.setOnClickListener(v -> {
@@ -163,10 +175,40 @@ public class TopicDetailActivity extends AppCompatActivity {
                 txtviewTitle = findViewById(R.id.txtviewTitle);
                 txtviewTermCount = findViewById(R.id.txtviewTermCount);
                 txtviewDescription = findViewById(R.id.txtviewDescription);
+                txtviewOwner = findViewById(R.id.txtviewOwner);
+                imgAvatar = findViewById(R.id.imgAvatar);
+
                 assert topic != null;
                 txtviewTitle.setText(topic.getTitle());
                 txtviewDescription.setText("Description: " + topic.getDescription());
                 txtviewTermCount.setText(words.size() + " words");
+
+                String ownerID = topic.getOwner();
+                Log.i("WTFFFFFF", ownerID);
+
+                DatabaseReference ownerRef = FirebaseDatabase.getInstance().getReference("users").child(ownerID);
+                ownerRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String userName = snapshot.child("name").getValue().toString();
+                        String userAva = snapshot.child("avaURL").getValue().toString();
+
+                        txtviewOwner.setText(userName);
+                        int imageSize = 100; // Size in dp
+                        int imageSizePixels = (int) (imageSize * getResources().getDisplayMetrics().density);
+                        Glide.with(TopicDetailActivity.this)
+                                .load(userAva)
+                                .apply(new RequestOptions()
+                                        .override(imageSizePixels, imageSizePixels)
+                                        .centerCrop())
+                                .into(imgAvatar);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle error if needed
+                    }
+                });
             }
 
             @Override

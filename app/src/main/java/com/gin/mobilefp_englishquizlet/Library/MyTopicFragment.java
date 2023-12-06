@@ -72,7 +72,7 @@ public class MyTopicFragment extends Fragment {
 
     private void setUpTopicList() {
         DatabaseReference topicsRef = FirebaseDatabase.getInstance().getReference("topics");
-        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         topicsRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -81,7 +81,7 @@ public class MyTopicFragment extends Fragment {
 
                 for(DataSnapshot topicSnap: snapshot.getChildren()) {
                     Topic currentTopic = topicSnap.getValue(Topic.class);
-                    if(currentTopic.getOwner().equals(userEmail)) {
+                    if(currentTopic.getOwner().equals(userID)) {
                         topics.add(currentTopic);
                     }
                 }

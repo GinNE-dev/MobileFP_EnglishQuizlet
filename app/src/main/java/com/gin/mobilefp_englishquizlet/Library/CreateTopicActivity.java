@@ -69,7 +69,7 @@ public class CreateTopicActivity extends AppCompatActivity {
             DatabaseReference topicsRef = db.getReference("topics");
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            String userEmail = mAuth.getCurrentUser().getEmail();
+            String ownerID = mAuth.getCurrentUser().getUid();
 
             String topicID = topicsRef.push().getKey();
             String topicTitle = edtxtTopicTitle.getText().toString().trim();
@@ -103,7 +103,7 @@ public class CreateTopicActivity extends AppCompatActivity {
                     isPrivate = false;
                 }
 
-                topicsRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, userEmail, words, isPrivate));
+                topicsRef.child(topicID).setValue(new Topic(topicID, topicTitle, topicDescription, ownerID, words, isPrivate));
 
                 Toast.makeText(this, "Create topic success!", Toast.LENGTH_SHORT).show();
                 finish();
