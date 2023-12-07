@@ -121,7 +121,7 @@ public class TypoModeLayout extends AppCompatActivity {
                 }
 
                 textViewTotal.setText(String.valueOf(mWords.size()));
-                setupQuestion(0, mIsRevert);
+                restartGame();
             }
 
             @Override
