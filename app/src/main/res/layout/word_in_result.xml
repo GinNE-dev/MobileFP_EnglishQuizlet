@@ -84,6 +84,7 @@
                     android:fontFamily="@font/baloo">
                 </TextView>
                 <TextView
+                    android:id="@+id/text_view_your_answer"
                     android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

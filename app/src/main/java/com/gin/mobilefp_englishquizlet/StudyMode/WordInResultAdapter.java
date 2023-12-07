@@ -22,6 +22,7 @@ public class WordInResultAdapter extends RecyclerView.Adapter<WordInResultAdapte
 
         private TextView textViewTerm;
         private TextView textViewDefinition;
+        private TextView textViewYourAnswer;
         private ImageButton imgButtonSound;
         public WordInResultHolder(@NonNull View itemView) {
             super(itemView);
@@ -29,6 +30,7 @@ public class WordInResultAdapter extends RecyclerView.Adapter<WordInResultAdapte
             this.textViewTerm = itemView.findViewById(R.id.text_view_term);
             this.textViewDefinition = itemView.findViewById(R.id.text_view_definition);
             this.imgButtonSound = itemView.findViewById(R.id.image_button_sound);
+            this.textViewYourAnswer = itemView.findViewById(R.id.text_view_your_answer);
         }
 
         public TextView getTextViewTerm() {
@@ -42,12 +44,15 @@ public class WordInResultAdapter extends RecyclerView.Adapter<WordInResultAdapte
         public ImageButton getImgButtonSound() {
             return imgButtonSound;
         }
+
+        public TextView getTextViewYourAnswer() {return textViewYourAnswer;}
     }
 
     private ArrayList<Word> mWords;
-
-    public WordInResultAdapter(ArrayList<Word> words){
+    private ArrayList<String> mAnswers;
+    public WordInResultAdapter(ArrayList<Word> words, ArrayList<String> answers){
         this.mWords = words;
+        this.mAnswers = answers;
     }
 
     @NonNull
@@ -60,9 +65,11 @@ public class WordInResultAdapter extends RecyclerView.Adapter<WordInResultAdapte
     @Override
     public void onBindViewHolder(@NonNull WordInResultHolder holder, int position) {
         Word word = mWords.get(position);
+        String answer = mAnswers.get(position);
 
         holder.getTextViewTerm().setText(word.getTerm());
         holder.getTextViewDefinition().setText(word.getDefinition());
+        holder.getTextViewYourAnswer().setText(answer);
         holder.getImgButtonSound().setOnClickListener(btn->{
             TextToSpeechHelper.initialize(holder.getTextViewTerm().getContext(), new TextToSpeechHelper.OnInitializationListener() {
                 @Override

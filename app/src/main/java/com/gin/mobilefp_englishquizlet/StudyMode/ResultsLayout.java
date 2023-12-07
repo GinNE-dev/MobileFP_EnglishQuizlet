@@ -40,9 +40,9 @@ public class ResultsLayout extends AppCompatActivity {
         int incorrect = getIntent().getIntExtra("incorrect", -1);
         int score = getIntent().getIntExtra("score", -1);
         ArrayList<Word> words = getIntent().getParcelableArrayListExtra("words");
-        ArrayList<Integer> answers = getIntent().getIntegerArrayListExtra("answers");
-
-        updateUI(words, answers, correct, incorrect, score);
+        ArrayList<Integer> results = getIntent().getIntegerArrayListExtra("results");
+        ArrayList<String> answers = getIntent().getStringArrayListExtra("answers");
+        updateUI(words, results, answers, correct, incorrect, score);
     }
 
     private void registerEvents(){
@@ -61,14 +61,14 @@ public class ResultsLayout extends AppCompatActivity {
         });
     }
 
-    private void updateUI(ArrayList<Word> words, ArrayList<Integer> answers, int correct, int incorrect, int score){
+    private void updateUI(ArrayList<Word> words, ArrayList<Integer> results, ArrayList<String> answers,int correct, int incorrect, int score){
         this.textViewScore.setText(String.valueOf(score));
         this.textViewIncorrect.setText(String.valueOf(incorrect));
         this.textViewCorrect.setText(String.valueOf(correct));
 
         ArrayList<String> feedbacks = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.feedbacks)));
         int nPart = feedbacks.size();
-        int totalQuestion = answers.size();
+        int totalQuestion = results.size();
         int feedbackIdx = 0;
         feedbackIdx = (int) Math.min(nPart-1,(int) correct*1.0f/(totalQuestion*1.0f/nPart));
         String feedback = feedbacks.get(feedbackIdx);
@@ -77,21 +77,26 @@ public class ResultsLayout extends AppCompatActivity {
         ArrayList<Word> correctWords = new ArrayList<>();
         ArrayList<Word> incorrectWords = new ArrayList<>();
 
-        for(int i=0; i<answers.size(); i++){
-            Integer answer = answers.get(i);
+        ArrayList<String> correctAnswers = new ArrayList<>();
+        ArrayList<String> incorrectAnswers = new ArrayList<>();
+
+        for(int i=0; i<results.size(); i++){
+            Integer answer = results.get(i);
             Word word = words.get(i);
             if(answer.equals(1)){
                 correctWords.add(word);
+                correctAnswers.add(answers.get(i));
             }else {
                 incorrectWords.add(word);
+                incorrectAnswers.add(answers.get(i));
             }
         }
 
-        WordInResultAdapter correctWordAdapter = new WordInResultAdapter(correctWords);
+        WordInResultAdapter correctWordAdapter = new WordInResultAdapter(correctWords, correctAnswers);
         this.resultsLayoutCorrectWord.setAdapter(correctWordAdapter);
         this.resultsLayoutCorrectWord.setLayoutManager(new LinearLayoutManager(this));
 
-        WordInResultAdapter incorrectWordAdapter = new WordInResultAdapter(incorrectWords);
+        WordInResultAdapter incorrectWordAdapter = new WordInResultAdapter(incorrectWords, incorrectAnswers);
         this.resultsLayoutIncorrectWord.setAdapter(incorrectWordAdapter);
         this.resultsLayoutIncorrectWord.setLayoutManager(new LinearLayoutManager(this));
     }

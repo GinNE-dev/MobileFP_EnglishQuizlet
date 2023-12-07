@@ -53,7 +53,8 @@ import java.util.Random;
 public class MultipleChoiceModeLayout extends AppCompatActivity {
     AppCompatImageButton btnOptions;
     private ArrayList<Word> mWords;
-    private ArrayList<Integer> mAnswers;
+    private ArrayList<Integer> mResults;
+    private ArrayList<String> mAnswers;
     private ArrayList<Word> mAllWord;
     private String mTopicID;
     private TextView textViewCurrent;
@@ -120,10 +121,11 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
     }
 
     private void processLearn(String answer){
-        Word word = mWords.get(mAnswers.size());
+        mAnswers.add(answer);
+        Word word = mWords.get(mResults.size());
         String actualAnswer = mIsRevert ? word.getTerm() : word.getDefinition();
         boolean isCorrect = actualAnswer.equals(answer);
-        mAnswers.add( isCorrect ? 1 : 0);
+        mResults.add( isCorrect ? 1 : 0);
 
         if(isCorrect){
             ResultPopup.show(this, ResultPopup.PopupType.CorrectAnswer, ResultPopup.DURATION_SHORT);
@@ -131,11 +133,12 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
             ResultPopup.show(this, ResultPopup.PopupType.IncorrectAnswer, ResultPopup.DURATION_SHORT);
         }
 
-        setupQuestion(mAnswers.size(), mIsRevert);
+        setupQuestion(mResults.size(), mIsRevert);
     }
 
     private void initComponents(){
         mWords = new ArrayList<>();
+        mResults = new ArrayList<>();
         mAnswers = new ArrayList<>();
         mAllWord = new ArrayList<>();
 
@@ -177,8 +180,8 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         viewQuestionCard.setVisibility(View.VISIBLE);
         if(pos >= mWords.size()){
             int correct = 0;
-            for (Integer result : mAnswers) correct += result;
-            int score = Math.round(correct*100.0f/mAnswers.size());
+            for (Integer result : mResults) correct += result;
+            int score = Math.round(correct*100.0f/mResults.size());
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userId = user.getUid();
             FirebaseDatabase.getInstance().getReference("topics").child(mTopicID)
@@ -186,10 +189,11 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
 
             Intent intentResult = new Intent(MultipleChoiceModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);
-            intentResult.putExtra("incorrect", mAnswers.size()-correct);
+            intentResult.putExtra("incorrect", mResults.size()-correct);
             intentResult.putExtra("score", score);
             intentResult.putParcelableArrayListExtra("words", mWords);
-            intentResult.putIntegerArrayListExtra("answers", mAnswers);
+            intentResult.putIntegerArrayListExtra("results", mResults);
+            intentResult.putStringArrayListExtra("answers", mAnswers);
             startActivityForResult(intentResult, RequestHelper.MULTIPLE_CHOICE_RESULT);
             return;
         }
@@ -237,6 +241,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
 
     private void restartGame(){
         mAnswers.clear();
+        mResults.clear();
         setupQuestion(0, mIsRevert);
     }
 

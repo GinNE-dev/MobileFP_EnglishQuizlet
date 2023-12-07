@@ -18,7 +18,7 @@ public class SimpleUTF8Normalizer {
             ex.printStackTrace();
         }
 
-        return result;
+        return result.replace('-', ' ');
     }
 
     public static boolean equals(String s1, String s2){

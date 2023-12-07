@@ -45,7 +45,8 @@ public class TypoModeLayout extends AppCompatActivity {
     AppCompatImageButton btnOptions;
     private String mTopicID;
     private ArrayList<Word> mWords;
-    private ArrayList<Integer> mAnswers;
+    private ArrayList<Integer> mResults;
+    private ArrayList<String> mAnswers;
     private BottomSheetDialog mDialog;
     private TextView textViewTotal;
     private TextView textViewCurrent;
@@ -98,7 +99,8 @@ public class TypoModeLayout extends AppCompatActivity {
     }
 
     private void initComponents(){
-        mWords = new ArrayList<>();
+        mWords =  new ArrayList<>();
+        mResults = new ArrayList<>();
         mAnswers = new ArrayList<>();
         DatabaseReference wordsOfTopicRef = FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words");
         wordsOfTopicRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -128,6 +130,7 @@ public class TypoModeLayout extends AppCompatActivity {
     }
 
     private void restartGame(){
+        mResults.clear();
         mAnswers.clear();
         setupQuestion(0, mIsRevert);
     }
@@ -145,8 +148,8 @@ public class TypoModeLayout extends AppCompatActivity {
 
         if(pos >= mWords.size()){
             int correct = 0;
-            for (Integer result : mAnswers) correct += result;
-            int score = Math.round(correct*100.0f/mAnswers.size());
+            for (Integer result : mResults) correct += result;
+            int score = Math.round(correct*100.0f/mResults.size());
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userId = user.getUid();
             FirebaseDatabase.getInstance().getReference("topics").child(mTopicID)
@@ -154,10 +157,11 @@ public class TypoModeLayout extends AppCompatActivity {
 
             Intent intentResult = new Intent(TypoModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);
-            intentResult.putExtra("incorrect", mAnswers.size()-correct);
+            intentResult.putExtra("incorrect", mResults.size()-correct);
             intentResult.putExtra("score", score);
             intentResult.putParcelableArrayListExtra("words", mWords);
-            intentResult.putIntegerArrayListExtra("answers", mAnswers);
+            intentResult.putIntegerArrayListExtra("results", mResults);
+            intentResult.putStringArrayListExtra("answers", mAnswers);
             startActivityForResult(intentResult, RequestHelper.MULTIPLE_CHOICE_RESULT);
             return;
         }
@@ -188,10 +192,16 @@ public class TypoModeLayout extends AppCompatActivity {
     }
 
     private void processLearn(String answer){
-        Word word = mWords.get(mAnswers.size());
+        mAnswers.add(answer);
+        Word word = mWords.get(mResults.size());
         String actualAnswer = mIsRevert ? word.getTerm() : word.getDefinition();
-        boolean isCorrect = SimpleUTF8Normalizer.equals(answer.trim(), actualAnswer.trim());
-        mAnswers.add(isCorrect ? 1 : 0);
+        //Chỉ chấp nhận câu trả lời hoặc là đúng hết dấu câu hoặc là hoàn toàn không có dấu
+        String normalizedActualAnswer = SimpleUTF8Normalizer.normalize(actualAnswer.trim());
+        boolean isCorrect = answer.equals(actualAnswer) || answer.equals(normalizedActualAnswer);
+
+        //Không quan tâm dấu câu
+        //boolean isCorrect = SimpleUTF8Normalizer.equals(answer.trim(), actualAnswer.trim());
+        mResults.add(isCorrect ? 1 : 0);
 
         if(isCorrect){
             ResultPopup.show(this, ResultPopup.PopupType.CorrectAnswer, ResultPopup.DURATION_SHORT);
@@ -199,7 +209,7 @@ public class TypoModeLayout extends AppCompatActivity {
             ResultPopup.show(this, ResultPopup.PopupType.IncorrectAnswer, ResultPopup.DURATION_SHORT);
         }
 
-        setupQuestion(mAnswers.size(), mIsRevert);
+        setupQuestion(mResults.size(), mIsRevert);
     }
 
     private void registerEvents(){
