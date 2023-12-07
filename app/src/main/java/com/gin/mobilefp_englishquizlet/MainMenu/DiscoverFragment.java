@@ -56,7 +56,7 @@ public class DiscoverFragment extends Fragment {
 
     private void setupTopicList() {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
-        topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        topicRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
