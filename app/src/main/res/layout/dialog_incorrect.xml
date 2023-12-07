@@ -32,7 +32,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="Ngu dữ mày"
+            android:text="Hãy cẩn thận hơn"
             android:textSize="28dp"
             android:textColor="#CE6000"
             android:fontFamily="@font/baloo">
