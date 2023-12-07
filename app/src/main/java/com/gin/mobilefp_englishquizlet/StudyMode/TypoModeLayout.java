@@ -52,6 +52,7 @@ public class TypoModeLayout extends AppCompatActivity {
     private TextView textViewTotal;
     private TextView textViewCurrent;
     private TextView textViewQuestion;
+    private TextView textViewWarning;
     private EditText editTextAnswer;
     private View viewQuestionCard;
     private Button buttonNext;
@@ -86,6 +87,7 @@ public class TypoModeLayout extends AppCompatActivity {
         textViewQuestion = findViewById(R.id.text_view_question);
         imgButtonTextToSpeech = findViewById(R.id.img_button_text_to_speech);
         viewQuestionCard = findViewById(R.id.card_view_question);
+        textViewWarning = findViewById(R.id.text_view_warning);
         buttonNext = findViewById(R.id.button_next);
         mDialog =  new BottomSheetDialog(this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -136,6 +138,7 @@ public class TypoModeLayout extends AppCompatActivity {
         mAnswers.clear();
         mStartTime = new Date().getTime();
         setupQuestion(0, mIsRevert);
+        textViewWarning.setVisibility(mIsRevert ? View.VISIBLE : View.GONE);
     }
 
     private void setupQuestion(int pos, boolean isRevert){

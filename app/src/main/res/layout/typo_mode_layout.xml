@@ -167,6 +167,7 @@
                 </androidx.appcompat.widget.AppCompatEditText>
 
                 <TextView
+                    android:id="@+id/text_view_warning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lưu ý: Bạn cần nhập đúng số từ và thứ tự của định nghĩa đã học!!!"
