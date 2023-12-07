@@ -47,46 +47,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:alpha="0.8"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Definition:"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/baloo">
-                </TextView>
+<!--                <TextView-->
+<!--                    android:alpha="0.8"-->
+<!--                    android:paddingLeft="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Definition:"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:fontFamily="@font/baloo">-->
+<!--                </TextView>-->
                 <TextView
                     android:id="@+id/text_view_definition"
                     android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="tiếng Anh"
                     android:textColor="@color/white"
                     android:textSize="20dp"
+                    android:gravity="center"
                     android:fontFamily="@font/baloo">
                 </TextView>
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:alpha="0.8"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Your answer:"
-                    android:textColor="@color/white"
+                    android:text="Your answer"
+                    android:textColor="#F9F871"
                     android:textSize="14dp"
                     android:fontFamily="@font/baloo">
                 </TextView>
                 <TextView
                     android:id="@+id/text_view_your_answer"
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="tiếng Pháp"
                     android:textColor="@color/white"
@@ -103,9 +104,8 @@
 
                 <ImageButton
                     android:id="@+id/image_button_sound"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:padding="10dp"
