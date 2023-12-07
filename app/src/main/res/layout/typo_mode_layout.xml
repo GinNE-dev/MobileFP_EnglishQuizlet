@@ -165,6 +165,17 @@
                     android:backgroundTint="#375287">
 
                 </androidx.appcompat.widget.AppCompatEditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lưu ý: Bạn cần nhập đúng số từ và thứ tự của định nghĩa đã học!!!"
+                    android:textSize="14dp"
+                    android:padding="10dp"
+                    android:textColor="#FF6000"
+                    android:textStyle="bold">
+
+                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

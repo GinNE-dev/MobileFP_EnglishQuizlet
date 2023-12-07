@@ -5,9 +5,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginVertical="5dp"
         android:layout_width="160dp"
-        android:layout_height="133dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#375287"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
         android:layout_gravity="center_horizontal">
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,9 +18,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal">
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
 <!--                <TextView-->
 <!--                    android:alpha="0.8"-->
 <!--                    android:paddingLeft="5dp"-->
@@ -27,17 +27,18 @@
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:text="Term:"-->
 <!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="18dp"-->
+<!--                    android:textSize="14dp"-->
 <!--                    android:fontFamily="@font/baloo">-->
 <!--                </TextView>-->
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/text_view_term"
                     android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="English"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="24dp"
                     android:fontFamily="@font/baloo">
                 </TextView>
             </LinearLayout>
@@ -45,18 +46,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
-<!--                <TextView-->
-<!--                    android:alpha="0.8"-->
-<!--                    android:paddingLeft="5dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Definition:"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="18dp"-->
-<!--                    android:fontFamily="@font/baloo">-->
-<!--                </TextView>-->
+                android:orientation="vertical">
+                <TextView
+                    android:alpha="0.8"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Definition:"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
                 <TextView
                     android:id="@+id/text_view_definition"
                     android:paddingLeft="10dp"
@@ -72,9 +72,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:alpha="0.8"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your answer:"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tiếng Pháp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/baloo">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="end"
-                >
+                android:gravity="end">
 
                 <ImageButton
                     android:id="@+id/image_button_sound"
@@ -84,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:padding="10dp"
-                    android:src="@drawable/sound_svgrepo_com">
+                    android:src="@drawable/sound_white">
                 </ImageButton>
 
             </LinearLayout>
