@@ -89,8 +89,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/baloo"
-                    android:gravity="center"
-                    android:text="ngtiendat242002">
+                    android:gravity="center">
 
                 </TextView>
             </LinearLayout>

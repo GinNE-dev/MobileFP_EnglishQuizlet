@@ -63,7 +63,6 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         holder.txtviewTitle.setText(topics.get(position).getTitle());
         int termCount = topics.get(position).getWords().size();
         holder.txtviewTermCount.setText(Integer.toString(termCount));
-        holder.txtviewOwner.setText(topics.get(position).getOwner());
 
         holder.cardView.setOnClickListener(v -> {
             Intent goToDetail = new Intent(context, TopicDetailActivity.class);
