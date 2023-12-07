@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gin.mobilefp_englishquizlet.Models.Topic;
+import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForTopics;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +56,7 @@ public class DiscoverFragment extends Fragment {
 
     private void setupTopicList() {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
-        topicRef.addValueEventListener(new ValueEventListener() {
+        topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

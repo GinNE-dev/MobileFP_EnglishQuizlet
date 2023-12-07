@@ -90,6 +90,27 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
                 return false;
             });
         }
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(topics.get(position).getOwner());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User currentUser = snapshot.getValue(User.class);
+//                holder.txtviewOwner.setText(currentUser.getName());
+                String userName = snapshot.child("name").getValue().toString();
+                String userAva = snapshot.child("avaURL").getValue().toString();
+
+                holder.txtviewOwner.setText(userName);
+
+                Glide.with(context)
+                        .load(userAva)
+                        .into(holder.imgAvatar);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

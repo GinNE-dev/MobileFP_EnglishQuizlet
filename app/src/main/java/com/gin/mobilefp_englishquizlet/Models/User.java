@@ -1,13 +1,14 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
     String id;
     String email;
     String name;
     String avaURL;
-    ArrayList<Folder> folders;
+    HashMap<String, Folder> folders = new HashMap<>();
 
     public User() {
     }
@@ -19,8 +20,7 @@ public class User {
         this.avaURL = "https://firebasestorage.googleapis.com/v0/b/finalproject-395e5.appspot.com/o/defaultava.png?alt=media&token=abfccaa7-6875-47f0-a999-e8d495b7eea1";
 
         Folder fav = new Folder(id, "My Favorite", false);
-        this.folders = new ArrayList<>();
-        this.folders.add(fav);
+        this.folders.put("0", fav);
     }
 
     public String getId() {
@@ -55,11 +55,11 @@ public class User {
         this.avaURL = avaURL;
     }
 
-    public ArrayList<Folder> getFolders() {
+    public HashMap<String, Folder> getFolders() {
         return folders;
     }
 
-    public void setFolders(ArrayList<Folder> folders) {
+    public void setFolders(HashMap<String, Folder> folders) {
         this.folders = folders;
     }
 }

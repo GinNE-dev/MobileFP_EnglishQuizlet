@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.Profile;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.gin.mobilefp_englishquizlet.AuthencationActivities.LoginActivity;
 import com.gin.mobilefp_englishquizlet.Models.Folder;
+import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,8 +67,13 @@ public class SettingProfileActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String userEmail = mAuth.getCurrentUser().getEmail();
-                String userName = snapshot.child("name").getValue().toString();
+                //String userEmail = mAuth.getCurrentUser().getEmail();
+                //String userName = snapshot.child("name").getValue().toString();
+
+                Log.i("hey", snapshot.getKey().toString());
+                User user = snapshot.getValue(User.class);
+                String userEmail = user.getEmail();
+                String userName = user.getName();
 
                 txtviewEmail.setText(userEmail);
                 txtviewUsername.setText(userName);
