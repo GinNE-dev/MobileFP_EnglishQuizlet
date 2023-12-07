@@ -8,7 +8,7 @@ public class User {
     String email;
     String name;
     String avaURL;
-    HashMap<String, Folder> folders = new HashMap<>();
+    HashMap<String, Folder> folders;
 
     public User() {
     }
@@ -20,7 +20,8 @@ public class User {
         this.avaURL = "https://firebasestorage.googleapis.com/v0/b/finalproject-395e5.appspot.com/o/defaultava.png?alt=media&token=abfccaa7-6875-47f0-a999-e8d495b7eea1";
 
         Folder fav = new Folder(id, "My Favorite", false);
-        this.folders.put("0", fav);
+        this.folders = new HashMap<>();
+        this.folders.put(id, fav);
     }
 
     public String getId() {

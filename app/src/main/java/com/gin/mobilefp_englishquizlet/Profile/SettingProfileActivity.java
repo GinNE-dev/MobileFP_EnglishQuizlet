@@ -63,17 +63,16 @@ public class SettingProfileActivity extends AppCompatActivity {
 
     private void setUpInfo() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        Log.d("VCLLLLLLLL", mAuth.getCurrentUser().getUid());
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String userEmail = mAuth.getCurrentUser().getEmail();
-                String userName = snapshot.child("name").getValue().toString();
-
-//                Log.i("hey", snapshot.getKey().toString());
-//                User user = snapshot.getValue(User.class);
-//                String userEmail = user.getEmail();
-//                String userName = user.getName();
+//                String userEmail = mAuth.getCurrentUser().getEmail();
+//                String userName = snapshot.child("name").getValue().toString();
+                User user = snapshot.getValue(User.class);
+                String userEmail = user.getEmail();
+                String userName = user.getName();
 
                 txtviewEmail.setText(userEmail);
                 txtviewUsername.setText(userName);
