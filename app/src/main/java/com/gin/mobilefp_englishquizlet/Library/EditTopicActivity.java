@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.Library;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -98,7 +99,7 @@ public class EditTopicActivity extends AppCompatActivity {
             topicRef.child("description").setValue(edtxtTopicDescription.getText().toString());
             topicRef.child("words").setValue(words);
             topicRef.child("private").setValue(isPrivate);
-            Toast.makeText(this, "Edit topic success!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditTopicActivity.this, "Edit topic success!", Toast.LENGTH_SHORT).show();
             finish();
         });
 

@@ -166,7 +166,7 @@ public class TopicDetailActivity extends AppCompatActivity {
 
     private void setUpTopicInfo(String topicID) {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics").child(topicID);
-        topicRef.addValueEventListener(new ValueEventListener() {
+        topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -184,10 +184,9 @@ public class TopicDetailActivity extends AppCompatActivity {
                 txtviewTermCount.setText(words.size() + " words");
 
                 String ownerID = topic.getOwner();
-                Log.i("WTFFFFFF", ownerID);
 
                 DatabaseReference ownerRef = FirebaseDatabase.getInstance().getReference("users").child(ownerID);
-                ownerRef.addValueEventListener(new ValueEventListener() {
+                ownerRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String userName = snapshot.child("name").getValue().toString();
@@ -234,8 +233,8 @@ public class TopicDetailActivity extends AppCompatActivity {
             bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
         });
 
-        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        if(topicOwner.equals(userEmail)) {
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if(topicOwner.equals(userID)) {
             btnEditTopic.setText("Edit this topic");
             btnEditTopic.setOnClickListener(v -> {
                 bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
