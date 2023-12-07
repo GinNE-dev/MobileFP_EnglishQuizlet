@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import com.gin.mobilefp_englishquizlet.Models.Record;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RequestHelper;
@@ -57,6 +58,7 @@ public class TypoModeLayout extends AppCompatActivity {
     private ImageButton imgButtonTextToSpeech;
     private boolean mIsRevert = false;
     private boolean mIsLearnStarredOnly = false;
+    private long mStartTime;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +134,7 @@ public class TypoModeLayout extends AppCompatActivity {
     private void restartGame(){
         mResults.clear();
         mAnswers.clear();
+        mStartTime = new Date().getTime();
         setupQuestion(0, mIsRevert);
     }
 
@@ -152,8 +155,8 @@ public class TypoModeLayout extends AppCompatActivity {
             int score = Math.round(correct*100.0f/mResults.size());
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userId = user.getUid();
-            FirebaseDatabase.getInstance().getReference("topics").child(mTopicID)
-                    .child("scoreRecords").child(userId).setValue(Integer.valueOf(score));
+            FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("scoreRecords")
+            .child(userId).setValue(new Record(score, Record.LearnMode.Typo, new Date().getTime() - mStartTime));
 
             Intent intentResult = new Intent(TypoModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);

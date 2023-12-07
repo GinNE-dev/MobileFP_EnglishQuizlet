@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import com.gin.mobilefp_englishquizlet.Models.Record;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
@@ -66,6 +67,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
     private Boolean mIsRevert = false;
     private boolean mIsLearnStarredOnly = false;
     private BottomSheetDialog mDialog;
+    private long mStartTime;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +162,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
                 }
 
                 textViewTotal.setText(String.valueOf(mWords.size()));
-                setupQuestion(0, mIsRevert);
+                restartGame();
             }
 
             @Override
@@ -184,8 +186,8 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
             int score = Math.round(correct*100.0f/mResults.size());
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userId = user.getUid();
-            FirebaseDatabase.getInstance().getReference("topics").child(mTopicID)
-                    .child("scoreRecords").child(userId).setValue(Integer.valueOf(score));
+            FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("scoreRecords")
+                    .child(userId).setValue(new Record(score, Record.LearnMode.MultipleChoice, new Date().getTime() - mStartTime));
 
             Intent intentResult = new Intent(MultipleChoiceModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);
@@ -242,6 +244,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
     private void restartGame(){
         mAnswers.clear();
         mResults.clear();
+        mStartTime = new Date().getTime();
         setupQuestion(0, mIsRevert);
     }
 

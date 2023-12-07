@@ -12,7 +12,7 @@ public class Topic {
     Boolean isPrivate;
     ArrayList<Word> words;
 
-    private HashMap<String, Integer> scoreRecords;
+    private HashMap<String, Record> scoreRecords;
 
     public Topic() {
         this.scoreRecords = new HashMap<>();
@@ -80,7 +80,7 @@ public class Topic {
         this.words = words;
     }
 
-    public HashMap<String, Integer> getScoreRecords() {return scoreRecords;}
+    public HashMap<String, Record> getScoreRecords() {return scoreRecords;}
 
     public Boolean getPrivate() {
         return isPrivate;
