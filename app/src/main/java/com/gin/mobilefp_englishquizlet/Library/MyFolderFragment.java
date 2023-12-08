@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MyFolderFragment extends Fragment {
     FloatingActionButton btnAddFolder;
@@ -80,6 +81,8 @@ public class MyFolderFragment extends Fragment {
                     Folder currentFolder = folderSnap.getValue(Folder.class);
                     folders.add(currentFolder);
                 }
+
+                Collections.reverse(folders);
 
                 adapter.notifyDataSetChanged();
             }
