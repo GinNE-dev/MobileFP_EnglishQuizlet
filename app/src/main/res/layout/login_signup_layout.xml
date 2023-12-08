@@ -71,6 +71,24 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="What should we call you?"
+                        app:endIconMode="clear_text"
+                        android:layout_marginTop="10dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusTopStart="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtxtUsername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo"></com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="Enter your email address"
                         app:endIconMode="clear_text"
                         android:layout_marginTop="10dp"

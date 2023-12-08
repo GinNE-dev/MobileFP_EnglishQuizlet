@@ -38,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -149,6 +150,10 @@ public class ProfileFragment extends Fragment {
                 valid = false;
                 Toast.makeText(getActivity(), "Enter your new display name!", Toast.LENGTH_SHORT).show();
             }
+            else if(containsSpecialCharacters(newName)) {
+                valid = false;
+                Toast.makeText(getActivity(), "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
+            }
 
             if(valid) {
                 usernameRef.setValue(newName);
@@ -161,5 +166,12 @@ public class ProfileFragment extends Fragment {
         // Create and show the AlertDialog
         nameDialog = builder.create();
         nameDialog.show();
+    }
+
+    public boolean containsSpecialCharacters(String input) {
+        // Use Pattern and Matcher to check for special characters
+        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+
+        return special.matcher(input).find();
     }
 }

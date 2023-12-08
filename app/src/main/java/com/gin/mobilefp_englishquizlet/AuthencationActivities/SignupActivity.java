@@ -23,9 +23,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class SignupActivity extends AppCompatActivity {
     AppCompatImageButton btnBack;
     MaterialButton btnSignup;
+    TextInputEditText edtxtUsername;
     TextInputEditText edtxtEmail;
     TextInputEditText edtxtPassword;
     TextInputEditText edtxtPassword2;
@@ -41,6 +44,7 @@ public class SignupActivity extends AppCompatActivity {
             goToMain();
         }
 
+        edtxtUsername = findViewById(R.id.edtxtUsername);
         edtxtEmail = findViewById(R.id.edtxtEmail);
         edtxtPassword = findViewById(R.id.edtxtPassword);
         edtxtPassword2 = findViewById(R.id.edtxtPassword2);
@@ -54,18 +58,22 @@ public class SignupActivity extends AppCompatActivity {
 
         btnSignup.setOnClickListener(v -> {
             String email = edtxtEmail.getText().toString().trim();
-            String name = email.split("@")[0];
+            String name = edtxtUsername.getText().toString().trim();
             String password = edtxtPassword.getText().toString();
             String password2 = edtxtPassword2.getText().toString();
 
             boolean isFormValid = true;
-            if(email.equals("") || password.equals("") || password2.equals("")) {
+            if(name.equals("") || email.equals("") || password.equals("") || password2.equals("")) {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Please fill out the form!", Toast.LENGTH_SHORT).show();
             }
-            if(!password.equals(password2)) {
+            else if(!password.equals(password2)) {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Your re-enter password is not match!", Toast.LENGTH_SHORT).show();
+            }
+            else if(containsSpecialCharacters(name)) {
+                isFormValid = false;
+                Toast.makeText(SignupActivity.this, "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
             }
 
             if(isFormValid) {
@@ -113,5 +121,12 @@ public class SignupActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public boolean containsSpecialCharacters(String input) {
+        // Use Pattern and Matcher to check for special characters
+        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+
+        return special.matcher(input).find();
     }
 }
