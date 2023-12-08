@@ -136,9 +136,9 @@
             android:checkedButton="@id/btn_everyone">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="Everyone"
+                android:text="Public for everyone"
                 android:textSize="16dp"
                 android:fontFamily="@font/baloo"
                 android:textColor="@color/visible_text_selector"
@@ -157,9 +157,9 @@
             </View>
 
             <com.google.android.material.radiobutton.MaterialRadioButton
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="Just me"
+                android:text="Private"
                 android:textSize="16dp"
                 android:fontFamily="@font/baloo"
                 android:textColor="@color/visible_text_selector"

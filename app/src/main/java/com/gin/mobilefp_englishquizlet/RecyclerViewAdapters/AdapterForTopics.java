@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,6 +64,12 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         holder.txtviewTitle.setText(topics.get(position).getTitle());
         int termCount = topics.get(position).getWords().size();
         holder.txtviewTermCount.setText(Integer.toString(termCount));
+        if(topics.get(position).getPrivate()) {
+            holder.iconPrivate.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.iconPrivate.setVisibility(View.INVISIBLE);
+        }
 
         holder.cardView.setOnClickListener(v -> {
             Intent goToDetail = new Intent(context, TopicDetailActivity.class);
@@ -121,6 +128,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView txtviewTitle, txtviewTermCount, txtviewOwner;
         CardView cardView;
+        AppCompatImageButton iconPrivate;
         CircleImageView imgAvatar;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -130,6 +138,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
             txtviewTermCount = itemView.findViewById(R.id.txtviewTermCount);
             txtviewOwner = itemView.findViewById(R.id.txtviewOwner);
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
+            iconPrivate = itemView.findViewById(R.id.iconPrivate);
             cardView = itemView.findViewById(R.id.cardView);
         }
     }
