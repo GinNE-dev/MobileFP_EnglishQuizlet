@@ -172,7 +172,6 @@ public class FolderDetailActivity extends AppCompatActivity {
                 txtviewTitle.setText(edtxtTitle.getText().toString());
             }
         });
-
         // Create and show the AlertDialog
         folderDialog = builder.create();
         folderDialog.show();
