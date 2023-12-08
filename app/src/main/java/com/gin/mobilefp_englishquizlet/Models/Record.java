@@ -8,6 +8,7 @@ public class Record {
         Typo
     }
 
+    private String archivedBy;
     private int score;
     private LearnMode learnMode;
     private long timeConsumed; //millisecond
@@ -16,6 +17,13 @@ public class Record {
     }
 
     public Record(int score, LearnMode learnMode, long timeConsumed) {
+        this.score = score;
+        this.learnMode = learnMode;
+        this.timeConsumed = timeConsumed;
+    }
+
+    public Record(String archivedBy, int score, LearnMode learnMode, long timeConsumed) {
+        this.archivedBy = archivedBy;
         this.score = score;
         this.learnMode = learnMode;
         this.timeConsumed = timeConsumed;
@@ -43,5 +51,13 @@ public class Record {
 
     public void setTimeConsumed(long timeConsumed) {
         this.timeConsumed = timeConsumed;
+    }
+
+    public String getArchivedBy() {
+        return archivedBy;
+    }
+
+    public void setArchivedBy(String archivedBy) {
+        this.archivedBy = archivedBy;
     }
 }
