@@ -138,7 +138,7 @@ public class TypoModeLayout extends AppCompatActivity {
         mAnswers.clear();
         mStartTime = new Date().getTime();
         setupQuestion(0, mIsRevert);
-        textViewWarning.setVisibility(mIsRevert ? View.VISIBLE : View.GONE);
+        textViewWarning.setVisibility(mIsRevert ? View.GONE : View.VISIBLE);
     }
 
     private void setupQuestion(int pos, boolean isRevert){
