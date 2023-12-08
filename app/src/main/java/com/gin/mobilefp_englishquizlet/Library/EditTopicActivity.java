@@ -31,7 +31,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EditTopicActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -95,12 +98,37 @@ public class EditTopicActivity extends AppCompatActivity {
                 isPrivate = false;
             }
 
-            topicRef.child("title").setValue(edtxtTopicTitle.getText().toString());
-            topicRef.child("description").setValue(edtxtTopicDescription.getText().toString());
-            topicRef.child("words").setValue(words);
-            topicRef.child("private").setValue(isPrivate);
-            Toast.makeText(EditTopicActivity.this, "Edit topic success!", Toast.LENGTH_SHORT).show();
-            finish();
+            String newTitle = edtxtTopicTitle.getText().toString();
+            String newDescription = edtxtTopicDescription.getText().toString();
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            String lastUpdatedDate = dateFormat.format(date);
+
+            boolean valid = true;
+            if(newTitle.equals("")) {
+                valid = false;
+                Toast.makeText(this, "Please name your topic!", Toast.LENGTH_SHORT).show();
+            }
+            else if(newDescription.equals("")) {
+                valid = false;
+                Toast.makeText(this, "Please describe something about the topic!", Toast.LENGTH_SHORT).show();
+            }
+            else if(words.size() < 4) {
+                valid = false;
+                Toast.makeText(this, "Topic need to contains at least 4 words!", Toast.LENGTH_SHORT).show();
+            }
+
+            if(valid) {
+                topicRef.child("title").setValue(edtxtTopicTitle.getText().toString());
+                topicRef.child("description").setValue(edtxtTopicDescription.getText().toString());
+                topicRef.child("words").setValue(words);
+                topicRef.child("private").setValue(isPrivate);
+                topicRef.child("lastUpdatedDate").setValue(lastUpdatedDate);
+
+                Toast.makeText(EditTopicActivity.this, "Edit topic success!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         });
 
         setUpWordList(topicID);

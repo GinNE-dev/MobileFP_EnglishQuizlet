@@ -34,6 +34,7 @@ public class MyTopicFragment extends Fragment {
     MaterialButton btnAddFirstTopic;
     FloatingActionButton btnAddTopic;
     LinearLayout linearLayoutEmpty;
+    LinearLayout linearLayoutNotEmpty;
     RecyclerView recyclerView;
     AdapterForTopics adapter;
     SwipeRefreshLayout swipeLayout;
@@ -52,10 +53,12 @@ public class MyTopicFragment extends Fragment {
         btnAddTopic = view.findViewById(R.id.btnAddTopic);
         btnAddFirstTopic = view.findViewById(R.id.btnAddFirstTopic);
         linearLayoutEmpty = view.findViewById(R.id.linearLayoutEmpty);
+        linearLayoutNotEmpty = view.findViewById(R.id.linearLayoutNotEmpty);
         recyclerView = view.findViewById(R.id.recyclerView);
         swipeLayout = view.findViewById(R.id.swipeLayout);
 
         btnAddTopic.setVisibility(View.INVISIBLE);
+        linearLayoutNotEmpty.setVisibility(View.INVISIBLE);
 
         btnAddTopic.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), CreateTopicActivity.class);
@@ -100,6 +103,7 @@ public class MyTopicFragment extends Fragment {
                 if(topics.size() > 0) {
                     linearLayoutEmpty.setVisibility(View.GONE);
                     btnAddTopic.setVisibility(View.VISIBLE);
+                    linearLayoutNotEmpty.setVisibility(View.VISIBLE);
                 }
             }
 

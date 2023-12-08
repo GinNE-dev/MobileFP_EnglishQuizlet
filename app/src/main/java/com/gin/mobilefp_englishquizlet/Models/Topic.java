@@ -1,6 +1,9 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Topic {
@@ -11,7 +14,7 @@ public class Topic {
     String owner;
     Boolean isPrivate;
     ArrayList<Word> words;
-
+    String lastUpdatedDate;
     private HashMap<String, Record> scoreRecords;
 
     public Topic() {
@@ -26,9 +29,11 @@ public class Topic {
         this.words = words;
         this.isPrivate = isPrivate;
 
-        HashMap<String, Boolean> belongsToFolders = new HashMap<>();
-        belongsToFolders.put("default_folder_id", false);
-        this.belongsToFolders = belongsToFolders;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        this.lastUpdatedDate = dateFormat.format(date);
+
+        this.belongsToFolders = new HashMap<>();
         this.scoreRecords = new HashMap<>();
     }
 
@@ -88,5 +93,13 @@ public class Topic {
 
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public String getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    public void setLastUpdatedDate(String lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
     }
 }
