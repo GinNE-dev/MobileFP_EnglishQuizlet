@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.gin.mobilefp_englishquizlet.Models.Topic;
-import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForTopics;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class DiscoverFragment extends Fragment {
@@ -55,15 +53,15 @@ public class DiscoverFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        setupTopicList();
+        setUpTopicList();
 
         swipeLayout.setOnRefreshListener(() -> {
-            setupTopicList();
-            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 1000); // 500 milliseconds delay
+            setUpTopicList();
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
         });
     }
 
-    private void setupTopicList() {
+    private void setUpTopicList() {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
         topicRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")

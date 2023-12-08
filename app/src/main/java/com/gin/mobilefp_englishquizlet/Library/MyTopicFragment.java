@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.Library;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.R;
@@ -34,6 +36,7 @@ public class MyTopicFragment extends Fragment {
     LinearLayout linearLayoutEmpty;
     RecyclerView recyclerView;
     AdapterForTopics adapter;
+    SwipeRefreshLayout swipeLayout;
     ArrayList<Topic> topics = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +53,7 @@ public class MyTopicFragment extends Fragment {
         btnAddFirstTopic = view.findViewById(R.id.btnAddFirstTopic);
         linearLayoutEmpty = view.findViewById(R.id.linearLayoutEmpty);
         recyclerView = view.findViewById(R.id.recyclerView);
+        swipeLayout = view.findViewById(R.id.swipeLayout);
 
         btnAddTopic.setVisibility(View.INVISIBLE);
 
@@ -68,6 +72,11 @@ public class MyTopicFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         setUpTopicList();
+
+        swipeLayout.setOnRefreshListener(() -> {
+            setUpTopicList();
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+        });
     }
 
     private void setUpTopicList() {

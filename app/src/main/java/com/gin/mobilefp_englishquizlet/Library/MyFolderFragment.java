@@ -3,6 +3,7 @@ package com.gin.mobilefp_englishquizlet.Library;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
@@ -40,6 +42,7 @@ public class MyFolderFragment extends Fragment {
     FloatingActionButton btnAddFolder;
     RecyclerView recyclerView;
     AdapterForFolders adapter;
+    SwipeRefreshLayout swipeLayout;
     ArrayList<Folder> folders = new ArrayList<>();
     AlertDialog folderDialog;
     @Override
@@ -55,6 +58,7 @@ public class MyFolderFragment extends Fragment {
 
         btnAddFolder = view.findViewById(R.id.btnAddFolder);
         recyclerView = view.findViewById(R.id.recyclerView);
+        swipeLayout = view.findViewById(R.id.swipeLayout);
 
         btnAddFolder.setOnClickListener(v -> {
             showFolderDialog();
@@ -65,6 +69,11 @@ public class MyFolderFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         setUpFolderList();
+
+        swipeLayout.setOnRefreshListener(() -> {
+            setUpFolderList();
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+        });
     }
 
     private void setUpFolderList() {
