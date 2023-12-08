@@ -59,4 +59,6 @@ dependencies {
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
 
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
 }

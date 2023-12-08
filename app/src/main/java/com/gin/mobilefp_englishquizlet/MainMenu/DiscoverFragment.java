@@ -2,6 +2,7 @@ package com.gin.mobilefp_englishquizlet.MainMenu;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.User;
@@ -29,6 +31,7 @@ import java.util.Collections;
 public class DiscoverFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterForTopics adapter;
+    SwipeRefreshLayout swipeLayout;
     ArrayList<Topic> topics = new ArrayList<>();
     public DiscoverFragment() {
         // Required empty public constructor
@@ -46,12 +49,18 @@ public class DiscoverFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+        swipeLayout = view.findViewById(R.id.swipeLayout);
 
         adapter = new AdapterForTopics(getActivity(), topics);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         setupTopicList();
+
+        swipeLayout.setOnRefreshListener(() -> {
+            setupTopicList();
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 1000); // 500 milliseconds delay
+        });
     }
 
     private void setupTopicList() {
