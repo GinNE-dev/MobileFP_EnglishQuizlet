@@ -20,19 +20,36 @@
 
         </de.hdodenhof.circleimageview.CircleImageView>
 
-        <TextView
-            android:id="@+id/txtviewUsername"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/baloo"
-            android:gravity="center"
-            android:text="ngtiendat242002"
-            android:textColor="@color/white"
-            android:textSize="20dp">
+            android:layout_marginBottom="30dp">
 
-        </TextView>
+            <TextView
+                android:id="@+id/txtviewUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/baloo"
+                android:text="ngtiendat242002"
+                android:textColor="@color/white"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_toEndOf="@+id/txtviewUsername"
+                android:src="@drawable/baseline_edit_24"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="Edit Button"/>
+        </RelativeLayout>
+
+
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
