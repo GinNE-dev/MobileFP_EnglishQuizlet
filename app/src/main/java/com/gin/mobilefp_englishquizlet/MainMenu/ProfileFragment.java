@@ -26,6 +26,9 @@ import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Profile.SettingProfileActivity;
 import com.gin.mobilefp_englishquizlet.R;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,18 +76,23 @@ public class ProfileFragment extends Fragment {
             showChangeInfoDialog();
         });
 
+        imgAvatar.setOnClickListener(v -> {
+            showChangeInfoDialog();
+        });
+
         btnSetting.setOnClickListener(v -> {
             Intent goToSetting = new Intent(getActivity(), SettingProfileActivity.class);
             startActivity(goToSetting);
         });
+
 
         setUpInfo();
     }
 
     private void setUpInfo() {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference user = FirebaseDatabase.getInstance().getReference("users").child(userID);
-        user.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userName = snapshot.child("name").getValue().toString();
@@ -121,6 +130,15 @@ public class ProfileFragment extends Fragment {
         btnChangeName.setOnClickListener(v -> {
             bottomSheetDialog.dismiss();
             showNameDialog();
+        });
+
+        btnChangeAva.setOnClickListener(v -> {
+            bottomSheetDialog.dismiss();
+            ImagePicker.with(this)
+                    .cropSquare()	    			//Crop image(Optional), Check Customization for more option
+                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                    .start();
         });
 
         bottomSheetDialog.show();
@@ -173,5 +191,29 @@ public class ProfileFragment extends Fragment {
         Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
 
         return special.matcher(input).find();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        assert data != null;
+        Uri imgUri = data.getData();
+
+        if(imgUri != null) {
+            imgAvatar.setImageURI(imgUri);
+
+            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference("userAvatars").child(userID);
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+
+            storageReference.putFile(imgUri)
+                    .addOnSuccessListener(taskSnapshot -> storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            userRef.child("avaURL").setValue(uri.toString());
+                            Toast.makeText(getActivity(),"Your avatar has been updated!",Toast.LENGTH_SHORT).show();
+                        }
+                    })).addOnFailureListener(e -> Toast.makeText(getActivity(),"Upload image failed",Toast.LENGTH_SHORT).show());
+        }
     }
 }
