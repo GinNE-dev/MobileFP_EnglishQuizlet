@@ -12,13 +12,12 @@ public class SimpleUTF8Normalizer {
         try {
             String temp = Normalizer.normalize(inputString, Normalizer.Form.NFD);
             Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-            result = pattern.matcher(temp).replaceAll("").toLowerCase()
-                    .replaceAll(" ", "-").replaceAll("đ", "d");
+            result = pattern.matcher(temp).replaceAll("").toLowerCase().replaceAll("đ", "d");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return result.replace('-', ' ');
+        return result;
     }
 
     public static boolean equals(String s1, String s2){
