@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title TextView -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Import .csv/.txt file"
+                android:textSize="18sp"
+                android:fontFamily="@font/baloo"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- EditTexts for Term, Definition, and Description -->
+
+            <!-- Term -->
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your .csv or .txt file must provide data in the following format:"
+                android:fontFamily="@font/baloo">
+            </TextView>
+            <TextView
+                android:layout_marginLeft="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Term,Definition,Description for each line"
+                android:fontFamily="@font/baloo">
+            </TextView>
+            <TextView
+                android:layout_marginLeft="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Invalid lines (words) will not be added"
+                android:fontFamily="@font/baloo">
+            </TextView>
+
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/btnChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CHOOSE FILE"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="?android:attr/textColorPrimary"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

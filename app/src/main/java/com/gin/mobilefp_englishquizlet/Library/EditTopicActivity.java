@@ -1,8 +1,17 @@
 package com.gin.mobilefp_englishquizlet.Library;
 
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +41,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +62,7 @@ public class EditTopicActivity extends AppCompatActivity {
     ArrayList<Word> words = new ArrayList<>();
     AdapterForEditableWords adapter;
     AlertDialog wordDialog;
+    AlertDialog csvDialog;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -205,7 +219,6 @@ public class EditTopicActivity extends AppCompatActivity {
 
         // Set OnClickListener for the Confirm button
         btnConfirm.setOnClickListener(view -> {
-            String id = Integer.toString(words.size());
             String term = edtxtTerm.getText().toString();
             String definition = edtxtDefinition.getText().toString();
             String description = edtxtDescription.getText().toString();
@@ -224,7 +237,7 @@ public class EditTopicActivity extends AppCompatActivity {
             }
 
             if(valid) {
-                Word newWord = new Word(id, term, definition, description);
+                Word newWord = new Word(term, definition, description);
                 words.add(newWord);
 
                 adapter.notifyDataSetChanged();
@@ -248,7 +261,7 @@ public class EditTopicActivity extends AppCompatActivity {
         builder.setItems(options, (dialog, which) -> {
             String selectedOption = options[which];
             if(selectedOption.equals("Import words")) {
-                Toast.makeText(this, "Give us a csv file", Toast.LENGTH_SHORT).show();
+                showCSVPickerDialog();
             }
             if(selectedOption.equals("Delete this topic")) {
                 AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(this);
@@ -266,5 +279,106 @@ public class EditTopicActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    private void showCSVPickerDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_import, null);
+        builder.setView(dialogView);
+
+        // Find the Confirm button in the dialog layout
+        Button btnChoose = dialogView.findViewById(R.id.btnChoose);
+
+        // Set OnClickListener for the Confirm button
+        btnChoose.setOnClickListener(view -> {
+            chooseCSVFile();
+            csvDialog.dismiss();
+        });
+
+        // Create and show the AlertDialog
+        csvDialog = builder.create();
+        csvDialog.show();
+    }
+
+    private void chooseCSVFile() {
+        ActivityCompat.requestPermissions(this,
+                new String[]{WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE},
+                PackageManager.PERMISSION_GRANTED);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if(Environment.isExternalStorageManager()){
+                //choosing csv file
+                Intent intent=new Intent();
+                intent.setType("text/*");
+                intent.putExtra(Intent.EXTRA_AUTO_LAUNCH_SINGLE_CHOICE,true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select CSV File "),666);
+            }
+            else{
+                //getting permission from user
+                Intent intent=new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                Uri uri=Uri.fromParts("package",getPackageName(),null);
+                startActivity(intent);
+            }
+        }
+        else{
+            // for below android 11
+
+            Intent intent=new Intent();
+            intent.setType("text/*");
+            intent.putExtra(Intent.EXTRA_AUTO_LAUNCH_SINGLE_CHOICE,true);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+
+            ActivityCompat.requestPermissions(this,new String[] {WRITE_EXTERNAL_STORAGE},102);
+            startActivityForResult(Intent.createChooser(intent,"Select CSV File "),666);
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void addWordsFromCSV(Uri uri){
+        try {
+            InputStream in = getContentResolver().openInputStream(uri);
+            BufferedReader r = new BufferedReader(new InputStreamReader(in));
+
+            int wordsAdded = 0;
+            for (String line; (line = r.readLine()) != null; ) {
+                String[] info = line.trim().replace("\"", "").split(",");
+                boolean valid = true;
+                if(info.length != 3) {
+                    valid = false;
+                }
+                for (Word word: words) {
+                    if(info[0].trim().replace("\"", "").equals(word.getTerm())) {
+                        valid = false;
+                        break;
+                    }
+                }
+
+                if(valid) {
+                    String term = info[0].trim().replace("\"", "");
+                    String definition = info[1].trim().replace("\"", "");
+                    String description = info[2].trim().replace("\"", "");
+
+                    words.add(new Word(term, definition, description));
+                    wordsAdded++;
+                    adapter.notifyDataSetChanged();
+                }
+            }
+            Toast.makeText(this, "Added: " + wordsAdded + " words", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception ignored) {
+
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 666 && resultCode == Activity.RESULT_OK && data != null) {
+            Uri uri = data.getData();
+            Log.i("URI", uri.toString());
+            addWordsFromCSV(uri);
+        }
     }
 }

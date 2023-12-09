@@ -21,13 +21,10 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.gin.mobilefp_englishquizlet.AuthencationActivities.LoginActivity;
-import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
-import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Profile.SettingProfileActivity;
 import com.gin.mobilefp_englishquizlet.R;
+import com.gin.mobilefp_englishquizlet.GlobalUtil;
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,11 +35,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -168,9 +160,13 @@ public class ProfileFragment extends Fragment {
                 valid = false;
                 Toast.makeText(getActivity(), "Enter your new display name!", Toast.LENGTH_SHORT).show();
             }
-            else if(containsSpecialCharacters(newName)) {
+            else if(GlobalUtil.containsSpecialCharacters(newName)) {
                 valid = false;
                 Toast.makeText(getActivity(), "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
+            }
+            else if(newName.length() > 24) {
+                valid = false;
+                Toast.makeText(getActivity(), "Your name is too long!", Toast.LENGTH_SHORT).show();
             }
 
             if(valid) {
@@ -184,13 +180,6 @@ public class ProfileFragment extends Fragment {
         // Create and show the AlertDialog
         nameDialog = builder.create();
         nameDialog.show();
-    }
-
-    public boolean containsSpecialCharacters(String input) {
-        // Use Pattern and Matcher to check for special characters
-        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
-
-        return special.matcher(input).find();
     }
 
     @Override

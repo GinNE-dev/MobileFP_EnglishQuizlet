@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
 import com.gin.mobilefp_englishquizlet.Models.User;
 import com.gin.mobilefp_englishquizlet.R;
+import com.gin.mobilefp_englishquizlet.GlobalUtil;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +23,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
     AppCompatImageButton btnBack;
@@ -71,9 +70,13 @@ public class SignupActivity extends AppCompatActivity {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Your re-enter password is not match!", Toast.LENGTH_SHORT).show();
             }
-            else if(containsSpecialCharacters(name)) {
+            else if(GlobalUtil.containsSpecialCharacters(name)) {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
+            }
+            else if(name.length() > 24) {
+                isFormValid = false;
+                Toast.makeText(SignupActivity.this, "Your name is too long!", Toast.LENGTH_SHORT).show();
             }
 
             if(isFormValid) {
@@ -121,12 +124,5 @@ public class SignupActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public boolean containsSpecialCharacters(String input) {
-        // Use Pattern and Matcher to check for special characters
-        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
-
-        return special.matcher(input).find();
     }
 }

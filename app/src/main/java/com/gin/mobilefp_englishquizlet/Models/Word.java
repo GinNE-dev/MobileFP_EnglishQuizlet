@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Word implements Serializable, Parcelable {
-    String id;
     String term;
     String definition;
     String description;
@@ -17,15 +16,6 @@ public class Word implements Serializable, Parcelable {
     HashMap<String, Boolean> starredList;
 
     public Word() {
-        this.learnCounts = new HashMap<>();
-        this.starredList = new HashMap<>();
-    }
-
-    public Word(String id, String term, String definition, String description) {
-        this.id = id;
-        this.term = term;
-        this.definition = definition;
-        this.description = description;
         this.learnCounts = new HashMap<>();
         this.starredList = new HashMap<>();
     }
@@ -39,7 +29,6 @@ public class Word implements Serializable, Parcelable {
     }
 
     protected Word(Parcel in) {
-        id = in.readString();
         term = in.readString();
         definition = in.readString();
         description = in.readString();
@@ -58,14 +47,6 @@ public class Word implements Serializable, Parcelable {
             return new Word[size];
         }
     };
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getTerm() {
         return term;
@@ -108,7 +89,6 @@ public class Word implements Serializable, Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(this.getId());
         dest.writeString(this.getTerm());
         dest.writeString(this.getDefinition());
         dest.writeString(this.getDescription());
