@@ -71,15 +71,20 @@ public class DiscoverFragment extends Fragment {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                searching(newText);
-                return false;
+                if(newText.equals("")) {
+                    adapter.updateList(topics);
+                }
+                else {
+                    searching(newText);
+                }
+                return true;
             }
         });
     }
 
     private void setUpTopicList() {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
-        topicRef.addValueEventListener(new ValueEventListener() {
+        topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
