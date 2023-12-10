@@ -61,7 +61,7 @@ public class DiscoverFragment extends Fragment {
 
         swipeLayout.setOnRefreshListener(() -> {
             setUpTopicList();
-            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 500);
         });
 
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

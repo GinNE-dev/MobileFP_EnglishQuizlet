@@ -39,6 +39,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -156,6 +157,7 @@ public class TopicDetailActivity extends AppCompatActivity {
                     Folder currentFolder = folderSnap.getValue(Folder.class);
                     folders.add(currentFolder);
                 }
+                Collections.reverse(folders);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

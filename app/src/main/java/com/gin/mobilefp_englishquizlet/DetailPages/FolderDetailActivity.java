@@ -32,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FolderDetailActivity extends AppCompatActivity {
     ArrayList<Topic> topics = new ArrayList<>();
@@ -98,7 +99,7 @@ public class FolderDetailActivity extends AppCompatActivity {
                 txtviewQuantity = findViewById(R.id.txtviewQuantity);
                 txtviewQuantity.setText("" + topics.size());
 
-                adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+                adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

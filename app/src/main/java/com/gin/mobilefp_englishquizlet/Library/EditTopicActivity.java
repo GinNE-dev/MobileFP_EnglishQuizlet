@@ -30,6 +30,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
@@ -174,7 +175,7 @@ public class EditTopicActivity extends AppCompatActivity {
 
     private void setUpTopicInfo(String topicID) {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics").child(topicID);
-        topicRef.addValueEventListener(new ValueEventListener() {
+        topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

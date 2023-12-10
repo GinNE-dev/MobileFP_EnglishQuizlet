@@ -72,7 +72,7 @@ public class MyFolderFragment extends Fragment {
 
         swipeLayout.setOnRefreshListener(() -> {
             setUpFolderList();
-            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 500);
         });
     }
 

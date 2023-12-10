@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MyTopicFragment extends Fragment {
     MaterialButton btnAddFirstTopic;
@@ -78,7 +79,7 @@ public class MyTopicFragment extends Fragment {
 
         swipeLayout.setOnRefreshListener(() -> {
             setUpTopicList();
-            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 500);
         });
     }
 
@@ -98,6 +99,7 @@ public class MyTopicFragment extends Fragment {
                     }
                 }
 
+                Collections.reverse(topics);
                 adapter.notifyDataSetChanged();
 
                 if(topics.size() > 0) {
