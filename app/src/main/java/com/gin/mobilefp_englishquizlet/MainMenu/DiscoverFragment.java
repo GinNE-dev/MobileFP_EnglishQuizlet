@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.R;
 import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForTopics;
+import com.google.android.material.search.SearchBar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,7 @@ public class DiscoverFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterForTopics adapter;
     SwipeRefreshLayout swipeLayout;
+    SearchView searchBar;
     ArrayList<Topic> topics = new ArrayList<>();
     public DiscoverFragment() {
         // Required empty public constructor
@@ -48,6 +51,7 @@ public class DiscoverFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         swipeLayout = view.findViewById(R.id.swipeLayout);
+        searchBar = view.findViewById(R.id.searchBar);
 
         adapter = new AdapterForTopics(getActivity(), topics);
         recyclerView.setAdapter(adapter);
@@ -58,6 +62,18 @@ public class DiscoverFragment extends Fragment {
         swipeLayout.setOnRefreshListener(() -> {
             setUpTopicList();
             new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 600);
+        });
+
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searching(newText);
+                return false;
+            }
         });
     }
 
@@ -85,5 +101,17 @@ public class DiscoverFragment extends Fragment {
 
             }
         });
+    }
+
+    private void searching(String key) {
+        ArrayList<Topic> searchingList = new ArrayList<>();
+
+        key = key.toLowerCase();
+        for (Topic topic: topics) {
+            if(topic.getTitle().toLowerCase().contains(key) || topic.getDescription().toLowerCase().contains(key)) {
+                searchingList.add(topic);
+            }
+        }
+        adapter.updateList(searchingList);
     }
 }

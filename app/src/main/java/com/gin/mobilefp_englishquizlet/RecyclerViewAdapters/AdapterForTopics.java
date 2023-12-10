@@ -119,6 +119,12 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateList(ArrayList<Topic> newList) {
+        topics = newList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         //count
