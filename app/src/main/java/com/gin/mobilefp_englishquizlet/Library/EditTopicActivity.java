@@ -30,6 +30,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gin.mobilefp_englishquizlet.GlobalUtil;
 import com.gin.mobilefp_englishquizlet.MainMenu.MainActivity;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
 import com.gin.mobilefp_englishquizlet.Models.Word;
@@ -238,6 +239,7 @@ public class EditTopicActivity extends AppCompatActivity {
             }
 
             if(valid) {
+                if(description.equals("")) description = "none";
                 Word newWord = new Word(term, definition, description);
                 words.add(newWord);
 
@@ -281,6 +283,8 @@ public class EditTopicActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+
 
     private void showCSVPickerDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

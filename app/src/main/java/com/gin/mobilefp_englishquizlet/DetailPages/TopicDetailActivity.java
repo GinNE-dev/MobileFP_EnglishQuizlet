@@ -1,7 +1,11 @@
 package com.gin.mobilefp_englishquizlet.DetailPages;
 
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +18,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.gin.mobilefp_englishquizlet.GlobalUtil;
 import com.gin.mobilefp_englishquizlet.Library.EditTopicActivity;
 import com.gin.mobilefp_englishquizlet.Models.Folder;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
@@ -30,6 +36,7 @@ import com.gin.mobilefp_englishquizlet.StudyMode.FlashCard.FlashcardModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.MultipleChoiceModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.TypoModeLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,8 +45,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -227,12 +237,18 @@ public class TopicDetailActivity extends AppCompatActivity {
         bottomSheetDialog.setContentView(bottomSheetView);
 
         // Find and set up your buttons or other views inside the bottom sheet
-        Button btnAddToFolder = bottomSheetView.findViewById(R.id.btnAddToFolder);
-        Button btnEditTopic = bottomSheetView.findViewById(R.id.btnEditTopic);
+        MaterialButton btnAddToFolder = bottomSheetView.findViewById(R.id.btnAddToFolder);
+        MaterialButton btnExport = bottomSheetDialog.findViewById(R.id.btnExport);
+        MaterialButton btnEditTopic = bottomSheetView.findViewById(R.id.btnEditTopic);
 
         btnAddToFolder.setOnClickListener(v -> {
             showFolderSelectionDialog(topicID);
-            bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
+            bottomSheetDialog.dismiss();
+        });
+
+        btnExport.setOnClickListener(v -> {
+            exportWords();
+            bottomSheetDialog.dismiss();
         });
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -247,11 +263,7 @@ public class TopicDetailActivity extends AppCompatActivity {
             });
         }
         else {
-            btnEditTopic.setText("View topic info");
-            btnEditTopic.setOnClickListener(v -> {
-                // Handle button click for editing topic
-                bottomSheetDialog.dismiss(); // Dismiss the bottom sheet if needed
-            });
+            btnEditTopic.setVisibility(View.GONE);
         }
 
         bottomSheetDialog.show();
@@ -280,4 +292,28 @@ public class TopicDetailActivity extends AppCompatActivity {
 
         builder.show();
     }
+
+    private void exportWords() {
+        StringBuilder fileContent = new StringBuilder();
+        for (Word word: words) {
+            fileContent
+                    .append(word.getTerm())
+                    .append(",")
+                    .append(word.getDefinition())
+                    .append(",")
+                    .append(word.getDescription())
+                    .append("\n");
+        }
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date date = new Date();
+        String fileName = "exported_topic_" + dateFormat.format(date) + ".csv";
+        Log.i("FILE NAME", fileName);
+
+        GlobalUtil.writeFileToDownloadDirectory(fileContent.toString(), fileName);
+
+        Toast.makeText(this, "Exported file to sdcard/Download/", Toast.LENGTH_SHORT).show();
+    }
+
+
 }

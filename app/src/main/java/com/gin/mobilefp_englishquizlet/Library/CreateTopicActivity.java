@@ -164,6 +164,7 @@ public class CreateTopicActivity extends AppCompatActivity {
             }
 
             if(valid) {
+                if(description.equals("")) description = "none";
                 Word newWord = new Word(term, definition, description);
                 words.add(newWord);
 

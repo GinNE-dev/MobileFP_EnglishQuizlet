@@ -31,6 +31,21 @@
             </com.google.android.material.button.MaterialButton>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnExport"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Export words"
+                android:fontFamily="@font/baloo"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#375287"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground">
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditTopic"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -44,6 +59,8 @@
                 android:gravity="left"
                 android:background="?attr/selectableItemBackground">
             </com.google.android.material.button.MaterialButton>
+
+
 
         </LinearLayout>
 
