@@ -27,8 +27,6 @@ public class GlobalUtil {
             fos.write(fileContent.getBytes());
             // Close the stream
             fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
