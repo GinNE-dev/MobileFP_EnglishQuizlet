@@ -1,4 +1,4 @@
-package com.gin.mobilefp_englishquizlet.ViewPager;
+package com.gin.mobilefp_englishquizlet.DetailPages;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.gin.mobilefp_englishquizlet.Fragment.FragmentFastestCompletion;
+import com.gin.mobilefp_englishquizlet.DetailPages.RankTypoFragment;
 import com.gin.mobilefp_englishquizlet.Fragment.FragmentMostFrequent;
-import com.gin.mobilefp_englishquizlet.Fragment.FragmentTopScorer;
+import com.gin.mobilefp_englishquizlet.DetailPages.RankMultipleFragment;
 
 public class ViewPagerAdapterRanking extends FragmentStatePagerAdapter {
 
@@ -20,21 +20,16 @@ public class ViewPagerAdapterRanking extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0:
-                return new FragmentTopScorer();
-            case 1:
-                return new FragmentFastestCompletion();
-            case 2:
-                return new FragmentMostFrequent();
-
             default:
-                return new FragmentTopScorer();
+                return new RankMultipleFragment();
+            case 1:
+                return new RankTypoFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable
@@ -44,13 +39,10 @@ public class ViewPagerAdapterRanking extends FragmentStatePagerAdapter {
         
         switch (position){
             case 0:
-                title = "Top Scorer";
+                title = "Multiple Choice";
                 break;
             case 1:
-                title = "Fastest";
-                break;
-            case 2:
-                title = "Frequently";
+                title = "Type Words";
                 break;
         }
         return title;

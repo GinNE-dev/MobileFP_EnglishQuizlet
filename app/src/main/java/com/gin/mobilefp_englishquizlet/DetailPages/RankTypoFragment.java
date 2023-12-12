@@ -1,4 +1,4 @@
-package com.gin.mobilefp_englishquizlet.Fragment;
+package com.gin.mobilefp_englishquizlet.DetailPages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.gin.mobilefp_englishquizlet.R;
 
-public class FragmentFastestCompletion extends Fragment {
+public class RankTypoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

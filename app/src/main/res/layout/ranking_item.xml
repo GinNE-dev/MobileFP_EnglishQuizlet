@@ -2,18 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_mytopic"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        >
+        app:cardElevation="10dp"
+        android:layout_marginBottom="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +24,7 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgUserAva"
                     app:civ_border_color="#00F8FF"
                     app:civ_border_width="1dp"
                     android:layout_width="36dp"
@@ -35,6 +34,7 @@
                 </de.hdodenhof.circleimageview.CircleImageView>
 
                 <TextView
+                    android:id="@+id/txtviewUsername"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -63,6 +63,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/txtviewScore"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -74,70 +75,7 @@
                 </TextView>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:text="Times:"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="18dp"
-                    android:textColor="#375287">
-
-                </TextView>
-
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="15"
-                    android:gravity="center"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="18dp">
-
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:text="Recent test:"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="18dp"
-                    android:textColor="#375287">
-
-                </TextView>
-
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="7h30"
-                    android:gravity="center"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="18dp">
-
-                </TextView>
-
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="7/11/2023"
-                    android:gravity="center"
-                    android:fontFamily="@font/baloo"
-                    android:textSize="18dp">
-
-                </TextView>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -155,6 +93,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/txtviewTime"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

@@ -95,7 +95,7 @@
             android:name=".MainMenu.DiscoverFragment"
             android:exported="true"></activity>
         <activity
-            android:name=".Library.RankingLayout"
+            android:name=".DetailPages.RankingActivity"
             android:exported="true"></activity>
 
         <meta-data

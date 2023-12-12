@@ -65,6 +65,7 @@ public class TopicDetailActivity extends AppCompatActivity {
     CircleImageView imgAvatar;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnOption;
+    AppCompatImageButton btnRank;
     private View flashCardLearn;
     private View multipleChoiceLearn;
     private View typeWordLearn;
@@ -84,6 +85,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         imgAvatar = findViewById(R.id.imgAvatar);
         btnBack = findViewById(R.id.btnBack);
         btnOption = findViewById(R.id.btnOption);
+        btnRank = findViewById(R.id.btnRank);
         flashCardLearn = findViewById(R.id.panel_flashcard_learning_mode);
         multipleChoiceLearn = findViewById(R.id.panel_multiple_choice_learning_mode);
         typeWordLearn = findViewById(R.id.panel_type_word_learning_mode);
@@ -108,6 +110,12 @@ public class TopicDetailActivity extends AppCompatActivity {
 
         btnOption.setOnClickListener(v -> {
             showOptionDialog(topicID, topicOwner);
+        });
+
+        btnRank.setOnClickListener(v -> {
+            Intent ranking = new Intent(this, RankingActivity.class);
+            ranking.putExtra("topicid", topicID);
+            startActivity(ranking);
         });
 
         registerEvents();
@@ -314,6 +322,4 @@ public class TopicDetailActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Exported file to sdcard/Download/", Toast.LENGTH_SHORT).show();
     }
-
-
 }

@@ -17,10 +17,11 @@
             android:layout_margin="10dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/baseline_keyboard_backspace_24"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_keyboard_backspace_24">
 
             </androidx.appcompat.widget.AppCompatImageButton>
 
