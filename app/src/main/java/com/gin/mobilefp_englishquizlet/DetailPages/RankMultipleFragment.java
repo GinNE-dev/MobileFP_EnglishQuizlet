@@ -74,6 +74,8 @@ public class RankMultipleFragment extends Fragment {
                     }
                 }
 
+                records.sort(new Record.RecordComparator());
+
                 adapter.notifyDataSetChanged();
             }
 

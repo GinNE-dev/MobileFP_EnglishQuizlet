@@ -1,9 +1,10 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
+import java.util.Comparator;
 import java.util.Date;
 
 public class Record {
-    public enum LearnMode{
+    public enum LearnMode {
         MultipleChoice,
         Typo
     }
@@ -59,5 +60,20 @@ public class Record {
 
     public void setArchivedBy(String archivedBy) {
         this.archivedBy = archivedBy;
+    }
+
+    public static class RecordComparator implements Comparator<Record> {
+        @Override
+        public int compare(Record record1, Record record2) {
+            // Compare by score
+            int scoreComparison = Integer.compare(record2.getScore(), record1.getScore());
+
+            // If scores are the same, compare by timeConsumed
+            if (scoreComparison == 0) {
+                return Long.compare(record1.getTimeConsumed(), record2.getTimeConsumed());
+            }
+
+            return scoreComparison;
+        }
     }
 }
