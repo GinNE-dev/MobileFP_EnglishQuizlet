@@ -164,7 +164,7 @@ public class ProfileFragment extends Fragment {
                 valid = false;
                 Toast.makeText(getActivity(), "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
             }
-            else if(newName.length() > 24) {
+            else if(newName.length() > 18) {
                 valid = false;
                 Toast.makeText(getActivity(), "Your name is too long!", Toast.LENGTH_SHORT).show();
             }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,7 +55,7 @@ public class AdapterForRecords extends RecyclerView.Adapter<AdapterForRecords.My
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String minuteString = decimalFormat.format(minute);
 
-        holder.txtviewTime.setText(minuteString + " seconds");
+        holder.txtviewTime.setText(minuteString + "s");
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(records.get(position).getArchivedBy());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,6 +75,20 @@ public class AdapterForRecords extends RecyclerView.Adapter<AdapterForRecords.My
 
             }
         });
+
+        holder.txtviewRank.setText("Rank " + (position+1));
+        if(position == 0) {
+            holder.imgRank.setImageResource(R.drawable.rank_1st);
+        }
+        if(position == 1) {
+            holder.imgRank.setImageResource(R.drawable.rank_2nd);
+        }
+        if(position == 2) {
+            holder.imgRank.setImageResource(R.drawable.rank_3rd);
+        }
+        if(position >= 3) {
+            holder.imgRank.setImageResource(R.drawable.rank_4th);
+        }
     }
 
     @Override
@@ -83,8 +98,9 @@ public class AdapterForRecords extends RecyclerView.Adapter<AdapterForRecords.My
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtviewUsername, txtviewScore, txtviewTime;
+        TextView txtviewUsername, txtviewScore, txtviewTime, txtviewRank;
         CircleImageView imgUserAva;
+        ImageView imgRank;
         CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -93,7 +109,9 @@ public class AdapterForRecords extends RecyclerView.Adapter<AdapterForRecords.My
             txtviewUsername = itemView.findViewById(R.id.txtviewUsername);
             txtviewScore = itemView.findViewById(R.id.txtviewScore);
             txtviewTime = itemView.findViewById(R.id.txtviewTime);
+            txtviewRank = itemView.findViewById(R.id.txtviewRank);
             imgUserAva = itemView.findViewById(R.id.imgUserAva);
+            imgRank = itemView.findViewById(R.id.imgRank);
             cardView = itemView.findViewById(R.id.cardView);
         }
     }

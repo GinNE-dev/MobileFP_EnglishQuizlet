@@ -74,7 +74,7 @@ public class SignupActivity extends AppCompatActivity {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Your name cannot contains numbers or special characters!", Toast.LENGTH_SHORT).show();
             }
-            else if(name.length() > 24) {
+            else if(name.length() > 18) {
                 isFormValid = false;
                 Toast.makeText(SignupActivity.this, "Your name is too long!", Toast.LENGTH_SHORT).show();
             }
