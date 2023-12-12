@@ -56,8 +56,6 @@ public class AdapterForRecords extends RecyclerView.Adapter<AdapterForRecords.My
 
         holder.txtviewTime.setText(minuteString + " seconds");
 
-        holder.txtviewUsername.setText(records.get(position).getArchivedBy());
-
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(records.get(position).getArchivedBy());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

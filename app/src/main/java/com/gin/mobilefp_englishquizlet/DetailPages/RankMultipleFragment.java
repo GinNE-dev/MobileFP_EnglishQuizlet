@@ -2,6 +2,7 @@ package com.gin.mobilefp_englishquizlet.DetailPages;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.gin.mobilefp_englishquizlet.Models.Record;
 import com.gin.mobilefp_englishquizlet.Models.Topic;
@@ -31,6 +33,7 @@ public class RankMultipleFragment extends Fragment {
     ArrayList<Record> records = new ArrayList<>();
     AdapterForRecords adapter;
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,17 +45,19 @@ public class RankMultipleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String topicID = "";
-
-        if (getArguments() != null) {
-            topicID = getArguments().getString("topicid");
-        }
+        String topicID = getArguments().getString("topicid");
 
         recyclerView = view.findViewById(R.id.recyclerView);
+        swipeLayout = view.findViewById(R.id.swipeLayout);
 
         adapter = new AdapterForRecords(getActivity(), records);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        swipeLayout.setOnRefreshListener(() -> {
+            setUpRecordList(topicID);
+            new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 500);
+        });
 
         setUpRecordList(topicID);
     }
