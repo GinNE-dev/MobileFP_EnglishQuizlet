@@ -184,10 +184,13 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
             int correct = 0;
             for (Integer result : mResults) correct += result;
             int score = Math.round(correct*100.0f/mResults.size());
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String userId = user.getUid();
-            FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("scoreRecords")
-                    .push().setValue(new Record(userId, score, Record.LearnMode.MultipleChoice, new Date().getTime() - mStartTime));
+
+            if(!mIsLearnStarredOnly){
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = user.getUid();
+                FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("scoreRecords")
+                .push().setValue(new Record(userId, score, Record.LearnMode.MultipleChoice, new Date().getTime() - mStartTime));
+            }
 
             Intent intentResult = new Intent(MultipleChoiceModeLayout.this, ResultsLayout.class);
             intentResult.putExtra("correct", correct);
