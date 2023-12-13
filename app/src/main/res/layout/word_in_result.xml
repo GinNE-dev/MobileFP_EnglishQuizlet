@@ -33,7 +33,6 @@
                 <TextView
                     android:gravity="center"
                     android:id="@+id/text_view_term"
-                    android:paddingLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="English"
@@ -59,7 +58,6 @@
 <!--                </TextView>-->
                 <TextView
                     android:id="@+id/text_view_definition"
-                    android:paddingLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="tiếng Anh"
@@ -74,15 +72,16 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
                 <TextView
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Your answer"
                     android:textColor="#F9F871"
                     android:textSize="14dp"
-                    android:fontFamily="@font/baloo">
+                    android:fontFamily="@font/baloo"
+                    android:textAlignment="center">
                 </TextView>
                 <TextView
                     android:id="@+id/text_view_your_answer"

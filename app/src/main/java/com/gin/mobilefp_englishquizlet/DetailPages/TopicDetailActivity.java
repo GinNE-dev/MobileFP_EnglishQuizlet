@@ -96,6 +96,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         mTopicID = topicID;
 
         adapterWords = new AdapterForViewWords(this, words);
+        adapterWords.setTopicId(topicID);
         recyclerViewWords.setAdapter(adapterWords);
         recyclerViewWords.setLayoutManager(new LinearLayoutManager(this));
 

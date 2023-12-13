@@ -1,7 +1,5 @@
 package com.gin.mobilefp_englishquizlet.StudyMode;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,8 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class TypoModeLayout extends AppCompatActivity {
@@ -201,11 +196,11 @@ public class TypoModeLayout extends AppCompatActivity {
         mAnswers.add(answer);
         Word word = mWords.get(mResults.size());
         String actualAnswer = mIsRevert ? word.getTerm() : word.getDefinition();
-        //Chỉ chấp nhận câu trả lời hoặc là đúng hết dấu câu hoặc là hoàn toàn không có dấu
+        //Only accept answers that are either correct with all diacritics or no diacritics at all
         String normalizedActualAnswer = SimpleUTF8Normalizer.normalize(actualAnswer.trim());
         boolean isCorrect = answer.equals(actualAnswer) || answer.equals(normalizedActualAnswer);
 
-        //Không quan tâm dấu câu
+        //Accept all
         //boolean isCorrect = SimpleUTF8Normalizer.equals(answer.trim(), actualAnswer.trim());
         mResults.add(isCorrect ? 1 : 0);
 
