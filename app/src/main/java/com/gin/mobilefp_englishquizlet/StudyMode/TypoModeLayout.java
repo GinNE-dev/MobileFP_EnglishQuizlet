@@ -1,6 +1,7 @@
 package com.gin.mobilefp_englishquizlet.StudyMode;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +25,7 @@ import com.gin.mobilefp_englishquizlet.RequestHelper;
 import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
 import com.gin.mobilefp_englishquizlet.Utils.ResultPopup;
 import com.gin.mobilefp_englishquizlet.Utils.SimpleUTF8Normalizer;
+import com.gin.mobilefp_englishquizlet.Utils.SoundResult;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,6 +58,7 @@ public class TypoModeLayout extends AppCompatActivity {
     private boolean mIsRevert = false;
     private boolean mIsLearnStarredOnly = false;
     private long mStartTime;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +76,6 @@ public class TypoModeLayout extends AppCompatActivity {
         mTopicID = getIntent().getStringExtra("topic_id");
         initComponents();
         registerEvents();
-
     }
 
     private void initViews(){
@@ -186,7 +189,7 @@ public class TypoModeLayout extends AppCompatActivity {
 
                     @Override
                     public void onInitializationFailed() {
-
+                        Toast.makeText(TypoModeLayout.this, R.string.message_speaker_not_available, Toast.LENGTH_SHORT).show();
                     }
                 });
             });
@@ -208,8 +211,10 @@ public class TypoModeLayout extends AppCompatActivity {
         mResults.add(isCorrect ? 1 : 0);
 
         if(isCorrect){
+            SoundResult.playSoundEffect(this, SoundResult.Type.Correct);
             ResultPopup.show(this, ResultPopup.PopupType.CorrectAnswer, ResultPopup.DURATION_SHORT);
         }else{
+            SoundResult.playSoundEffect(this, SoundResult.Type.Incorrect);
             ResultPopup.show(this, ResultPopup.PopupType.IncorrectAnswer, ResultPopup.DURATION_SHORT);
         }
 

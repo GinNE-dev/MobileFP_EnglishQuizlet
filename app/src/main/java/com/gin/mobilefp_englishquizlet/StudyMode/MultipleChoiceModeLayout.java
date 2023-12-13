@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SyncRequest;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -33,6 +34,7 @@ import com.gin.mobilefp_englishquizlet.RequestHelper;
 import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
 import com.gin.mobilefp_englishquizlet.Utils.ResultPopup;
 import com.gin.mobilefp_englishquizlet.Utils.SimpleUTF8Normalizer;
+import com.gin.mobilefp_englishquizlet.Utils.SoundResult;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -130,10 +132,13 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         mResults.add( isCorrect ? 1 : 0);
 
         if(isCorrect){
+            SoundResult.playSoundEffect(this, SoundResult.Type.Correct);
             ResultPopup.show(this, ResultPopup.PopupType.CorrectAnswer, ResultPopup.DURATION_SHORT);
         }else{
+            SoundResult.playSoundEffect(this, SoundResult.Type.Incorrect);
             ResultPopup.show(this, ResultPopup.PopupType.IncorrectAnswer, ResultPopup.DURATION_SHORT);
         }
+
 
         setupQuestion(mResults.size(), mIsRevert);
     }
@@ -235,7 +240,7 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
 
                     @Override
                     public void onInitializationFailed() {
-
+                        Toast.makeText(MultipleChoiceModeLayout.this, R.string.message_speaker_not_available, Toast.LENGTH_SHORT).show();
                     }
                 });
             });
