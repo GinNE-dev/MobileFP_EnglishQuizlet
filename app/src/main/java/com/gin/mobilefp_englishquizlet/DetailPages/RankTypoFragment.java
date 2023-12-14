@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class RankTypoFragment extends Fragment {
     ArrayList<Record> records = new ArrayList<>();
@@ -71,15 +72,24 @@ public class RankTypoFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 records.clear();
+                ArrayList<Record> allRecords = new ArrayList<>();
 
                 for(DataSnapshot recordSnap: snapshot.getChildren()) {
                     Record currentRecord = recordSnap.getValue(Record.class);
                     if(currentRecord.getLearnMode().equals(Record.LearnMode.Typo)) {
-                        records.add(currentRecord);
+                        allRecords.add(currentRecord);
                     }
                 }
 
-                records.sort(new Record.RecordComparator());
+                allRecords.sort(new Record.RecordComparator());
+
+                HashMap<String, Boolean> userAppeared = new HashMap<>();
+                for (Record record: allRecords) {
+                    if(!userAppeared.containsKey(record.getArchivedBy())) {
+                        userAppeared.put(record.getArchivedBy(), true);
+                        records.add(record);
+                    }
+                }
 
                 adapter.notifyDataSetChanged();
             }
