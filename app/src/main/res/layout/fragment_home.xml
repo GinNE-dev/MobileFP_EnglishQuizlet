@@ -50,6 +50,7 @@
             </LinearLayout>
 
             <com.google.android.material.search.SearchBar
+                android:id="@+id/btnSearch"
                 android:layout_marginTop="-5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnStart"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_marginLeft="15dp"
@@ -152,6 +154,7 @@
                     </TextView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnMyTopic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -231,6 +234,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnDiscover"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -308,6 +312,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnCreateTopic"
                         android:layout_width="match_parent"
                         android:layout_height="85dp"
                         android:layout_marginLeft="15dp"

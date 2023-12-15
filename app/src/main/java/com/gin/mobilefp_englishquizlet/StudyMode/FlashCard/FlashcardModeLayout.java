@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class FlashcardModeLayout extends AppCompatActivity {
-
+    AppCompatImageButton btnExit;
     AppCompatImageButton btnBack;
     AppCompatImageButton btnNext;
     TextView currentQuestion;
@@ -53,11 +53,15 @@ public class FlashcardModeLayout extends AppCompatActivity {
         setContentView(R.layout.flashcard_mode_layout);
         initViews();
         btnOptions = findViewById(R.id.btn_FlashCardsMode_Options);
+        btnExit = findViewById(R.id.btnExit);
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
             }
+        });
+        btnExit.setOnClickListener(v -> {
+            finish();
         });
 
         viewPagerFlashcard = findViewById(R.id.viewpager_flashcard);

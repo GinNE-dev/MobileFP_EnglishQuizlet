@@ -47,23 +47,12 @@
                         android:gravity="center"
                         android:paddingLeft="16dp"
                         android:paddingTop="2dp"
-                        android:paddingRight="5dp"
+                        android:paddingRight="16dp"
                         android:paddingBottom="2dp"
-                        android:text="A lot of"
+                        android:text="Folder"
                         android:textColor="@color/white"></TextView>
 
-                    <TextView
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:paddingRight="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="topics"
-                        android:textColor="@color/white"
-                        android:background="#330867"
-                        android:fontFamily="@font/baloo">
-                    </TextView>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

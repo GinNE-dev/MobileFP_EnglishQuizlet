@@ -22,11 +22,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextToSpeechHelper.initialize(this, new TextToSpeechHelper.OnInitializationListener() {
+            @Override
+            public void onInitialized() {
+                // TextToSpeech initialized successfully
+                TextToSpeechHelper.speak("Welcome to VBD English!");
+            }
+            @Override
+            public void onInitializationFailed() {
+            }
+        });
+
         viewPager = findViewById(R.id.viewPager);
         bottomNav = findViewById(R.id.bottomNav);
 
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Not needed for updating BottomNavigationView
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // Update the selected item in the BottomNavigationView when the page changes
+                bottomNav.getMenu().getItem(position).setChecked(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Not needed for updating BottomNavigationView
+            }
+        });
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             // Handle BottomNavigationView item clicks

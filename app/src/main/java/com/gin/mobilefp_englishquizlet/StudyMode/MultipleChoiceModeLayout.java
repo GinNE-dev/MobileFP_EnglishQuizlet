@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MultipleChoiceModeLayout extends AppCompatActivity {
-    AppCompatImageButton btnOptions;
+    AppCompatImageButton btnOptions, btnBack;
     private ArrayList<Word> mWords;
     private ArrayList<Integer> mResults;
     private ArrayList<String> mAnswers;
@@ -77,11 +77,15 @@ public class MultipleChoiceModeLayout extends AppCompatActivity {
         initViews();
 
         btnOptions = findViewById(R.id.btn_MultipleChoicesMode_Options);
+        btnBack = findViewById(R.id.btnBack);
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
             }
+        });
+        btnBack.setOnClickListener(v -> {
+            finish();
         });
 
         mTopicID = getIntent().getStringExtra("topic_id");

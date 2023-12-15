@@ -9,26 +9,32 @@ public class TextToSpeechHelper {
     private static TextToSpeech textToSpeech;
 
     public static void initialize(Context context, final OnInitializationListener listener) {
-        textToSpeech = new TextToSpeech(context, status -> {
-            if (status == TextToSpeech.SUCCESS) {
-                int result = textToSpeech.setLanguage(Locale.US);
+        if (textToSpeech == null) {
+            textToSpeech = new TextToSpeech(context, status -> {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = textToSpeech.setLanguage(Locale.US);
 
-                if (result == TextToSpeech.LANG_MISSING_DATA ||
-                        result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    if (listener != null) {
-                        listener.onInitializationFailed();
+                    if (result == TextToSpeech.LANG_MISSING_DATA ||
+                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        if (listener != null) {
+                            listener.onInitializationFailed();
+                        }
+                    } else {
+                        if (listener != null) {
+                            listener.onInitialized();
+                        }
                     }
                 } else {
                     if (listener != null) {
-                        listener.onInitialized();
+                        listener.onInitializationFailed();
                     }
                 }
-            } else {
-                if (listener != null) {
-                    listener.onInitializationFailed();
-                }
+            });
+        } else {
+            if (listener != null) {
+                listener.onInitialized();
             }
-        });
+        }
     }
 
     public static void speak(String text) {

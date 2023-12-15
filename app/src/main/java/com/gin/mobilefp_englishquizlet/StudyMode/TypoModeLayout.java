@@ -41,7 +41,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class TypoModeLayout extends AppCompatActivity {
-    AppCompatImageButton btnOptions;
+    AppCompatImageButton btnOptions, btnBack;
     private String mTopicID;
     private ArrayList<Word> mWords;
     private ArrayList<Integer> mResults;
@@ -66,11 +66,15 @@ public class TypoModeLayout extends AppCompatActivity {
         initViews();
 
         btnOptions = findViewById(R.id.btn_Typo_Options);
+        btnBack = findViewById(R.id.btnBack);
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
             }
+        });
+        btnBack.setOnClickListener(v -> {
+            finish();
         });
 
         mTopicID = getIntent().getStringExtra("topic_id");

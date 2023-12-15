@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/baloo"
-                    android:text="ngtiendat24002@gmail.com"></TextView>
+                    android:text="youremail@gmail.com"></TextView>
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/baloo"
-                    android:text="ngtiendat24002"></TextView>
+                    android:text="Your Username"></TextView>
 
                 <TextView
                     android:layout_marginTop="15dp"
