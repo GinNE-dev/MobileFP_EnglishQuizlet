@@ -97,7 +97,7 @@
             android:gravity="left"
             android:text="Description: This is the best topic to learn English"
             android:textColor="@color/white"
-            android:textSize="20dp">
+            android:textSize="18dp">
         </TextView>
 
         <LinearLayout
@@ -113,24 +113,24 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
-                android:textSize="24dp">
+                android:textSize="26dp">
             </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Times study: "
-                android:fontFamily="@font/baloo"
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/time_svgrepo_com"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/white"
                 android:textSize="16dp">
-            </TextView>
+            </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:fontFamily="@font/baloo"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
