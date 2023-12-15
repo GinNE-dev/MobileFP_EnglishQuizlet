@@ -43,6 +43,7 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
         Word wordItemTopic = mListQuestion.get(position);
 
         FragmentQuestion fragmentQuestion = new FragmentQuestion();
+
         Bundle bundle = new Bundle();
         bundle.putSerializable("question_object", wordItemTopic);
         bundle.putBoolean("is_revert", mIsRevert);

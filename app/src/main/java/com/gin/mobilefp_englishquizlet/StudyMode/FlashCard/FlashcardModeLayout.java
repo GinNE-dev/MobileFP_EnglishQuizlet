@@ -187,7 +187,6 @@ public class FlashcardModeLayout extends AppCompatActivity {
                 ((ViewPagerAdapterFlashcard) viewPagerFlashcard.getAdapter()).mIsRevert = false;
 
                 viewPagerFlashcard.getAdapter().notifyDataSetChanged();
-                viewPagerFlashcard.setOffscreenPageLimit(0);
             }
 
             radioButtonTerm.setChecked(true);
@@ -200,7 +199,6 @@ public class FlashcardModeLayout extends AppCompatActivity {
                 ((ViewPagerAdapterFlashcard) viewPagerFlashcard.getAdapter()).mIsRevert = true;
 
                 viewPagerFlashcard.getAdapter().notifyDataSetChanged();
-                viewPagerFlashcard.setOffscreenPageLimit(0);
             }
 
             radioButtonTerm.setChecked(false);
