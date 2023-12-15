@@ -1,8 +1,10 @@
 package com.gin.mobilefp_englishquizlet.Models;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -101,5 +103,33 @@ public class Topic {
 
     public void setLastUpdatedDate(String lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    public int getScoreRecordsSize() {
+        return scoreRecords.size();
+    }
+
+    public Date getLastUpdatedDateAsDate() {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            return dateFormat.parse(lastUpdatedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; // Handle parsing exception as needed
+        }
+    }
+
+    public static class ScoreRecordsComparator implements Comparator<Topic> {
+        @Override
+        public int compare(Topic topic1, Topic topic2) {
+            return Integer.compare(topic2.getScoreRecordsSize(), topic1.getScoreRecordsSize());
+        }
+    }
+
+    public static class LastUpdatedDateComparator implements Comparator<Topic> {
+        @Override
+        public int compare(Topic topic1, Topic topic2) {
+            return topic2.getLastUpdatedDateAsDate().compareTo(topic1.getLastUpdatedDateAsDate());
+        }
     }
 }

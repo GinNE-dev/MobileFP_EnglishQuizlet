@@ -117,10 +117,6 @@ public class EditTopicActivity extends AppCompatActivity {
             String newTitle = edtxtTopicTitle.getText().toString();
             String newDescription = edtxtTopicDescription.getText().toString();
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            Date date = new Date();
-            String lastUpdatedDate = dateFormat.format(date);
-
             boolean valid = true;
             if(newTitle.equals("")) {
                 valid = false;
@@ -140,7 +136,6 @@ public class EditTopicActivity extends AppCompatActivity {
                 topicRef.child("description").setValue(edtxtTopicDescription.getText().toString());
                 topicRef.child("words").setValue(words);
                 topicRef.child("private").setValue(isPrivate);
-                topicRef.child("lastUpdatedDate").setValue(lastUpdatedDate);
 
                 Toast.makeText(EditTopicActivity.this, "Edit topic success!", Toast.LENGTH_SHORT).show();
                 finish();

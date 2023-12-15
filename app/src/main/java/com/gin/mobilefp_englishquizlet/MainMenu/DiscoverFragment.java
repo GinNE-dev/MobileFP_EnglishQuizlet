@@ -6,9 +6,13 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DiscoverFragment extends Fragment {
+    TextView txtviewSort;
+    AppCompatImageButton btnSort;
     RecyclerView recyclerView;
     AdapterForTopics adapter;
     SwipeRefreshLayout swipeLayout;
@@ -49,6 +55,8 @@ public class DiscoverFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        txtviewSort = view.findViewById(R.id.txtviewSort);
+        btnSort = view.findViewById(R.id.btnSort);
         recyclerView = view.findViewById(R.id.recyclerView);
         swipeLayout = view.findViewById(R.id.swipeLayout);
         searchBar = view.findViewById(R.id.searchBar);
@@ -57,10 +65,16 @@ public class DiscoverFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        setUpTopicList();
+        setUpTopicList("trending");
+        txtviewSort.setText("Trending Topics");
+
+        btnSort.setOnClickListener(v -> {
+            showSortDialog();
+        });
 
         swipeLayout.setOnRefreshListener(() -> {
-            setUpTopicList();
+            setUpTopicList("trending");
+            txtviewSort.setText("Trending Topics");
             new Handler().postDelayed(() -> swipeLayout.setRefreshing(false), 500);
         });
 
@@ -82,7 +96,7 @@ public class DiscoverFragment extends Fragment {
         });
     }
 
-    private void setUpTopicList() {
+    private void setUpTopicList(String sortMode) {
         DatabaseReference topicRef = FirebaseDatabase.getInstance().getReference("topics");
         topicRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -97,7 +111,13 @@ public class DiscoverFragment extends Fragment {
                     }
                 }
 
-                Collections.reverse(topics);
+                if(sortMode.equals("trending")) {
+                    topics.sort(new Topic.ScoreRecordsComparator());
+                }
+                if(sortMode.equals("newest")) {
+                    topics.sort(new Topic.LastUpdatedDateComparator());
+                }
+
                 adapter.notifyDataSetChanged();
             }
 
@@ -118,5 +138,25 @@ public class DiscoverFragment extends Fragment {
             }
         }
         adapter.updateList(searchingList);
+    }
+
+    private void showSortDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Sort criteria");
+
+        String[] options = {"Trending Topics", "Newest Topics"};
+
+        builder.setItems(options, (dialog, which) -> {
+            String selectedOption = options[which];
+            if(selectedOption.equals("Trending Topics")) {
+                setUpTopicList("trending");
+                txtviewSort.setText("Trending Topics");
+            }
+            if(selectedOption.equals("Newest Topics")) {
+                setUpTopicList("newest");
+                txtviewSort.setText("Newest Topics");
+            }
+        });
+        builder.show();
     }
 }

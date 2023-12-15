@@ -95,6 +95,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         String topicOwner = getInfo.getStringExtra("owner");
         mTopicID = topicID;
 
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         adapterWords = new AdapterForViewWords(this, words);
         adapterWords.setTopicId(topicID);
         recyclerViewWords.setAdapter(adapterWords);

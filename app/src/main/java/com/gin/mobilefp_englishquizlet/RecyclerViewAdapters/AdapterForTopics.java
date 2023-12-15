@@ -70,6 +70,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
         else {
             holder.iconPrivate.setVisibility(View.INVISIBLE);
         }
+        holder.txtviewAttempts.setText(topics.get(position).getScoreRecordsSize() + "");
 
         holder.cardView.setOnClickListener(v -> {
             Intent goToDetail = new Intent(context, TopicDetailActivity.class);
@@ -132,7 +133,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtviewTitle, txtviewTermCount, txtviewOwner;
+        TextView txtviewTitle, txtviewTermCount, txtviewOwner, txtviewAttempts;
         CardView cardView;
         AppCompatImageButton iconPrivate;
         CircleImageView imgAvatar;
@@ -143,6 +144,7 @@ public class AdapterForTopics extends RecyclerView.Adapter<AdapterForTopics.MyVi
             txtviewTitle = itemView.findViewById(R.id.txtviewTitle);
             txtviewTermCount = itemView.findViewById(R.id.txtviewTermCount);
             txtviewOwner = itemView.findViewById(R.id.txtviewOwner);
+            txtviewAttempts = itemView.findViewById(R.id.txtviewAttempts);
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
             iconPrivate = itemView.findViewById(R.id.iconPrivate);
             cardView = itemView.findViewById(R.id.cardView);

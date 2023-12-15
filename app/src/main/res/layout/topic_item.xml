@@ -123,16 +123,18 @@
                 android:orientation="horizontal"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp">
-                <TextView
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Times study: "
-                    android:fontFamily="@font/baloo"
-                    android:textSize="16dp">
-
-                </TextView>
-                <TextView
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/baseline_bolt_24"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+                </androidx.appcompat.widget.AppCompatImageButton>
+                <TextView
+                    android:id="@+id/txtviewAttempts"
+                    android:layout_marginLeft="0dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"

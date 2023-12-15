@@ -2,6 +2,7 @@ package com.gin.mobilefp_englishquizlet.RecyclerViewAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,13 +105,14 @@ public class AdapterForViewWords extends RecyclerView.Adapter<AdapterForViewWord
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtviewTerm, txtviewDefinition, txtviewDescription;
+        TextView txtviewTerm, txtviewDefinition, txtviewDescription, txtviewMastery;
         ImageButton btnSound;
         CardView cardView;
         CheckBox checkBoxStared;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            txtviewMastery = itemView.findViewById(R.id.txtviewMastery);
             txtviewTerm = itemView.findViewById(R.id.txtviewTerm);
             txtviewDefinition = itemView.findViewById(R.id.txtviewDefinition);
             txtviewDescription = itemView.findViewById(R.id.txtviewDescription);
