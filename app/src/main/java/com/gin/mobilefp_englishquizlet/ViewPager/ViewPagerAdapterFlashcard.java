@@ -31,6 +31,11 @@ public class ViewPagerAdapterFlashcard extends FragmentStatePagerAdapter {
         this.mIsRevert = isRevert;
     }
 
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

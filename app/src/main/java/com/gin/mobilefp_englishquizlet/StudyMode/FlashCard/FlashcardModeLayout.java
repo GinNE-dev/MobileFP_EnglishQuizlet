@@ -185,7 +185,9 @@ public class FlashcardModeLayout extends AppCompatActivity {
             if(mIsRevert){
                 mIsRevert = false;
                 ((ViewPagerAdapterFlashcard) viewPagerFlashcard.getAdapter()).mIsRevert = false;
+
                 viewPagerFlashcard.getAdapter().notifyDataSetChanged();
+                viewPagerFlashcard.setOffscreenPageLimit(0);
             }
 
             radioButtonTerm.setChecked(true);
@@ -196,7 +198,9 @@ public class FlashcardModeLayout extends AppCompatActivity {
             if(!mIsRevert){
                 mIsRevert = true;
                 ((ViewPagerAdapterFlashcard) viewPagerFlashcard.getAdapter()).mIsRevert = true;
+
                 viewPagerFlashcard.getAdapter().notifyDataSetChanged();
+                viewPagerFlashcard.setOffscreenPageLimit(0);
             }
 
             radioButtonTerm.setChecked(false);

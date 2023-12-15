@@ -41,7 +41,7 @@ public class SoundResult {
                 incorrectSoundMediaPlayer = MediaPlayer.create(context, R.raw.incorrect_answer_sound);
             }
             */
-            incorrectSoundMediaPlayer = MediaPlayer.create(context, Math.abs(new Date().getTime())%2 == 0 ? R.raw.sound_effect : R.raw.incorrect_answer_sound);
+            incorrectSoundMediaPlayer = MediaPlayer.create(context, /*Math.abs(new Date().getTime())%2 == 0 ? R.raw.sound_effect :*/ R.raw.incorrect_answer_sound);
             incorrectSoundMediaPlayer.start();
         }
 
