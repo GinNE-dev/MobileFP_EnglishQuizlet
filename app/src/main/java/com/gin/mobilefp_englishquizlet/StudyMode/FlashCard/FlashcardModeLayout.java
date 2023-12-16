@@ -7,6 +7,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.gin.mobilefp_englishquizlet.Models.Word;
 import com.gin.mobilefp_englishquizlet.R;
+import com.gin.mobilefp_englishquizlet.TextToSpeechHelper;
 import com.gin.mobilefp_englishquizlet.ViewPager.ViewPagerAdapterFlashcard;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -90,6 +92,20 @@ public class FlashcardModeLayout extends AppCompatActivity {
         });
     }
 
+    private void speak(@NonNull String text){
+        TextToSpeechHelper.initialize(FlashcardModeLayout.this, new TextToSpeechHelper.OnInitializationListener() {
+            @Override
+            public void onInitialized() {
+                if(!mIsRevert) TextToSpeechHelper.speak(text);
+            }
+
+            @Override
+            public void onInitializationFailed() {
+                Toast.makeText(FlashcardModeLayout.this, R.string.message_speaker_not_available, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void initComponents(){
         mWords = new ArrayList<>();
         DatabaseReference wordsOfTopicRef = FirebaseDatabase.getInstance().getReference("topics").child(mTopicID).child("words");
@@ -133,6 +149,7 @@ public class FlashcardModeLayout extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                speak(mWords.get(position).getTerm());
                 currentQuestion.setText(String.valueOf(position + 1));
                 if(position == 0){
                     firstCardUI();
@@ -150,6 +167,8 @@ public class FlashcardModeLayout extends AppCompatActivity {
 
             }
         });
+
+        if(mWords.size()>0) speak(mWords.get(0).getTerm());
     }
 
     private void firstCardUI(){
