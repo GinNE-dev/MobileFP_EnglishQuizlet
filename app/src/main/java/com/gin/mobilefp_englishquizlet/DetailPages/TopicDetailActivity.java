@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -35,6 +36,7 @@ import com.gin.mobilefp_englishquizlet.RecyclerViewAdapters.AdapterForViewWords;
 import com.gin.mobilefp_englishquizlet.StudyMode.FlashCard.FlashcardModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.MultipleChoiceModeLayout;
 import com.gin.mobilefp_englishquizlet.StudyMode.TypoModeLayout;
+import com.gin.mobilefp_englishquizlet.Utils.Permission;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,7 +73,7 @@ public class TopicDetailActivity extends AppCompatActivity {
     private View typeWordLearn;
 
     private String mTopicID;
-
+    private ActivityResultLauncher<String> mAsker;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +123,9 @@ public class TopicDetailActivity extends AppCompatActivity {
         });
 
         registerEvents();
+        mAsker = Permission.createPermissionAsker(this, ()->{
+            exportWords();
+        });
     }
     private void registerEvents(){
         flashCardLearn.setOnClickListener(v->{
@@ -257,7 +262,7 @@ public class TopicDetailActivity extends AppCompatActivity {
         });
 
         btnExport.setOnClickListener(v -> {
-            exportWords();
+            mAsker.launch(Permission.WRITE_EXTERNAL_STORAGE);
             bottomSheetDialog.dismiss();
         });
 

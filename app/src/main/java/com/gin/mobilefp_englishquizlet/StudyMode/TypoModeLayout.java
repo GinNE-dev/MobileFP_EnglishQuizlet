@@ -208,7 +208,8 @@ public class TypoModeLayout extends AppCompatActivity {
         String actualAnswer = mIsRevert ? word.getTerm() : word.getDefinition();
         //Only accept answers that are either correct with all diacritics or no diacritics at all
         String normalizedActualAnswer = SimpleUTF8Normalizer.normalize(actualAnswer.trim());
-        boolean isCorrect = answer.equals(actualAnswer) || answer.equals(normalizedActualAnswer);
+        answer = answer.toLowerCase();
+        boolean isCorrect = answer.equals(actualAnswer.toLowerCase()) || answer.equals(normalizedActualAnswer);
 
         //Accept all
         //boolean isCorrect = SimpleUTF8Normalizer.equals(answer.trim(), actualAnswer.trim());
