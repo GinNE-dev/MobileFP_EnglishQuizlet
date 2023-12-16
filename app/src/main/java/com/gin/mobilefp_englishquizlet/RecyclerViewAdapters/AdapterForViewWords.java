@@ -26,6 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class AdapterForViewWords extends RecyclerView.Adapter<AdapterForViewWords.MyViewHolder>{
     Context context;
@@ -73,8 +76,14 @@ public class AdapterForViewWords extends RecyclerView.Adapter<AdapterForViewWord
             });
         });
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        holder.checkBoxStared.setChecked(currentWord.getStarredList().getOrDefault(userId, Boolean.FALSE));
+
+
+        String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+
+        Integer learnTimes = currentWord.getLearnCounts().getOrDefault(userId , 0);
+        holder.txtviewMastery.setText(masteryTranslate(learnTimes != null ? learnTimes : 0));
+
+        holder.checkBoxStared.setChecked(Boolean.TRUE.equals(currentWord.getStarredList().getOrDefault(userId, Boolean.FALSE)));
         holder.checkBoxStared.setOnClickListener(ckb->{
             boolean isChecked = ((CheckBox) ckb).isChecked();
             currentWord.getStarredList().put(userId, isChecked);
@@ -96,6 +105,26 @@ public class AdapterForViewWords extends RecyclerView.Adapter<AdapterForViewWord
                 }
             });
         });
+    }
+
+    private String masteryTranslate(int learnTimes){
+        if(learnTimes <= 10){
+            return "Basic";
+        }else
+        if(learnTimes < 20){
+            return "Intermediate";
+        }else
+        if(learnTimes<30){
+            return "Intermediate";
+        }else
+        if(learnTimes<40){
+           return "Advanced";
+        }else
+        if(learnTimes<50){
+            return "Proficient";
+        }
+
+        return "Master";
     }
 
     @Override
