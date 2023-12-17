@@ -156,16 +156,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btnMyTopic"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="85dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="15dp">
+                        app:cardElevation="15dp"
+                        android:elevation="8dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal"
                             android:background="@drawable/background_gradient">
 
@@ -174,48 +175,24 @@
                                 android:layout_width="60dp"
                                 android:layout_height="match_parent"
                                 android:src="@drawable/my_topic_icon">
-
                             </ImageView>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:orientation="vertical">
-
                                 <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     android:fontFamily="@font/baloo"
-                                    android:padding="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
                                     android:text="My Topic"
-                                    android:textColor="#375287"
-                                    android:textSize="24dp"
-                                    android:textStyle="bold">
-
+                                    android:textSize="22dp"
+                                    android:textStyle="bold"
+                                    android:textColor="#375287">
                                 </TextView>
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Quantity of Topic:"
-                                        android:textSize="16dp">
-
-                                    </TextView>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="0"
-                                        android:textSize="16dp">
-
-                                    </TextView>
-                                </LinearLayout>
                             </LinearLayout>
                             <View
                                 android:layout_width="0dp"
@@ -228,7 +205,8 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/next_svgrepo_com">
+                                android:src="@drawable/next_svgrepo_com"
+                                >
                             </ImageView>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -236,16 +214,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btnDiscover"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="85dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="15dp">
+                        app:cardElevation="15dp"
+                        android:elevation="8dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal"
                             android:background="@drawable/background_gradient">
 
@@ -258,41 +237,20 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:orientation="vertical">
                                 <TextView
                                     android:fontFamily="@font/baloo"
-                                    android:padding="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="center_vertical"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="match_parent"
                                     android:text="Discover"
-                                    android:textSize="24dp"
+                                    android:textSize="22dp"
                                     android:textStyle="bold"
                                     android:textColor="#375287">
                                 </TextView>
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Quantity of Topic:"
-                                        android:textSize="16dp">
-
-                                    </TextView>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="219"
-                                        android:textSize="16dp">
-
-                                    </TextView>
-                                </LinearLayout>
                             </LinearLayout>
                             <View
                                 android:layout_width="0dp"
